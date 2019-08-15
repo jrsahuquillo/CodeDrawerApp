@@ -52,6 +52,9 @@
         <% flash.each do |key, message| %>
           <div class="text-center alert alert-<%= key == 'success' ? 'success': 'danger' %>">
             <%= message %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
         <% end %>
         <div class="container">
