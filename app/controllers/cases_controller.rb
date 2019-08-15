@@ -13,7 +13,7 @@ class CasesController < ApplicationController
       flash[:success] = "Case has been created"
       redirect_to cases_path
     else
-      flash[:danger] = "Case has not been created"
+      flash.now[:danger] = "Case has not been created"
       render :new
     end
   end
