@@ -9,9 +9,13 @@ class CasesController < ApplicationController
 
   def create
     @case = Case.new(case_params)
-    @case.save
-    flash[:success] = "Case has been created"
-    redirect_to cases_path
+    if @case.save
+      flash[:success] = "Case has been created"
+      redirect_to cases_path
+    else
+      flash[:danger] = "Case has not been created"
+      render :new
+    end
   end
 
   private
