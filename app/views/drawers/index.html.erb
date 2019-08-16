@@ -1,1 +1,14 @@
 <%= link_to "New Drawer", new_drawer_path %>
+
+<% @drawers.each do |drawer| %>
+  <div class="card drawer-index">
+    <div class="card-body">
+      <div class="drawer-title">
+        <%= link_to drawer.title, drawer_path(drawer) %>
+      </div>
+      <small class="drawer-description">
+        <%= truncate(drawer.description, length: 140) %>
+      </small>
+    </div>
+  </div>
+<% end %>

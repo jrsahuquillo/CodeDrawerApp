@@ -1,6 +1,7 @@
 class DrawersController < ApplicationController
 
   def index
+    @drawers = Drawer.all
   end
 
   def new
