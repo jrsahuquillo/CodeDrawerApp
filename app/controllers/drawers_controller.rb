@@ -23,6 +23,12 @@ class DrawersController < ApplicationController
     @drawer = Drawer.find(params[:id])
   end
 
+  protected
+    def resource_not_found
+      message = "The drawer you are looking for could not be found"
+      flash[:warning] = message
+      redirect_to root_path
+    end
   private
 
   def drawer_params
