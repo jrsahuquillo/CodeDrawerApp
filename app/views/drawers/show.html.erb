@@ -1,0 +1,9 @@
+<div class="detail-drawer">
+  <h1 class="drawer-detail-title"><%= @drawer.title %></h1>
+  <small class="glyphicon glyphicon-calendar" id="drawer-date">
+    <%= octicon "calendar" %> <%= @drawer.created_at.strftime("%d-%b-%Y") %>
+  </small>
+  <div class="drawer-description">
+    <%= @drawer.description %>
+  </div>
+</div>

@@ -19,6 +19,10 @@ class DrawersController < ApplicationController
     end
   end
 
+  def show
+    @drawer = Drawer.find(params[:id])
+  end
+
   private
 
   def drawer_params
