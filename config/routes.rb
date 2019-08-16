@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "cases#index"
+  root to: "drawers#index"
 
-  resources :cases
+  resources :drawers
 end
