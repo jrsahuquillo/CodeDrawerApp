@@ -1,4 +1,4 @@
-<h2 class="text-left">Sign up</h2>
+<h2 class="text">Sign up</h2>
 <div class="row">
   <div class="col-md-12">
     <%= form_for(resource, as: resource_name, html: {class: 'form-horizontal', role: 'form'},
@@ -6,7 +6,7 @@
 
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="form-group justify-content-center">
+      <div class="form-group">
         <div class="control-label col-md-3">
           <%= f.label :email %>
         </div>
