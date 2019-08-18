@@ -1,4 +1,5 @@
 class DrawersController < ApplicationController
+  before_action :set_drawer, only: [:show, :edit, :update, :destroy]
 
   def index
     @drawers = Drawer.all
@@ -19,16 +20,11 @@ class DrawersController < ApplicationController
     end
   end
 
-  def show
-    @drawer = Drawer.find(params[:id])
-  end
+  def show; end
 
-  def edit
-    @drawer = Drawer.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @drawer = Drawer.find(params[:id])
     if @drawer.update(drawer_params)
       flash[:success] = "Drawer has been updated"
       redirect_to @drawer
@@ -39,7 +35,6 @@ class DrawersController < ApplicationController
   end
 
   def destroy
-    @drawer = Drawer.find(params[:id])
     if @drawer.destroy
       flash[:success] = "Drawer has been deleted"
       redirect_to drawers_path
@@ -53,6 +48,10 @@ class DrawersController < ApplicationController
       redirect_to root_path
     end
   private
+
+  def set_drawer
+    @drawer = Drawer.find(params[:id])
+  end
 
   def drawer_params
     params.require(:drawer).permit(:title, :description)
