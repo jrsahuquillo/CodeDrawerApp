@@ -40,7 +40,10 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Login</a>
+              <%= link_to "Sign up", new_user_registration_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
             </li>
           </ul>
         </div>
