@@ -38,6 +38,14 @@ class DrawersController < ApplicationController
     end
   end
 
+  def destroy
+    @drawer = Drawer.find(params[:id])
+    if @drawer.destroy
+      flash[:success] = "Drawer has been deleted"
+      redirect_to drawers_path
+    end
+  end
+
   protected
     def resource_not_found
       message = "The drawer you are looking for could not be found"

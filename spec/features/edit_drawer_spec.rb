@@ -9,7 +9,7 @@ RSpec.feature "Editing Drawers" do
   scenario "A user updates a drawer" do
     visit "/"
     click_link @drawer.title
-    click_link "Edit Drawer"
+    click_link "Edit"
 
     fill_in "Title", with: "Updated Title"
     fill_in "Description", with: "Updated Description of Drawer"
@@ -24,7 +24,7 @@ RSpec.feature "Editing Drawers" do
   scenario "A user fails to update a drawer" do
     visit "/"
     click_link @drawer.title
-    click_link "Edit Drawer"
+    click_link "Edit"
 
     fill_in "Title", with: ""
     fill_in "Description", with: "Updated Description of Drawer"
