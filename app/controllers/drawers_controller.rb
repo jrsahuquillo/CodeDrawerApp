@@ -23,6 +23,21 @@ class DrawersController < ApplicationController
     @drawer = Drawer.find(params[:id])
   end
 
+  def edit
+    @drawer = Drawer.find(params[:id])
+  end
+
+  def update
+    @drawer = Drawer.find(params[:id])
+    if @drawer.update(drawer_params)
+      flash[:success] = "Drawer has been updated"
+      redirect_to @drawer
+    else
+      flash.now[:danger] = "Drawer has not been updated"
+      render :edit
+    end
+  end
+
   protected
     def resource_not_found
       message = "The drawer you are looking for could not be found"
