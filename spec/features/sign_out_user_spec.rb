@@ -15,7 +15,7 @@ RSpec.feature "Signin out users" do
     visit "/"
     click_link "Sign out"
 
-    expect(page).to have_content("Signed out successfully.")
+    expect(page).to have_content("You need to sign in or sign up before continuing.")
     expect(page).to have_content("Sign in")
     expect(page).to have_content("Sign up")
     expect(page).not_to have_content("Sign out")
