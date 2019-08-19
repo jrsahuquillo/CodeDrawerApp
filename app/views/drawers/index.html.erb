@@ -12,6 +12,9 @@
           <small class="drawer-description">
             <%= truncate(drawer.description, length: 140) %>
           </small>
+          <small class="drawer-author">
+            Created by: <%= drawer.user.email %>
+          </small>
         </div>
       </div>
     <% end %>

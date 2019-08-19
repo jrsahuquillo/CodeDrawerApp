@@ -1,6 +1,12 @@
 require "rails_helper"
 
 RSpec.feature "Creating Drawers" do
+
+  before do
+    @user = User.create!(email: "example_user@example.com", password: "password")
+    login_as(@user)
+  end
+
   scenario "a user creates a new drawer" do
     visit "/"
     click_link "New Drawer"
@@ -8,8 +14,10 @@ RSpec.feature "Creating Drawers" do
     fill_in "Description", with: "Lorem Ipsum"
     click_button "Create Drawer"
 
+    expect(Drawer.last.user).to eq(@user)
     expect(page).to have_content("Drawer has been created")
     expect(page.current_path).to eq(drawers_path)
+    expect(page).to have_content("Created by: #{@user.email}")
   end
 
   scenario "a user fails to create a new drawer without title" do
