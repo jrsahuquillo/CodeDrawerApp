@@ -3,8 +3,10 @@ require "rails_helper"
 RSpec.feature "Listing Drawers" do
 
   before do
-      @drawer1 = Drawer.create(title: "The first drawer", description: "Description of first drawer")
-      @drawer2 = Drawer.create(title: "The second drawer", description: "Description of second drawer")
+    user = User.create(email: "example_user@example.com", password: "password")
+    login_as(user)
+    @drawer1 = Drawer.create(title: "The first drawer", description: "Description of first drawer", user: user)
+    @drawer2 = Drawer.create(title: "The second drawer", description: "Description of second drawer", user: user)
   end
 
   scenario "a user lists all drawers" do
