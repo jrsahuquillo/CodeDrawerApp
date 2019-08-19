@@ -8,69 +8,10 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
   </head>
 
   <body>
-    <header role="banner">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">Codedrawer</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/">Drawers<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item active dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Create
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <%= link_to "New Drawer", new_drawer_path, class: 'dropdown-item' %>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-            <li class="nav-item active dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= user_signed_in? ? "Signed in as #{current_user.email}" : "Start session" %>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <% if user_signed_in? %>
-                  <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
-                <% else %>
-                  <%= link_to "Sign in", new_user_session_path, class: 'dropdown-item' %>
-                  <%= link_to "Sign up", new_user_registration_path, class: 'dropdown-item' %>
-                <% end %>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-
-    <div class="row">
-      <div class="col-12">
-        <% flash.each do |key, message| %>
-          <div class="text-center alert alert-<%= key %>">
-            <%= message %>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        <% end %>
-        <div class="container">
-          <%= yield %>
-        </div>
-      </div>
-    </div>
+    <%= render 'shared/header' %>
+    <%= render 'shared/main' %>
   </body>
 </html>
