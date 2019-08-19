@@ -3,7 +3,9 @@ require "rails_helper"
 RSpec.feature "Editing Drawers" do
 
   before do
-      @drawer = Drawer.create(title: "The first drawer", description: "Description of first drawer")
+      user = User.create(email: "example_user@example.com", password: "password")
+      login_as(user)
+      @drawer = Drawer.create(title: "The first drawer", description: "Description of first drawer", user: user)
   end
 
   scenario "A user updates a drawer" do
