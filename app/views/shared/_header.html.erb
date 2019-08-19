@@ -31,10 +31,10 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <% if user_signed_in? %>
-              <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'dropdown-item', id: 'sign-in-menu' %>
             <% else %>
-              <%= link_to "Sign in", new_user_session_path, class: 'dropdown-item' %>
-              <%= link_to "Sign up", new_user_registration_path, class: 'dropdown-item' %>
+              <%= link_to "Sign in", new_user_session_path, class: 'dropdown-item', id: 'sign-out-menu' %>
+              <%= link_to "Sign up", new_user_registration_path, class: 'dropdown-item', id: 'sign-up-menu' %>
             <% end %>
           </div>
         </li>
