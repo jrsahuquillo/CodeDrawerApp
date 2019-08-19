@@ -4,12 +4,25 @@
     color: #51565B;
 }
 
-#error_explanation, .alert-alert {
+#error_explanation,
+.alert-alert {
     background-color: #f2dede;
     color: #a94442;
     text-align: left;
     padding: 5px 20px;
     margin-bottom: 30px;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-notice {
+    background-color: #d4edda;
+    color: #155724;
+    text-align: left;
+    padding: 5px 20px;
+    margin-bottom: 30px;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
 }
 
 #error_explanation h2 {
