@@ -51,9 +51,14 @@ class DrawersController < ApplicationController
   end
 
   def destroy
-    if @drawer.destroy
-      flash[:success] = "Drawer has been deleted"
-      redirect_to drawers_path
+    unless @drawer.user == current_user
+      flash[:alert] = "You can only delete your own drawer."
+      redirect_to root_path
+    else
+      if @drawer.destroy
+        flash[:success] = "Drawer has been deleted"
+        redirect_to drawers_path
+      end
     end
   end
 

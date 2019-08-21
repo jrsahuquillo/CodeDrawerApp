@@ -60,7 +60,7 @@ RSpec.describe "Drawers", type: :request do
       end
     end
 
-    context 'with signed in user as owner gets successful edit' do
+    context 'with signed in user as owner gets successful destroy' do
       before do
         login_as(@user1)
         get "/drawers/#{@drawer1.id}/edit"
@@ -71,4 +71,43 @@ RSpec.describe "Drawers", type: :request do
       end
     end
   end
+
+  describe 'GET /drawers/:id/destroy' do
+    context 'with non-signed in user' do
+      before do
+        delete "/drawers/#{@drawer2.id}"
+      end
+
+      it "redirects to sign in page" do
+        expect(response.status).to eq 302
+        flash_message = "You need to sign in or sign up before continuing."
+        expect(flash[:alert]).to eq(flash_message)
+      end
+    end
+
+    context 'with signed in user who is non-owner' do
+      before do
+        login_as(@user2)
+        delete "/drawers/#{@drawer1.id}"
+      end
+
+      it "displays alert message" do
+        expect(response.status).to eq 302
+        flash_message = "You can only delete your own drawer."
+        expect(flash[:alert]).to eq(flash_message)
+      end
+    end
+
+    context 'with signed in user as owner deletes' do
+      before do
+        login_as(@user1)
+        delete "/drawers/#{@drawer1.id}"
+      end
+
+      it "redirects to the home page" do
+        expect(response.status).to eq 302
+      end
+    end
+  end
+
 end
