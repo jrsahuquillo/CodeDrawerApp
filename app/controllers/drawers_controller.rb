@@ -28,15 +28,25 @@ class DrawersController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    unless @drawer.user == current_user
+      flash[:alert] = "You can only edit your own drawer."
+      redirect_to root_path
+    end
+  end
 
   def update
-    if @drawer.update(drawer_params)
-      flash[:success] = "Drawer has been updated"
-      redirect_to @drawer
+    unless @drawer.user == current_user
+      flash[:danger] = "You can only edit your own drawer."
+      redirect_to root_path
     else
-      flash.now[:danger] = "Drawer has not been updated"
-      render :edit
+      if @drawer.update(drawer_params)
+        flash[:success] = "Drawer has been updated"
+        redirect_to @drawer
+      else
+        flash.now[:danger] = "Drawer has not been updated"
+        render :edit
+      end
     end
   end
 
