@@ -26,6 +26,9 @@ class DrawersController < ApplicationController
     if @drawer.user != current_user
       resource_not_found
     end
+
+    @codetool = @drawer.codetools.build
+    @codetools = @drawer.codetools
   end
 
   def edit

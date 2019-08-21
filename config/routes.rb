@@ -2,5 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "drawers#index"
 
-  resources :drawers
+  resources :drawers do
+    resources :codetools
+  end
 end
