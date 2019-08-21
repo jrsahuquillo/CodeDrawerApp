@@ -3,7 +3,7 @@ class DrawersController < ApplicationController
   before_action :set_drawer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @drawers = Drawer.all
+    @drawers = current_user.drawers
   end
 
   def new

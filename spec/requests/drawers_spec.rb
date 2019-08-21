@@ -4,7 +4,7 @@ RSpec.describe "Drawers", type: :request do
   before do
     user = User.create(email: "example_user@example.com", password: "password")
     login_as(user)
-    @drawer = Drawer.create(title: "Title One", description: "Description of drawer one", user: user)
+    @drawer = Drawer.create!(title: "Title One", description: "Description of drawer one", user: user)
   end
 
   describe 'GET /drawers/:id' do
