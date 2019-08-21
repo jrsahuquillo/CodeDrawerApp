@@ -22,7 +22,11 @@ class DrawersController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    if @drawer.user != current_user
+      resource_not_found
+    end
+  end
 
   def edit; end
 

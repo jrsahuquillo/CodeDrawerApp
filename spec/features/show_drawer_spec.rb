@@ -17,4 +17,12 @@ RSpec.feature "Showing a Drawer" do
     expect(current_path).to eq(drawer_path(@drawer))
   end
 
+  scenario "a user cant´t show other user drawer" do
+    user2 = User.create(email: "example_user2@example.com", password: "password")
+    login_as(user2)
+    visit drawer_path(@drawer)
+
+    expect(page).to have_content("The drawer you are looking for could not be found")
+  end
+
 end
