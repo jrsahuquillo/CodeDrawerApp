@@ -1,17 +1,27 @@
 <div class="detail-drawer">
-  <h1 class="drawer-detail-title"><%= octicon "archive", height: 42 %> <%= @drawer.title %></h1>
-  <small class="glyphicon glyphicon-calendar" id="drawer-date">
-    <%= octicon "calendar" %> <%= @drawer.created_at.strftime("%d-%b-%Y") %>
-  </small>
-  <div class="drawer-description">
-    <%= @drawer.description %>
-  </div>
-  <br>
-  <%= link_to 'Edit', edit_drawer_path(@drawer), class: 'btn btn-outline-primary btn-space' %>
-  <%= link_to 'Delete', drawer_path(@drawer), method: :delete,
+  <div class="row">
+    <div class="col-8">
+      <h1 class="drawer-detail-title"><%= octicon "archive", height: 42 %> <%= @drawer.title %></h1>
+      <small class="glyphicon glyphicon-calendar" id="drawer-date">
+        <%= octicon "calendar" %> <%= @drawer.created_at.strftime("%d-%b-%Y") %>
+      </small>
+      <div class="drawer-description">
+        <%= @drawer.description %>
+      </div>
+    </div>
+
+    <div class="col text-right">
+      <%= link_to 'Edit', edit_drawer_path(@drawer), class: 'btn btn-outline-primary btn-space' %>
+      <%= link_to 'Delete', drawer_path(@drawer), method: :delete,
       data: { confirm: "Are you sure you want to delete drawer?" },
       class: 'btn btn-outline-danger btn-space' %>
-  <%= link_to 'New Codetool',"#", class: 'btn btn-outline-success btn-space', 'data-toggle': 'modal', 'data-target': '#createCodetool' %>
+      <br>
+      <br>
+      <%= link_to 'New Codetool',"#", class: 'btn btn-outline-success btn-space', 'data-toggle': 'modal', 'data-target': '#createCodetool' %>
+    </div>
+  </div>
+</div>
+
 
   <!-- Modal -->
   <div class="modal fade" id="createCodetool" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -73,30 +83,36 @@
     </div>
   </div>
 
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <header>
+        <h2><%= octicon "tools", height: 24 %> <%= @drawer.title %> codetools</h2>
+      </header>
 
-
-  <div class="col-md-12">
-    <header>
-      <h2>Codetools</h2>
-    </header>
-
-    <div class="col-md-10">
-      <% if @drawer.codetools.any? %>
-        <% persisted_codetools(@codetools).each do |codetool| %>
-          <h4 class="codetool-title">
-            <%= codetool.title %>
-          </h4>
-          <div class="codetool-content">
-            <%= codetool.content  %>
-          </div>
-          <small class="codetool-time">
-            <%= time_ago_in_words(codetool.created_at)  %>
-            ago by <%= codetool.user.email %>
-          </small>
+      <div class="col-md-12">
+        <% if @drawer.codetools.any? %>
+          <% persisted_codetools(@codetools).each do |codetool| %>
+            <div class="card mt-2">
+              <div class="card-body">
+                <h4 class="codetool-title">
+                  <%= codetool.title %>
+                </h4>
+                <div class="codetool-content">
+                  <%= codetool.content  %>
+                </div>
+                <small class="codetool-time">
+                  <%= time_ago_in_words(codetool.created_at)  %>
+                  ago by <%= codetool.user.email %>
+                </small>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          There are no codetools to show.
         <% end %>
-      <% else %>
-        There are no codetools to show.
-      <% end %>
+      </div>
+
     </div>
   </div>
 </div>
