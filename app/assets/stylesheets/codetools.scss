@@ -1,3 +1,12 @@
 // Place all the styles related to the codetools controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.show-codetool {
+    color: inherit !important; /* blue colors for links too */
+    text-decoration: inherit !important; /* no underline */
+}
+
+a:hover.show-codetool .card {
+    background: #F6F8FA !important;
+}
