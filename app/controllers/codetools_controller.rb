@@ -1,5 +1,6 @@
 class CodetoolsController < ApplicationController
   before_action :set_drawer
+  before_action :set_codetool, only: [:edit, :update, :destroy]
 
   def index
     @codetools = Codetool.all
@@ -22,7 +23,6 @@ class CodetoolsController < ApplicationController
   end
 
   def edit
-    @codetool = Codetool.find(params[:id])
     unless @codetool.user == current_user
       flash[:alert] = "You can only edit your own codetool."
       redirect_to drawer_codetools_path(@drawer)
@@ -30,7 +30,6 @@ class CodetoolsController < ApplicationController
   end
 
   def update
-    @codetool = Codetool.find(params[:id])
     unless @codetool.user == current_user
       flash[:danger] = "You can only edit your own codetool."
       redirect_to drawer_codetools_path(@drawer)
@@ -45,6 +44,18 @@ class CodetoolsController < ApplicationController
     end
   end
 
+  def destroy
+    unless @codetool.user == current_user
+      flash[:alert] = "You can only delete your own codetool."
+      redirect_to drawer_codetools_path(@drawer)
+    else
+      if @codetool.destroy
+        flash[:success] = "Codetool has been deleted"
+        redirect_to drawer_codetools_path(@drawer)
+      end
+    end
+  end
+
   private
 
   def codetool_params
@@ -53,5 +64,9 @@ class CodetoolsController < ApplicationController
 
   def set_drawer
     @drawer = Drawer.find(params[:drawer_id])
+  end
+
+  def set_codetool
+    @codetool = Codetool.find(params[:id])
   end
 end

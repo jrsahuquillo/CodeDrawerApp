@@ -52,7 +52,7 @@
                     </small>
                     <div class="codetool-footer col text-right">
                       <%= link_to 'Edit Codetool',edit_drawer_codetool_path(@drawer, codetool), class: 'btn btn-outline-success btn-space' %>
-                      <%= link_to 'Delete', drawer_path(@drawer), method: :delete,
+                      <%= link_to 'Delete Codetool', drawer_codetool_path(@drawer, codetool), method: :delete,
                       data: { confirm: "Are you sure you want to delete codetool?" },
                       class: 'btn btn-outline-danger btn-space' %>
                     </div>
