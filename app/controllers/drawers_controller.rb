@@ -15,7 +15,7 @@ class DrawersController < ApplicationController
     @drawer.user = current_user
     if @drawer.save
       flash[:success] = "Drawer has been created"
-      redirect_to drawers_path
+      redirect_to drawer_codetools_path(@drawer)
     else
       flash.now[:danger] = "Drawer has not been created"
       render :new
@@ -34,18 +34,18 @@ class DrawersController < ApplicationController
   def edit
     unless @drawer.user == current_user
       flash[:alert] = "You can only edit your own drawer."
-      redirect_to root_path
+      redirect_to drawer_codetools_path(@drawer)
     end
   end
 
   def update
     unless @drawer.user == current_user
       flash[:danger] = "You can only edit your own drawer."
-      redirect_to root_path
+      redirect_to drawer_codetools_path(@drawer)
     else
       if @drawer.update(drawer_params)
         flash[:success] = "Drawer has been updated"
-        redirect_to @drawer
+        redirect_to drawer_codetools_path(@drawer)
       else
         flash.now[:danger] = "Drawer has not been updated"
         render :edit
@@ -56,7 +56,7 @@ class DrawersController < ApplicationController
   def destroy
     unless @drawer.user == current_user
       flash[:alert] = "You can only delete your own drawer."
-      redirect_to root_path
+      redirect_to drawer_codetools_path(@drawer)
     else
       if @drawer.destroy
         flash[:success] = "Drawer has been deleted"

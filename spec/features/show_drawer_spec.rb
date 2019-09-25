@@ -14,7 +14,7 @@ RSpec.feature "Showing a Drawer" do
 
     expect(page).to have_content(@drawer.title)
     expect(page).to have_content(@drawer.description)
-    expect(current_path).to eq(drawer_path(@drawer))
+    expect(current_path).to eq(drawer_codetools_path(@drawer))
   end
 
   scenario "a user cant´t show other user drawer" do

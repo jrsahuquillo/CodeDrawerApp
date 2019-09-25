@@ -20,7 +20,7 @@ RSpec.feature "Editing Drawers" do
     expect(page).to have_content("Drawer has been updated")
     expect(page).to have_content("Updated Title")
     expect(page).to have_content("Updated Description of Drawer")
-    expect(page.current_path).to eq(drawer_path(@drawer))
+    expect(page.current_path).to eq(drawer_codetools_path(@drawer))
   end
 
   scenario "A user fails to update a drawer" do

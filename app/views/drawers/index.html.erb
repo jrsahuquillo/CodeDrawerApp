@@ -7,7 +7,7 @@
       <div class="card drawer-index">
         <div class="card-body">
           <div class="drawer-title">
-            <%= link_to drawer.title, drawer_path(drawer) %>
+            <%= link_to drawer.title, drawer_codetools_path(drawer) %>
           </div>
           <small class="drawer-description">
             <%= truncate(drawer.description, length: 140) %>
