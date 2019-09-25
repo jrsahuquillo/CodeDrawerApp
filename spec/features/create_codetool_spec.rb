@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Creating Drawers" do
+RSpec.feature "Creating Codetools" do
   before do
     @user = User.create!(email: "example_user@example.com", password: "password")
     login_as(@user)
@@ -20,6 +20,6 @@ RSpec.feature "Creating Drawers" do
     expect(page).to have_content("Codetool has been created")
     expect(page).to have_content(@drawer.codetools.last.title)
     expect(page).to have_content(@drawer.codetools.last.content)
-    expect(page.current_path).to eq(drawer_path(@drawer.id))
+    expect(page.current_path).to eq(drawer_codetools_path(@drawer.id))
   end
 end

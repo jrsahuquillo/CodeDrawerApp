@@ -18,7 +18,6 @@ RSpec.feature "Signin users" do
     expect(page).not_to have_link("Sign in")
     expect(page).not_to have_link("Sign up")
     expect(page).to have_link("Sign out")
-
   end
 
 end

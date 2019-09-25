@@ -12,12 +12,10 @@ RSpec.feature "Showing a Drawer" do
     visit "/"
     click_link @drawer.title
 
-    within("#showCodetool" + "#{@codetool.id}") do
-      expect(page).to have_content(@codetool.title) # async
-    end
+    expect(page).to have_content(@codetool.title)
 
     expect(page).to have_content(@codetool.title)
     expect(page).to have_content(@codetool.content)
-    expect(current_path).to eq(drawer_path(@drawer)) # Modal
+    expect(current_path).to eq(drawer_codetools_path(@drawer))
   end
 end

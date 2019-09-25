@@ -22,8 +22,7 @@ RSpec.feature "Editing Codetools" do
     expect(page).to have_content("Codetool has been updated")
     expect(page).to have_content("Updated Title")
     expect(page).to have_content("Updated Content of Codetool")
-    expect(page.current_path).to eq(drawer_path(@drawer))
+    expect(page.current_path).to eq(drawer_codetools_path(@drawer))
   end
-
 
 end
