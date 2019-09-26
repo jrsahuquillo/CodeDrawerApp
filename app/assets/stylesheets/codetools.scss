@@ -10,3 +10,15 @@
 .card-body:hover {
     background: #F6F8FA !important;
 }
+
+.new-codetool-icon {
+    padding: 8px;
+    color: #586069;
+    .octicon {
+        fill: currentColor;
+    }
+    &:hover{
+        padding: 8px;
+        color: #24292e;
+    }
+}

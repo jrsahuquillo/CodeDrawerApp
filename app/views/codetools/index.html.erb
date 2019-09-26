@@ -25,7 +25,10 @@
 
       <br>
       <br>
-      <%= link_to 'New Codetool', new_drawer_codetool_path, class: 'btn btn-outline-success btn-space' %>
+      <br>
+      <%= link_to new_drawer_codetool_path, class: 'new-codetool-icon', 'data-toggle':'tooltip', title: "New Codetool" do %>
+        <h6><%= octicon "plus", height: 24 %> New Codetool</h6>
+      <% end %>
     </div>
   </div>
 </div>
