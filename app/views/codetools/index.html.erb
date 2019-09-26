@@ -14,11 +14,12 @@
     </div>
 
     <div class="col text-right">
-      <%= link_to edit_drawer_path(@drawer), class: 'edit-drawer' do %>
+      <%= link_to edit_drawer_path(@drawer), class: 'edit-drawer-icon', 'data-toggle':'tooltip', title: "Edit Drawer" do %>
         <%= octicon "pencil", height: 24 %>
       <% end %>
 
-      <%= link_to drawer_path(@drawer), method: :delete, class: 'delete-drawer', data: { confirm: "Are you sure you want to delete drawer?" } do %>
+      <%= link_to drawer_path(@drawer), method: :delete, class: 'delete-drawer-icon','data-toggle':'tooltip', title: "Delete Drawer",
+                                        data: { confirm: "Are you sure you want to delete drawer?" } do %>
         <%= octicon "trashcan", height: 24 %>
       <% end %>
 

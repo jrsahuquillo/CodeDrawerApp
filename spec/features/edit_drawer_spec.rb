@@ -11,7 +11,7 @@ RSpec.feature "Editing Drawers" do
   scenario "A user updates a drawer" do
     visit "/"
     click_link @drawer.title
-    find('.edit-drawer').click
+    find('.edit-drawer-icon').click
     fill_in "Title", with: "Updated Title"
     fill_in "Description", with: "Updated Description of Drawer"
     click_button "Update Drawer"
@@ -27,7 +27,7 @@ RSpec.feature "Editing Drawers" do
   scenario "A user fails to update a drawer" do
     visit "/"
     click_link @drawer.title
-    find('.edit-drawer').click
+    find('.edit-drawer-icon').click
 
     fill_in "Title", with: ""
     fill_in "Description", with: "Updated Description of Drawer"
