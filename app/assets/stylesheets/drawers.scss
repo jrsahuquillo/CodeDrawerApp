@@ -2,11 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.drawer-index {
+.card.drawer-index,
+.drawer-list,
+.detail-drawer  {
     margin: 12px 0px;
 }
 
-.detail-drawer,
-.drawer-list {
-    margin-top: 16px;
+.drawer-list a {
+    color: inherit !important; /* blue colors for links too */
+    text-decoration: inherit !important; /* no underline */
 }

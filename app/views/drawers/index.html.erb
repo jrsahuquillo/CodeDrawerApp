@@ -4,19 +4,23 @@
     <h1 id="no-drawers">No drawers created</h1>
   <% else %>
     <% @drawers.each do |drawer| %>
-      <div class="card drawer-index">
-        <div class="card-body">
-          <div class="drawer-title">
-            <%= link_to drawer.title, drawer_codetools_path(drawer) %>
+
+      <div class="card drawer-list">
+        <%= link_to drawer_codetools_path(drawer), class: 'drawer-detail' do %>
+          <div class="card-body">
+            <h4 class="drawer-title">
+              <%= octicon "archive", height: 36 %> <%= drawer.title %>
+            </h4>
+            <small class="drawer-description">
+              <%= truncate(drawer.description, length: 140) %>
+            </small><br>
+            <small class="drawer-author">
+              Created by: <%= drawer.user.email %>
+            </small>
           </div>
-          <small class="drawer-description">
-            <%= truncate(drawer.description, length: 140) %>
-          </small><br>
-          <small class="drawer-author">
-            Created by: <%= drawer.user.email %>
-          </small>
-        </div>
+        <% end %>
       </div>
+
     <% end %>
   <% end %>
 </div>
