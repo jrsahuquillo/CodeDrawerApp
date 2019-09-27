@@ -23,14 +23,18 @@
     }
 }
 
-.codetool-title {
+.codetool-title{
     display: flex;
     justify-content: space-between;
+}
+.codetool-footer {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .edit-codetool-icon,
 .delete-codetool-icon {
-    padding: 6px;
+    padding-right: 8px;
     color: #586069;
     .octicon {
         fill: currentColor;

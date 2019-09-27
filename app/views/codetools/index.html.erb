@@ -59,7 +59,7 @@
                       <%= time_ago_in_words(codetool.created_at)  %>
                       ago by <%= codetool.user.email %>
                     </small>
-                    <div class="codetool-footer col text-right">
+                    <div class="codetool-footer">
                       <%= link_to edit_drawer_codetool_path(@drawer, codetool), class: 'edit-codetool-icon', 'data-toggle':'tooltip', title: "Edit Codetool" do %>
                         <%= octicon "pencil", height: 18 %>
                       <% end %>
