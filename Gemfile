@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'octicons'
 gem 'octicons_helper'
 gem 'devise', '~> 4.6'
+gem 'redcarpet', git: 'git://github.com/vmg/redcarpet.git'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

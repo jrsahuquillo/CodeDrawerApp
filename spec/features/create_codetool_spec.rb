@@ -5,12 +5,12 @@ RSpec.feature "Creating Codetools" do
     @user = User.create!(email: "example_user@example.com", password: "password")
     login_as(@user)
     @drawer = Drawer.create(title: "The first drawer", description: "Description of first drawer", user: @user)
-  end
-
-  scenario "a user creates a new codetool" do
     visit "/"
     click_link @drawer.title
     click_link "New Codetool"
+  end
+
+  scenario "a user creates a new codetool" do
     fill_in "Title", with: "Creating a Codetool"
     fill_in "Content", with: "Lorem Ipsum"
     click_button "Create Codetool"
@@ -22,4 +22,19 @@ RSpec.feature "Creating Codetools" do
     expect(page).to have_content(@drawer.codetools.last.content)
     expect(page.current_path).to eq(drawer_codetools_path(@drawer.id))
   end
+
+  scenario "a user creates a new codetool with bold markdown" do
+    fill_in "Title", with: "Creating a Codetool with Markdown"
+    fill_in "Content", with: "**Lorem Ipsum**"
+    click_button "Create Codetool"
+    expect(page.html).to include("<strong>Lorem Ipsum</strong>")
+  end
+
+  scenario "a user creates a new codetool with code markdown" do
+    fill_in "Title", with: "Creating a Codetool with Markdown"
+    fill_in "Content", with: "```Lorem Ipsum```"
+    click_button "Create Codetool"
+    expect(page.html).to include("<code>Lorem Ipsum</code>")
+  end
+
 end
