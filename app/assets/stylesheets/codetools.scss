@@ -27,3 +27,15 @@
     display: flex;
     justify-content: space-between;
 }
+
+.edit-codetool-icon,
+.delete-codetool-icon {
+    padding: 6px;
+    color: #586069;
+    .octicon {
+        fill: currentColor;
+    }
+    &:hover{
+        color: #24292e;
+    }
+}
