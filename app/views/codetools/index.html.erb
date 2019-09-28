@@ -22,13 +22,6 @@
                                         data: { confirm: "Are you sure you want to delete drawer?" } do %>
         <%= octicon "trashcan", height: 24 %>
       <% end %>
-
-      <br>
-      <br>
-      <br>
-      <%= link_to new_drawer_codetool_path, class: 'new-codetool-icon', 'data-toggle':'tooltip', title: "New Codetool" do %>
-        <h6><%= octicon "plus", height: 24 %> New Codetool</h6>
-      <% end %>
     </div>
   </div>
 </div>
@@ -37,7 +30,10 @@
   <div class="row">
     <div class="col-md-12">
       <header>
-        <h2><%= octicon "tools", height: 24 %> <%= @drawer.title %> codetools</h2>
+        <h2 class="codetools-header"><%= octicon "tools", height: 24 %> <%= @drawer.title %> codetools</h2>
+        <%= link_to new_drawer_codetool_path, class: 'new-codetool-icon', 'data-toggle':'tooltip', title: "New Codetool" do %>
+          <h6><%= octicon "plus", height: 24 %> New Codetool</h6>
+        <% end %>
       </header>
 
       <div class="col-md-12">
@@ -49,7 +45,7 @@
                 <div class="card-body">
                   <h4 class="codetool-title">
                     <%= codetool.title %>
-                    <div class="toggle-codetool-content-icon" ><%= octicon "chevron-down", height: 24 %></div>
+                    <div class="toggle-codetool-content-icon" ><%= octicon "chevron-down", class: "codetool" + "#{codetool.id}", height: 24 %></div>
                   </h4>
                   <div class="collapse multi-collapse" id=<%= "codetool#{codetool.id}" %> >
                     <div class="codetool- content">

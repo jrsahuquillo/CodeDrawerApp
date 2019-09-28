@@ -43,3 +43,11 @@
         color: #24292e;
     }
 }
+
+.octicon-chevron-down {
+    transition: all 0.5s;
+}
+.rotated{
+    transform: rotate(-180deg);
+    transition: all 0.5s;
+}
