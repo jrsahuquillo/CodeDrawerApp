@@ -11,6 +11,7 @@ $(document).ready(function(){
     if(params_referrer[1] == 'edit'){
       var codetoolItem = '#codetool' + params_referrer[0]
       $(codetoolItem).addClass('show')
+      $('.octicon.octicon-chevron-down.codetool' + params_referrer[0]).addClass('rotated')
     }
   }
 
