@@ -44,8 +44,8 @@
         <% if @drawer.codetools.any? %>
           <% persisted_codetools(@drawer.codetools).each do |codetool| %>
 
-            <%= link_to "#codetool" + "#{codetool.id}", class: "show-codetool", 'data-toggle': 'collapse', 'aria-expanded': 'false', 'aria-controls': "codetool" + "#{codetool.id}" do %>
-              <div class="card mt-2">
+            <div class="card mt-2">
+              <%= link_to "#codetool" + "#{codetool.id}", class: "show-codetool", 'data-toggle': 'collapse', 'aria-expanded': 'false', 'aria-controls': "codetool" + "#{codetool.id}" do %>
                 <div class="card-body">
                   <div class="codetool-header">
                   <h4 class="codetool-title">
@@ -53,27 +53,27 @@
                   </h4>
                   <div class="toggle-codetool-content-icon" ><%= octicon "chevron-down", class: "codetool" + "#{codetool.id}", height: 24 %></div>
                 </div>
-                  <div class="collapse multi-collapse" id=<%= "codetool#{codetool.id}" %> >
-                    <div class="codetool-content">
-                      <%= markdown(codetool.content) %>
-                    </div>
-                    <small class="codetool-time">
-                      <%= time_ago_in_words(codetool.created_at)  %>
-                      ago by <%= codetool.user.username %>
-                    </small>
-                    <div class="codetool-footer">
-                      <%= link_to edit_drawer_codetool_path(@drawer, codetool), class: 'edit-codetool-icon', 'data-toggle':'tooltip', title: "Edit Codetool" do %>
-                        <%= octicon "pencil", height: 18 %>
-                      <% end %>
-                      <%= link_to drawer_codetool_path(@drawer, codetool), method: :delete, class: 'delete-codetool-icon','data-toggle':'tooltip',
-                      title: "Delete Codetool", data: { confirm: "Are you sure you want to delete codetool?" } do %>
-                        <%= octicon "trashcan", height: 18 %>
-                      <% end %>
-                    </div>
+              <% end %>
+                <div class="collapse multi-collapse" id=<%= "codetool#{codetool.id}" %> >
+                  <div class="codetool-content">
+                    <%= markdown(codetool.content) %>
+                  </div>
+                  <small class="codetool-time">
+                    <%= time_ago_in_words(codetool.created_at)  %>
+                    ago by <%= codetool.user.username %>
+                  </small>
+                  <div class="codetool-footer">
+                    <%= link_to edit_drawer_codetool_path(@drawer, codetool), class: 'edit-codetool-icon', 'data-toggle':'tooltip', title: "Edit Codetool" do %>
+                      <%= octicon "pencil", height: 18 %>
+                    <% end %>
+                    <%= link_to drawer_codetool_path(@drawer, codetool), method: :delete, class: 'delete-codetool-icon','data-toggle':'tooltip',
+                    title: "Delete Codetool", data: { confirm: "Are you sure you want to delete codetool?" } do %>
+                      <%= octicon "trashcan", height: 18 %>
+                    <% end %>
                   </div>
                 </div>
               </div>
-            <% end %>
+            </div>
           <% end %>
         <% else %>
           There are no codetools to show.
