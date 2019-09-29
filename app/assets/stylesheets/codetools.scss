@@ -11,18 +11,21 @@
     background: #F6F8FA !important;
 }
 
-.new-codetool-icon {
-    padding: 8px;
-    color: #586069;
-    .octicon {
-        fill: currentColor;
-    }
-    &:hover{
-        padding: 8px;
-        color: #24292e;
+.codetools-header {
+    display: flex;
+    .new-codetool-icon {
+        color: #586069;
+        .octicon {
+            fill: currentColor;
+        }
+        &:hover{
+            color: #24292e;
+        }
+        h6 {
+            padding-top: 16px;
+        }
     }
 }
-
 .codetool-title{
     display: flex;
     justify-content: space-between;

@@ -29,12 +29,16 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-md-12">
-      <header>
-        <h2 class="codetools-header"><%= octicon "tools", height: 24 %> <%= @drawer.title %> codetools</h2>
-        <%= link_to new_drawer_codetool_path, class: 'new-codetool-icon', 'data-toggle':'tooltip', title: "New Codetool" do %>
+      <div class="codetools-header">
+        <div class="col-8">
+          <h2><%= octicon "tools", height: 24 %> <%= @drawer.title %> codetools</h2>
+        </div>
+        <div class="col text-right">
+          <%= link_to new_drawer_codetool_path, class: 'new-codetool-icon', 'data-toggle':'tooltip', title: "New Codetool" do %>
           <h6><%= octicon "plus", height: 24 %> New Codetool</h6>
-        <% end %>
-      </header>
+          <% end %>
+        </div>
+      </div>
 
       <div class="col-md-12">
         <% if @drawer.codetools.any? %>
