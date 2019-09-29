@@ -6,6 +6,15 @@
 
       <div class="form-group">
         <div class="control-label col-md-3">
+          <%= f.label :username %><br />
+        </div>
+        <div class="col-md-5">
+        <%= f.text_field :username, class: 'form-control', autofocus: true, autocomplete: "username" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="control-label col-md-3">
         <%= f.label :email %>
         </div>
         <div class="col-md-5">
