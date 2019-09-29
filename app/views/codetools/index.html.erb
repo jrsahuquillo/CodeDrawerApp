@@ -6,7 +6,7 @@
         <%= octicon "calendar" %> <%= @drawer.created_at.strftime("%d-%b-%Y") %>
       </small>
       <small class="drawer-author">
-        Created by: <%= @drawer.user.email %>
+        Created by: <%= @drawer.user.username %>
       </small>
       <div class="drawer-description">
         <%= @drawer.description %>
@@ -57,7 +57,7 @@
                     </div>
                     <small class="codetool-time">
                       <%= time_ago_in_words(codetool.created_at)  %>
-                      ago by <%= codetool.user.email %>
+                      ago by <%= codetool.user.username %>
                     </small>
                     <div class="codetool-footer">
                       <%= link_to edit_drawer_codetool_path(@drawer, codetool), class: 'edit-codetool-icon', 'data-toggle':'tooltip', title: "Edit Codetool" do %>

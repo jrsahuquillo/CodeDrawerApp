@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "Creating Drawers" do
 
   before do
-    @user = User.create!(email: "example_user@example.com", password: "password")
+    @user = User.create!(username: "example_user", email: "example_user@example.com", password: "password")
     login_as(@user)
   end
 
@@ -17,7 +17,7 @@ RSpec.feature "Creating Drawers" do
     expect(Drawer.last.user).to eq(@user)
     expect(page).to have_content("Drawer has been created")
     expect(page.current_path).to eq(drawer_codetools_path(@user.drawers.last))
-    expect(page).to have_content("Created by: #{@user.email}")
+    expect(page).to have_content("Created by: #{@user.username}")
   end
 
   scenario "a user fails to create a new drawer without title" do
