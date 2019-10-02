@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "Delete a Drawer" do
 
   before do
-    user = User.create(email: "example_user@example.com", password: "password")
+    user = User.create(email: "example_user@example.com", username: "example_user", password: "password")
     login_as(user)
     @drawer = Drawer.create(title: "The first drawer", description: "Description of first drawer", user: user)
   end

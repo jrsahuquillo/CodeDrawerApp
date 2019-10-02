@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "Showing a Drawer" do
 
   before do
-    user = User.create(email: "example_user@example.com", password: "password")
+    user = User.create(email: "example_user@example.com", username: "example_user", password: "password")
     login_as(user)
     @drawer = Drawer.create(title: "The first drawer", description: "Description of first drawer", user: user)
   end
@@ -18,7 +18,7 @@ RSpec.feature "Showing a Drawer" do
   end
 
   scenario "a user cant´t show other user drawer" do
-    user2 = User.create(email: "example_user2@example.com", password: "password")
+    user2 = User.create(email: "example_user2@example.com", username: "example_user2", password: "password")
     login_as(user2)
     visit drawer_path(@drawer)
 

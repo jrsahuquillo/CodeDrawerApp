@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "Creating Drawers" do
 
   before do
-    @user = User.create!(username: "example_user", email: "example_user@example.com", password: "password")
+    @user = User.create!(email: "example_user@example.com", username: "example_user", password: "password")
     login_as(@user)
   end
 
