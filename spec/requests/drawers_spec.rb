@@ -16,7 +16,7 @@ RSpec.describe "Drawers", type: :request do
       end
 
       it "handles existing drawer" do
-        expect(response.status).to eq 200
+        expect(response.status).to eq 302
       end
     end
 
@@ -67,7 +67,7 @@ RSpec.describe "Drawers", type: :request do
       end
 
       it "successfully edits drawer" do
-        expect(response.status).to eq 200
+        expect(response.status).to eq 302
       end
     end
   end

@@ -92,6 +92,7 @@ GEM
     cucumber-core (1.5.0)
       gherkin (~> 4.0)
     cucumber-wire (0.0.1)
+    database_cleaner (1.7.0)
     devise (4.7.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -285,6 +286,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (~> 3.28)
+  database_cleaner
   devise (~> 4.6)
   guard (~> 2.15)
   guard-cucumber (~> 2.1)
@@ -311,4 +313,4 @@ RUBY VERSION
    ruby 2.6.3p62
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
