@@ -32,7 +32,7 @@ RSpec.feature "Creating Codetools" do
 
   scenario "a user creates a new codetool with code markdown" do
     fill_in "Title", with: "Creating a Codetool with Markdown"
-    fill_in "Content", with: "```Lorem Ipsum```"
+    fill_in "Content", with: "`Lorem Ipsum`"
     click_button "Create Codetool"
     expect(page.html).to include("<code>Lorem Ipsum</code>")
   end
