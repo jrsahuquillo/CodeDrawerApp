@@ -78,8 +78,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: codedrawer_production
-  username: codedrawer
-  password: <%= ENV['CODEDRAWER_DATABASE_PASSWORD'] %>
+# production:
+#   <<: *default
+#   database: codedrawer_production
+#   username: codedrawer
+#   password: <%= ENV['CODEDRAWER_DATABASE_PASSWORD'] %>
