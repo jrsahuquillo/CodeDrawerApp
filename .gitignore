@@ -22,6 +22,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/deploy-secrets.yml
+/config/database.yml
+.DS_Store
 
 /public/packs
 /public/packs-test

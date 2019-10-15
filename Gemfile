@@ -32,12 +32,13 @@ gem 'octicons_helper'
 gem 'devise', '~> 4.6'
 gem 'redcarpet', git: 'git://github.com/vmg/redcarpet.git'
 gem 'rouge', '~> 1.10', '>= 1.10.1'
+gem 'unicorn'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'pry-rails', '~> 0.3.9'
+  gem 'rspec-rails', '~> 4.0.0.beta2'
 end
 
 group :test do
@@ -46,15 +47,22 @@ group :test do
 end
 
 group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
+  gem 'airbrussh', require: false
+  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails', github: 'capistrano/rails'
+  gem 'capistrano-rails-console'
+  gem 'capistrano-sidekiq'
+  gem 'guard', '~> 2.15'
+  gem 'guard-rspec', '~> 4.7'
+  gem 'guard-cucumber', '~> 2.1'
+  gem 'rvm1-capistrano3', require: false
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'guard', '~> 2.15'
-  gem 'guard-rspec', '~> 4.7'
-  gem 'guard-cucumber', '~> 2.1'
+  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  gem 'web-console', '>= 3.3.0'
 end
 
 
