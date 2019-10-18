@@ -1,10 +1,16 @@
 
 class CodetoolsController < ApplicationController
-  before_action :set_drawer
+  before_action :set_drawer, except: [:search]
   before_action :set_codetool, only: [:edit, :update, :destroy]
 
   def index
     @codetools = Codetool.all
+  end
+
+  def search
+    if params[:search]
+      @searched_codetools = Codetool.search(params[:search])
+    end
   end
 
   def new

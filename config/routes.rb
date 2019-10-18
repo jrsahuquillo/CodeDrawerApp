@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :drawers do
     resources :codetools
   end
+
+  get '/search', to: 'codetools#search'
 end
