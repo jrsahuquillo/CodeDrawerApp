@@ -7,8 +7,8 @@ class Codetool < ApplicationRecord
 
   def self.search(search)
     searched_codetools = []
-    searched_codetools << self.where("title LIKE ?", "%#{search}%")
-    searched_codetools << self.where("content LIKE ?", "%#{search}%")
+    searched_codetools << self.where("title ILIKE ?", "%#{search}%")
+    searched_codetools << self.where("content ILIKE ?", "%#{search}%")
     searched_codetools.flatten
   end
 

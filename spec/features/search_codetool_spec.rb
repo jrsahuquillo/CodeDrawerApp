@@ -22,7 +22,7 @@ RSpec.feature "Searching Codetools" do
 
   scenario "a user searches a specific codetool content" do
     visit '/search'
-    fill_in "Search", with: "first codetool"
+    fill_in "Search", with: "First coDEtool"
     find(:css, '.search').click
     # click_button "Search"
 
