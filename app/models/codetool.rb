@@ -6,10 +6,7 @@ class Codetool < ApplicationRecord
   validates :content, presence: true
 
   def self.search(search)
-    searched_codetools = []
-    searched_codetools << self.where("title ILIKE ?", "%#{search}%")
-    searched_codetools << self.where("content ILIKE ?", "%#{search}%")
-    searched_codetools.flatten
+    self.where("title ILIKE ? OR content ILIKE ?", "%#{search}%", "%#{search}%").uniq
   end
 
 end
