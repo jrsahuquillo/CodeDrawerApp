@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+user = User.find_by_id 1
+
+n = 1
+10.times do
+    drawer = Drawer.create(title: "Drawer #{n}", description: "Description drawer #{n}", user: user)
+    m = 1
+    10.times do
+        Codetool.create(title: "Codetool #{m}", content: "Content codetool #{m}", drawer: drawer, user: user)
+        m += 1
+    end
+    n += 1
+end
