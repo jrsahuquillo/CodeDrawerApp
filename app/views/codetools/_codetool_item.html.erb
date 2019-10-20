@@ -13,8 +13,7 @@
       <%= markdown(codetool.content) %>
     </div>
     <small class="codetool-time">
-      <%= time_ago_in_words(codetool.created_at)  %>
-      ago by <%= codetool.user.username %>
+      <%= time_ago_in_words(codetool.created_at)  %>ago by <%= codetool.user.username %>
     </small>
     <% if @drawer %>
       <div class="codetool-footer">

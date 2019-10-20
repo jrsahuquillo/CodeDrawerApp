@@ -14,8 +14,8 @@
             <small class="drawer-description">
               <%= truncate(drawer.description, length: 140) %>
             </small><br>
-            <small class="drawer-author">
-              Created by: <%= drawer.user.username %>
+            <small class="drawer-time-author">
+              <%= time_ago_in_words(drawer.created_at)  %>ago by<%= drawer.user.username %>
             </small>
           </div>
         <% end %>
