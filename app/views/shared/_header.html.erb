@@ -16,17 +16,18 @@
           <% end %>
         </li>
         <li class="nav-item active">
-          <%= link_to "Drawers List", root_path, class: 'nav-link' %>
+          <%= link_to  root_path, class: 'nav-link' do %>
+            <%= octicon 'list-unordered'%> Drawers List
+          <% end %>
         </li>
         <li class="nav-item active">
-          <%= link_to "New Drawer", new_drawer_path, class: 'nav-link' %>
+          <%= link_to new_drawer_path, class: 'nav-link' do %>
+            <%= octicon 'plus'%> New Drawer
+          <% end %>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="https://www.markdownguide.org/basic-syntax/">Markdown Syntax</a>
         </li>
-          <li class="nav-item active">
-            <%= link_to "Search", search_path, class: 'nav-link' %>
-          </li>
           <% end %>
         <li class="nav-item active dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
