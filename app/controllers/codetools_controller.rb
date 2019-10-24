@@ -1,5 +1,6 @@
 
 class CodetoolsController < ApplicationController
+  before_action :authenticate_user!, :search
   before_action :set_drawer, except: [:search]
   before_action :set_codetool, only: [:edit, :update, :destroy]
 

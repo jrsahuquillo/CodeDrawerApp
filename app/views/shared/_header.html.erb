@@ -6,6 +6,7 @@
     </button>
     <div class="navbar-collapse collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
+        <% if current_user%>
         <li class="nav-item active">
           <%= form_tag(search_path(@drawer), method: "get", class: "form-inline my-2 my-lg-1", id: "search-form") do %>
               <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2", placeholder: "Search", 'aria-label': 'Search' %>
@@ -14,22 +15,19 @@
               <% end %>
           <% end %>
         </li>
-        <li class="nav-item active dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Drawers
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <%= link_to "Drawers List", root_path, class: 'dropdown-item' %>
-            <%= link_to "New Drawer", new_drawer_path, class: 'dropdown-item' %>
-          </div>
+        <li class="nav-item active">
+          <%= link_to "Drawers List", root_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "New Drawer", new_drawer_path, class: 'nav-link' %>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="https://www.markdownguide.org/basic-syntax/">Markdown Syntax</a>
         </li>
-        <li class="nav-item active">
-          <%= link_to "Search", search_path, class: 'nav-link' %>
-        </li>
-
+          <li class="nav-item active">
+            <%= link_to "Search", search_path, class: 'nav-link' %>
+          </li>
+          <% end %>
         <li class="nav-item active dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= user_signed_in? ? "Signed in as #{current_user.username}" : "Start session" %>
