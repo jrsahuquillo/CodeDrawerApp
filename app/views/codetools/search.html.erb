@@ -2,7 +2,7 @@
   <h3 class='text-center codetool-form'>Searched codetools</h3>
   <ul>
     <% @searched_codetools.each do |codetool| %>
-      <%= render 'codetool_item', codetool: codetool %>
+      <%= render 'codetool_item', codetool: codetool, drawer: codetool.drawer %>
     <% end %>
   </ul>
 <% else %>

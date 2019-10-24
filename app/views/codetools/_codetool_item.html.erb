@@ -15,17 +15,16 @@
     <small class="codetool-time">
       <%= time_ago_in_words(codetool.created_at)  %>ago by <%= codetool.user.username %>
     </small>
-    <% if @drawer %>
-      <div class="codetool-footer">
-        <%= link_to edit_drawer_codetool_path(@drawer, codetool), class: 'edit-codetool-icon', 'data-toggle':'tooltip', title: "Edit Codetool" do %>
-          <%= octicon "pencil", height: 18 %>
-        <% end %>
-        <%= link_to drawer_codetool_path(@drawer, codetool), method: :delete, class: 'delete-codetool-icon','data-toggle':'tooltip',
-                                                            title: "Delete Codetool", data: { confirm: "Are you sure you want to delete codetool?" } do %>
-          <%= octicon "trashcan", height: 18 %>
-        <% end %>
-      </div>
-    <% end %>
+    <% @drawer ||= drawer %>
+    <div class="codetool-footer">
+      <%= link_to edit_drawer_codetool_path(@drawer, codetool), class: 'edit-codetool-icon', 'data-toggle':'tooltip', title: "Edit Codetool" do %>
+        <%= octicon "pencil", height: 18 %>
+      <% end %>
+      <%= link_to drawer_codetool_path(@drawer, codetool), method: :delete, class: 'delete-codetool-icon','data-toggle':'tooltip',
+                                                          title: "Delete Codetool", data: { confirm: "Are you sure you want to delete codetool?" } do %>
+        <%= octicon "trashcan", height: 18 %>
+      <% end %>
+    </div>
     </div>
   </div>
 </div>

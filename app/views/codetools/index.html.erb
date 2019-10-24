@@ -2,15 +2,15 @@
   <div class="row">
     <div class="col-8">
       <h1 class="drawer-detail-title"><%= octicon "archive", height: 42 %> <%= @drawer.title %></h1>
+      <div class="drawer-description">
+        <%= @drawer.description %>
+      </div>
       <small class="glyphicon glyphicon-calendar" id="drawer-date">
         <%= octicon "calendar" %> <%= @drawer.created_at.strftime("%d-%b-%Y") %>
       </small>
       <small class="drawer-author">
         Created by: <%= @drawer.user.username %>
       </small>
-      <div class="drawer-description">
-        <%= @drawer.description %>
-      </div>
     </div>
 
     <div class="col text-right">
