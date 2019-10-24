@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   validate :validate_username
   has_many :drawers
+  has_many :codetools
 
   attr_accessor :login
 

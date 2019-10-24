@@ -29,6 +29,15 @@ RSpec.feature "Searching Codetools" do
     expect(page.current_path).to eq(search_path)
   end
 
+  scenario "a user searches empty content" do
+    visit '/search'
+    fill_in "Search", with: ""
+    find(:css, 'button.search').click
+
+    expect(page).to have_content("There are no codetools containing the term(s) .")
+    expect(page.current_path).to eq(search_path)
+  end
+
   scenario "a not logged user can't access to search page" do
     logout
     visit '/search'

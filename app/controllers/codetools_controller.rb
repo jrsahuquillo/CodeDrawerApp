@@ -9,9 +9,7 @@ class CodetoolsController < ApplicationController
   end
 
   def search
-    if params[:search]
-      @searched_codetools = Codetool.search(params[:search])
-    end
+    @searched_codetools = params[:search].blank? ? [] : current_user.codetools.search(params[:search])
   end
 
   def new
