@@ -46,3 +46,27 @@
     </div>
   </nav>
 </header>
+
+
+<sidebar class="drawers-sidebar">
+<div class="drawers-list-sidebar">
+  <%= link_to new_drawer_path, class: 'drawer-link-sidebar' do %>
+        <div>
+          <h5>
+            <%= octicon "plus", height: 24 %> New drawer
+          </h5>
+        </div>
+      <% end %>
+  <% current_user.drawers.each do |drawer| %>
+    <div class="drawer-item-sidebar">
+      <%= link_to drawer_codetools_path(drawer), class: 'drawer-link-sidebar' do %>
+        <div>
+          <h5>
+            <%= octicon "archive", height: 36 %> <%= drawer.title.truncate(50) %>
+          </h5>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+</sidebar>
