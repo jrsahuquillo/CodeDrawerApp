@@ -3,7 +3,11 @@ class DrawersController < ApplicationController
   before_action :set_drawer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @drawers = current_user.drawers
+    if current_user.drawers.blank?
+      @drawers = []
+    else
+      redirect_to drawer_codetools_path(current_user.drawers.first)
+    end
   end
 
   def new
