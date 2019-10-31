@@ -1,6 +1,6 @@
 <header role="banner">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/"><%= octicon "archive", height: 36, class: 'logo' %>  Codedrawer</a>
+    <div class="navbar-brand"><%= octicon "archive", height: 36, class: 'logo' %>  Codedrawer</div> 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -15,19 +15,18 @@
               <% end %>
           <% end %>
         </li>
-        <li class="nav-item active">
-          <%= link_to  root_path, class: 'nav-link' do %>
-            <%= octicon 'list-unordered'%> Drawers List
-          <% end %>
-        </li>
-        <% if false %>
-        <li class="nav-item active">
-          <%= link_to new_drawer_path, class: 'nav-link' do %>
-            <%= octicon 'plus'%> New Drawer
-          <% end %>
-        </li>
+        <% if current_device_is_mobile? %>
+          <li class="nav-item active">
+            <%= link_to drawers_path, class: 'nav-link' do %>
+              <%= octicon 'list-unordered'%> Drawers List
+            <% end %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to new_drawer_path, class: 'nav-link' do %>
+              <%= octicon 'plus'%> New Drawer
+            <% end %>
+          </li>
         <% end %>
-
         <li class="nav-item active">
           <%= link_to 'Markdown Syntax', 'https://www.markdownguide.org/basic-syntax/', class: 'nav-link', target: '_blank' %>
         </li>
@@ -51,9 +50,9 @@
 </header>
 
 
-<% if current_user %>
+<% if current_user && !current_device_is_mobile? %>
   <div id="sidebar" class="drawers-sidebar">
-    <div class="drawers-list-sidebar">
+    <div class="drawers-list-sidebar full-height">
       <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %>">
         <%= link_to new_drawer_path, class: 'drawer-link-sidebar' do %>
           <div class="drawer-item-menu">

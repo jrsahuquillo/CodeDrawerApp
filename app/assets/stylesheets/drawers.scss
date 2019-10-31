@@ -12,10 +12,6 @@
     border-radius: 0.25rem;
 }
 
-.drawers-list-sidebar{
-    // padding: 16px;
-}
-
 .drawer-item-sidebar{
     padding: 0.2rem 0;
 }
@@ -37,13 +33,13 @@ a.drawer-link-sidebar {
     margin: 12px 0;
 }
 
+.card.drawer-index,
 .detail-drawer  {
     padding-top: 2rem;
 }
 
-.card.drawer-index,
 .drawer-list  {
-    margin: 2px 0px;
+    margin-top: 0.5rem;
 }
 
 .drawer-list a {
