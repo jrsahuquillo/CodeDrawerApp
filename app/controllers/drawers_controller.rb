@@ -8,9 +8,11 @@ class DrawersController < ApplicationController
       @drawers = current_user.drawers
       render :index
     else
-      current_user.drawers.present? ? 
-        redirect_to drawer_codetools_path(current_user.drawers.first) :
+      if current_user.drawers.present?
+        redirect_to drawer_codetools_path(current_user.drawers.first)
+      else
         @drawers = []
+      end
     end
   end
 
