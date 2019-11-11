@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.0.rc2'
+gem 'rails', '~> 6.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'mysql2', '~> 0.4.4'
@@ -15,7 +15,7 @@ gem 'sass-rails', '~> 5'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+gem 'turbolinks', '~> 5.2.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2', require: false
+gem 'bootsnap', '>= 1.4.5', require: false
 gem 'octicons'
 gem 'octicons_helper'
 gem 'devise', '~> 4.6'
@@ -40,11 +40,11 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails', '~> 0.3.9'
-  gem 'rspec-rails', '~> 4.0.0.beta2'
+  gem 'rspec-rails', '~> 4.0.0.beta3'
 end
 
 group :test do
-  gem 'capybara', '~> 3.28'
+  gem 'capybara', '~> 3.29'
   gem 'database_cleaner'
 end
 
@@ -55,7 +55,7 @@ group :development do
   gem 'capistrano-rails', github: 'capistrano/rails'
   gem 'capistrano-rails-console'
   gem 'capistrano-sidekiq'
-  gem 'guard', '~> 2.15'
+  gem 'guard', '~> 2.16'
   gem 'guard-rspec', '~> 4.7'
   gem 'guard-cucumber', '~> 2.1'
   gem 'rvm1-capistrano3', require: false
