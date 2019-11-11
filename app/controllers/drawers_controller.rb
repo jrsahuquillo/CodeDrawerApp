@@ -1,9 +1,19 @@
 class DrawersController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_user!
   before_action :set_drawer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @drawers = current_user.drawers
+    if current_device_is_mobile?
+      @drawers = current_user.drawers
+      render :index
+    else
+      if current_user.drawers.present?
+        redirect_to drawer_codetools_path(current_user.drawers.first)
+      else
+        @drawers = []
+      end
+    end
   end
 
   def new

@@ -2,14 +2,44 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.drawers-sidebar {
+    float: left;
+    background-color: #3F4448;
+    font-size: 0.8rem;
+    width: 25%;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    border-radius: 0.25rem;
+}
+
+.drawer-item-sidebar{
+    padding: 0.2rem 0;
+}
+
+.drawer-item-menu{
+    padding: 0.5rem 0.2rem 0 0.5rem;
+}
+
+a.drawer-link-sidebar {
+    color: white !important;
+}
+
+.drawer-item-sidebar.active,
+.drawer-item-sidebar:hover {
+    background-color: #586069;
+}
+
 .drawer-form {
     margin: 12px 0;
 }
 
 .card.drawer-index,
-.drawer-list,
 .detail-drawer  {
-    margin: 12px 0px;
+    padding-top: 2rem;
+}
+
+.drawer-list  {
+    margin-top: 0.5rem;
 }
 
 .drawer-list a {

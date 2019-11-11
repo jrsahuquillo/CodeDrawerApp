@@ -13,6 +13,7 @@ RSpec.feature "Creating Drawers" do
     fill_in "Title", with: "Creating a Drawer"
     fill_in "Description", with: "Lorem Ipsum"
     click_button "Create Drawer"
+    @user.reload
 
     expect(Drawer.last.user).to eq(@user)
     expect(page).to have_content("Drawer has been created")
