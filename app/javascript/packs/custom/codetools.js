@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
   collapseShowAfterEdit();
 
   $('.show-codetool').click(function () {
@@ -14,14 +15,5 @@ $(document).ready(function(){
       $('.octicon.octicon-chevron-down.codetool' + params_referrer[0]).addClass('rotated')
     }
   }
-
-
-  $(document).keydown(function(e) {
-    if(!(e.keyCode == 13 && e.metaKey)) return;
-    var target = e.target;
-    if(target.form) {
-      target.form.submit();
-    }
-  });
 
 });

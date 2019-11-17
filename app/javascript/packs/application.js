@@ -8,6 +8,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("bootstrap/dist/js/bootstrap")
+require("packs/custom/global")
 require("packs/custom/codetools")
 
 import 'bootstrap'
