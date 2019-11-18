@@ -33,7 +33,7 @@
           <% end %>
         <li class="nav-item active dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= user_signed_in? ? "Signed in as #{current_user.username}" : "Start session" %>
+            <%= user_signed_in? ? "#{current_user.username}" : "Start session" %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <% if user_signed_in? %>
