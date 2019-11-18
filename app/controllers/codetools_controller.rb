@@ -5,7 +5,13 @@ class CodetoolsController < ApplicationController
   before_action :set_codetool, only: [:edit, :update, :destroy]
 
   def index
-    @codetools = Codetool.all
+    @codetools = @drawer.codetools.order(position: :asc)
+  end
+
+  def sort
+    params[:codetool].each_with_index do |id, index|
+      @drawer.codetools.where(id: id).update_all(position: index + 1 )
+    end
   end
 
   def search
