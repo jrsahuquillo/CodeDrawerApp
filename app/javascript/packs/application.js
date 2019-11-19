@@ -20,6 +20,7 @@ require.context('file-loader?name=[path][name].[ext]&context=node_modules/jquery
 
 
 require("packs/custom/global")
+require("packs/custom/drawers")
 require("packs/custom/codetools")
 
 import 'bootstrap'

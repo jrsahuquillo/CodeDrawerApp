@@ -39,7 +39,7 @@
           <% end %>
         </div>
       </div>
-      <div id="codetools-list" class="col-md-12" data-url="<%= sort_drawer_codetools_path %>">
+      <div id="codetools-list" class="col-md-12" data-url="<%= sort_codetool_drawer_codetools_path %>">
         <% if @drawer.codetools.any? %>
           <% persisted_codetools(@codetools).each do |codetool| %>
             <%= render 'codetool_item', codetool: codetool %>

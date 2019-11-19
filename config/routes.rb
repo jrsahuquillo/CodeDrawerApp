@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   root to: "drawers#index"
 
   resources :drawers do
+    collection do
+      patch :sort_drawer
+    end
     resources :codetools do
       collection do
-        patch :sort
+        patch :sort_codetool
       end
     end
   end
