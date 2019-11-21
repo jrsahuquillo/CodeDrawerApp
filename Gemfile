@@ -35,6 +35,7 @@ gem 'redcarpet', git: 'git://github.com/vmg/redcarpet.git'
 gem 'rouge', '~> 1.10', '>= 1.10.1'
 gem 'unicorn'
 gem 'awesome_print'
+gem 'listen', '~> 3.1', '>= 3.1.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -59,7 +60,7 @@ group :development do
   gem 'guard-rspec', '~> 4.7'
   gem 'guard-cucumber', '~> 2.1'
   gem 'rvm1-capistrano3', require: false
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen', '~> 3.1', '>= 3.1.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
