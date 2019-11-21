@@ -2,10 +2,17 @@
 class CodetoolsController < ApplicationController
   before_action :authenticate_user!, :search
   before_action :set_drawer, except: [:search]
+  before_action :set_drawers, except: [:search]
   before_action :set_codetool, only: [:edit, :update, :destroy]
 
   def index
-    @codetools = Codetool.all
+    @codetools = @drawer.codetools.order(position: :asc)
+  end
+
+  def sort_codetool
+    params[:codetool].each_with_index do |id, index|
+      @drawer.codetools.where(id: id).update_all(position: index + 1 )
+    end
   end
 
   def search
@@ -70,6 +77,10 @@ class CodetoolsController < ApplicationController
 
   def set_drawer
     @drawer = Drawer.find(params[:drawer_id])
+  end
+
+  def set_drawers
+    @drawers = current_user.drawers.sort_by(&:position)
   end
 
   def set_codetool

@@ -5,7 +5,7 @@ class DrawersController < ApplicationController
 
   def index
     if current_device_is_mobile?
-      @drawers = current_user.drawers
+      @drawers = current_user.drawers.order(position: :asc)
       render :index
     else
       if current_user.drawers.present?
@@ -13,6 +13,12 @@ class DrawersController < ApplicationController
       else
         @drawers = []
       end
+    end
+  end
+
+  def sort_drawer
+    params[:drawer].each_with_index do |id, index|
+      current_user.drawers.where(id: id).update_all( position: index + 1 )
     end
   end
 

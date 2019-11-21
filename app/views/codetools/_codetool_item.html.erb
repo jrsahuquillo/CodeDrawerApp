@@ -1,9 +1,9 @@
-<div class="card mt-2">
+<div class="card mt-2" id="<%= dom_id(codetool) %>">
   <%= link_to "#codetool" + "#{codetool.id}", class: "show-codetool", 'data-toggle': 'collapse', 'aria-expanded': 'false', 'aria-controls': "codetool" + "#{codetool.id}" do %>
     <div class="card-body">
       <div class="codetool-header">
         <h4 class="codetool-title">
-          <%= codetool.title %>
+          <%= octicon "grabber", height: 24 %> <%= codetool.title %>
         </h4>
       <div class="toggle-codetool-content-icon" ><%= octicon "chevron-down", class: "codetool" + "#{codetool.id}", height: 24 %></div>
     </div>
