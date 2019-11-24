@@ -2,7 +2,7 @@
 class CodetoolsController < ApplicationController
   before_action :authenticate_user!, :search
   before_action :set_drawer, except: [:search]
-  before_action :set_drawers, except: [:search]
+  before_action :set_drawers
   before_action :set_codetool, only: [:edit, :update, :destroy]
 
   def index
