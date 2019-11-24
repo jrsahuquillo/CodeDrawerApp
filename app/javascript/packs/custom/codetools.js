@@ -17,6 +17,8 @@ $(document).ready(function(){
   }
 
   $('#codetools-list').sortable({
+    revert: true,
+    cancel: ".ui-sortable-handle .codetool-content",
     update: function(e, ui) {
       $.ajax({
         url: $(this).data("url"),
