@@ -16,6 +16,7 @@ RSpec.feature "Creating Drawers" do
     @user.reload
 
     expect(Drawer.last.user).to eq(@user)
+    expect(Drawer.last.position).to eq(0)
     expect(page).to have_content("Drawer has been created")
     expect(page.current_path).to eq(drawer_codetools_path(@user.drawers.last))
     expect(page).to have_content("Created by: #{@user.username}")

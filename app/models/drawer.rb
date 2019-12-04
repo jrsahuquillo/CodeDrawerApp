@@ -5,4 +5,10 @@ class Drawer < ApplicationRecord
 
   belongs_to :user
   has_many :codetools, dependent: :destroy
+
+  after_initialize :set_defaults, unless: :persisted?
+
+  def set_defaults
+    self.position  ||= 0
+  end
 end
