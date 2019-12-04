@@ -72,7 +72,7 @@ class CodetoolsController < ApplicationController
   private
 
   def codetool_params
-    params.require(:codetool).permit(:title, :content)
+    params.require(:codetool).permit(:title, :content, :public, :position)
   end
 
   def set_drawer

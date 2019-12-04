@@ -25,4 +25,14 @@ RSpec.feature "Editing Codetools" do
     expect(page.current_path).to eq(drawer_codetools_path(@drawer))
   end
 
+  scenario "A user updates public steate to true" do
+    visit "/"
+    click_link @drawer.title
+    find('.show-codetool').click
+    click_link "Edit Codetool"
+    find('#codetool_public').set(true)
+    click_button "Update Codetool"
+    @codetool.reload
+    expect(@codetool.public).to eq(true)
+  end
 end

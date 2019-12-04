@@ -38,4 +38,12 @@ RSpec.feature "Creating Codetools" do
     expect(page.html).to include("<code>Lorem Ipsum</code>")
   end
 
+  scenario "a user creates a new public codetool" do
+    fill_in "Title", with: "Creating a Codetool"
+    fill_in "Content", with: "Lorem Ipsum"
+    find('#codetool_public').set(true)
+    click_button "Create Codetool"
+    expect(Codetool.last.public).to eq(true)
+  end
+
 end
