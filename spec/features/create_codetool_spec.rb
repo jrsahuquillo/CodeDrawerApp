@@ -17,6 +17,7 @@ RSpec.feature "Creating Codetools" do
 
     expect(Codetool.last.drawer).to eq(@drawer)
     expect(Codetool.last.user).to eq(@user)
+    expect(Codetool.last.public).to eq(false)
     expect(page).to have_content("Codetool has been created")
     expect(page).to have_content(@drawer.codetools.last.title)
     expect(page).to have_content(@drawer.codetools.last.content)
