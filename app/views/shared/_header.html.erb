@@ -9,7 +9,7 @@
         <% if current_user%>
         <li class="nav-item active">
           <%= form_tag(search_path(@drawer), method: "get", class: "form-inline my-2 my-lg-1", id: "search-form") do %>
-              <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2", placeholder: "Search", 'aria-label': 'Search' %>
+              <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2", placeholder: "Search (CRTL + F)", 'aria-label': 'Search' %>
               <%= button_tag(type: "submit", class: "btn btn-light my-2 my-sm-0 search") do %>
                   <%= octicon 'search'%>
               <% end %>
