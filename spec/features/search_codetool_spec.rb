@@ -11,7 +11,7 @@ RSpec.feature "Searching Codetools" do
 
   scenario "a user searches a specific codetool title" do
     visit '/search'
-    fill_in "Search", with: "first"
+    fill_in "Search (CRTL + F)", with: "first"
     find(:css, '.search').click
 
     expect(page).to have_content(@codetool1.title)
@@ -21,7 +21,7 @@ RSpec.feature "Searching Codetools" do
 
   scenario "a user searches a specific codetool content" do
     visit '/search'
-    fill_in "Search", with: "First coDEtool"
+    fill_in "Search (CRTL + F)", with: "First coDEtool"
     find(:css, 'button.search').click
 
     expect(page).to have_content(@codetool1.title)
@@ -31,7 +31,7 @@ RSpec.feature "Searching Codetools" do
 
   scenario "a user searches empty content" do
     visit '/search'
-    fill_in "Search", with: ""
+    fill_in "Search (CRTL + F)", with: ""
     find(:css, 'button.search').click
 
     expect(page).to have_content("There are no codetools containing the term(s) .")
