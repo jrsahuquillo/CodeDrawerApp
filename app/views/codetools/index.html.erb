@@ -29,16 +29,16 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-md-12">
-      <div id="codetools-list" class="col-md-12" data-url="<%= sort_codetool_drawer_codetools_path %>">
-        <div class="card mt-2 new-codetool">
-          <div class="card-body">
-            <div class="codetools-header">
-              <%= link_to new_drawer_codetool_path, class: 'new-codetool-icon', 'data-toggle':'tooltip', title: "New Codetool" do %>
-                <h4 class="codetool-title"><%= octicon "plus", height: 18 %>&nbsp; New Codetool</h4>
-              <% end %>
-            </div>
+      <div class="card mt-2 new-codetool">
+        <div class="card-body">
+          <div class="codetools-header">
+            <%= link_to new_drawer_codetool_path, class: 'new-codetool-icon', 'data-toggle':'tooltip', title: "New Codetool" do %>
+            <h4 class="codetool-title"><%= octicon "plus", height: 18 %>&nbsp; New Codetool</h4>
+            <% end %>
           </div>
         </div>
+      </div>
+      <div id="codetools-list" class="col-md-12" data-url="<%= sort_codetool_drawer_codetools_path %>">
         <% if @drawer.codetools.any? %>
           <% persisted_codetools(@codetools).each do |codetool| %>
             <%= render 'codetool_item', codetool: codetool %>
