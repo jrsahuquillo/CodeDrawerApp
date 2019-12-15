@@ -22,6 +22,7 @@
 
 a.drawer-link-sidebar {
     color: white !important;
+    text-decoration: inherit !important;
 }
 
 .drawer-item-sidebar.active,
@@ -44,7 +45,6 @@ a.drawer-link-sidebar {
 
 .drawer-list a {
     color: inherit !important; /* blue colors for links too */
-    text-decoration: inherit !important; /* no underline */
 }
 
 .drawer-link {
