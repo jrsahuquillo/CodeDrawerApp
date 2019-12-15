@@ -42,12 +42,14 @@
           </div>
         </div>
 
-        <div class='form-check public'>
-          <div class='control-label col-sm'>
-            <%= f.label :public, class: 'form-check-label' do %>
-              <%= octicon "organization", height: 24 %>
-            <% end %>
-            <%= f.check_box :public %>
+        <div class="public-check">
+          <div class='form-check'>
+            <div class='control-label col-sm'>
+              <%= f.label :public, class: 'form-check-label' do %>
+                <%= octicon "megaphone", height: 24 %>
+              <% end %>
+              <%= f.check_box :public %>
+            </div>
           </div>
         </div>
 
