@@ -7,15 +7,25 @@
 }
 
 .card-body {
-    padding: 0.8rem !important;
+    padding: 1rem !important;
 }
 
+.card.mt-2.new-codetool {
+    border: #dfdfdf 4px dashed;
+    border-radius: 0.25rem;
+    a:hover {
+        text-decoration: inherit;
+    }
+}
 .card-body:hover {
     background: #F6F8FA !important;
 }
 
 .codetools-header {
-    display: flex;
+    .card{
+        border: none;
+    }
+
     .new-codetool-icon {
         color: #586069;
         .octicon {
@@ -30,7 +40,7 @@
     }
 }
 
-.show-codetool {
+.show-codetool, .new-codetool {
     color: inherit !important; /* blue colors for links too */
     text-decoration: inherit !important; /* no underline */
 
