@@ -25,7 +25,7 @@ RSpec.feature "Editing Codetools" do
     expect(page.current_path).to eq(drawer_codetools_path(@drawer))
   end
 
-  scenario "A user updates public steate to true" do
+  scenario "A user updates public state to true" do
     visit "/"
     click_link @drawer.title
     find('.show-codetool').click
@@ -34,5 +34,6 @@ RSpec.feature "Editing Codetools" do
     click_button "Update Codetool"
     @codetool.reload
     expect(@codetool.public).to eq(true)
+    expect(page).to have_css('.public-icon')
   end
 end

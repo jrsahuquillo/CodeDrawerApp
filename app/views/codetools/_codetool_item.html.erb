@@ -6,7 +6,9 @@
           <%= octicon "grabber", height: 24 %>&nbsp; <%= codetool.title %>
         </h4>
         <div class="d-flex">
-          <div class="public-icon" ><%= octicon "megaphone" if codetool.public? %></div>
+          <% if codetool.public? %>
+            <div class="public-icon" ><%= octicon "megaphone" %></div>
+          <% end %>
           <div class="toggle-codetool-content-icon" ><%= octicon "chevron-down", class: "codetool" + "#{codetool.id}", height: 24 %></div>
         </div>
       </div>
