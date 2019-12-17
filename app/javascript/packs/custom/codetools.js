@@ -17,6 +17,9 @@ $(document).ready(function(){
   }
 
   $('#codetools-list').sortable({
+    axis: "y",
+    cursor: "move",
+    opacity: 0.7,
     revert: true,
     cancel: ".ui-sortable-handle .codetool-content",
     update: function(e, ui) {
