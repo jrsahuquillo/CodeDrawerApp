@@ -14,4 +14,10 @@ Rails.application.routes.draw do
   end
 
   get '/search', to: 'codetools#search'
+  get '/search-friends', to: 'friends#search_friends'
+  get '/friends', to: 'friends#index'
+  post '/friends', to: 'friends#create'
+  delete '/friends', to: 'friends#destroy'
+
+
 end

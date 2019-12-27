@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validate :validate_username
   has_many :drawers
   has_many :codetools
-
+  has_many :friends
   attr_accessor :login
 
   def login
@@ -26,6 +26,10 @@ class User < ApplicationRecord
     if User.where(email: username).exists?
       errors.add(:username, :invalid)
     end
+  end
+
+  def self.search(search_friends)
+    self.where("username ILIKE ? OR email ILIKE ?", "%#{search_friends}%", "%#{search_friends}%").uniq
   end
 
 end
