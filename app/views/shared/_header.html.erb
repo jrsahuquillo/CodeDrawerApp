@@ -52,8 +52,7 @@
   </nav>
 </header>
 
-
-<% if current_user && !current_device_is_mobile? %>
+<% if (current_user && !current_device_is_mobile?) %>
   <div id="sidebar" class="drawers-sidebar">
     <div class="drawers-list-sidebar full-height">
       <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %>">
@@ -74,6 +73,7 @@
           </div>
         <% end %>
       </div>
+
       <div id="drawers-list" data-url="<%= sort_drawer_drawers_path %>">
         <% @drawers ||= current_user.drawers %>
         <% @drawers.each do |drawer| %>

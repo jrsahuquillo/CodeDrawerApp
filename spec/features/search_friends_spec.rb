@@ -11,7 +11,7 @@ RSpec.feature "Searching Friends" do
 
   scenario "a user follows other user searched by user name" do
     fill_in "Search Friends", with: "example_user2"
-    find(:css, '.search-friends').click
+    find(:css, '.search-friends-button').click
     expect(page).to have_content(@user2.username)
 
     click_link "Follow"
@@ -23,7 +23,7 @@ RSpec.feature "Searching Friends" do
 
   scenario "a user folloss other user searched by user email" do
     fill_in "Search Friends", with: "example_user2@example.com"
-    find(:css, '.search-friends').click
+    find(:css, '.search-friends-button').click
     expect(page).to have_content(@user2.username)
 
     click_link "Follow"
