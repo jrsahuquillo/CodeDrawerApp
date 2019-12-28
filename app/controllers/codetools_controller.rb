@@ -6,6 +6,7 @@ class CodetoolsController < ApplicationController
   before_action :set_codetool, only: [:edit, :update, :destroy]
 
   def index
+    return resource_not_found if @drawer.user != current_user
     @codetools = @drawer.codetools.order(position: :asc)
   end
 
@@ -72,6 +73,14 @@ class CodetoolsController < ApplicationController
         redirect_to drawer_codetools_path(@drawer)
       end
     end
+  end
+
+  protected
+
+  def resource_not_found
+    message = "The drawer you are looking for could not be found"
+    flash[:warning] = message
+    redirect_to root_path
   end
 
   private
