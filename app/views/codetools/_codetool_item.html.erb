@@ -22,7 +22,7 @@
         <div class="codetool-footer d-flex flex-row justify-content-between">
         <div class="p-2">
         <small class="codetool-time">
-          <%= time_ago_in_words(codetool.created_at)  %>ago by <%= codetool.user.username %>
+          <%= set_item_time(codetool) %>
         </small>
         <% if action_name == 'search' %>
           <small >

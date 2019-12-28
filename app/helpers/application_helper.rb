@@ -12,4 +12,15 @@ module ApplicationHelper
     agent =~ /Mobile/
   end
 
+  def set_item_time(item)
+    if item.updated_at == item.created_at
+      state = "Created"
+      time_ago = item.created_at
+    else
+      state = "Updated"
+      time_ago = item.updated_at
+    end
+    render inline: "#{state} #{time_ago_in_words(time_ago)} ago by #{item.user.username}"
+  end
+
 end
