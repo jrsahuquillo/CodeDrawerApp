@@ -41,6 +41,14 @@
     }
 }
 
+.public-check {
+    margin: 1rem 0;
+}
+
+.public-icon {
+    margin: 0 1rem;
+}
+
 .show-codetool, .new-codetool {
     color: inherit !important; /* blue colors for links too */
     text-decoration: inherit !important; /* no underline */
@@ -55,7 +63,10 @@
         }
     }
 }
-
+#codetools-list .codetool-title {
+    width: 90%;
+    cursor: move;
+}
 .codetool-content {
     border-top: 0.5px solid #dee2e6;
     padding: 8px;

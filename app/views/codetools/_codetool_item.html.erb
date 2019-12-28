@@ -1,44 +1,50 @@
 <div class="card mt-2" id="<%= dom_id(codetool) %>">
-  <%= link_to "#codetool" + "#{codetool.id}", class: "show-codetool", 'data-toggle': 'collapse', 'aria-expanded': 'false', 'aria-controls': "codetool" + "#{codetool.id}" do %>
-    <div class="card-body">
+  <div class="card-body">
+    <%= link_to "#codetool" + "#{codetool.id}", class: "show-codetool", 'data-toggle': 'collapse', 'aria-expanded': 'false', 'aria-controls': "codetool" + "#{codetool.id}" do %>
       <div class="codetool-header">
         <h4 class="codetool-title">
           <%= octicon "grabber", height: 24 %>&nbsp; <%= codetool.title %>
         </h4>
-      <div class="toggle-codetool-content-icon" ><%= octicon "chevron-down", class: "codetool" + "#{codetool.id}", height: 24 %></div>
-    </div>
-  <% end %>
-  <div class="collapse multi-collapse" id=<%= "codetool#{codetool.id}" %> >
-    <div class="codetool-content">
-      <%= markdown(codetool.content) %>
-    </div>
-
-    <% drawer = codetool&.drawer %>
-    <% if drawer %>
-      <div class="codetool-footer d-flex flex-row justify-content-between">
-      <div class="p-2">
-      <small class="codetool-time">
-        <%= time_ago_in_words(codetool.created_at)  %>ago by <%= codetool.user.username %>
-      </small>
-      <% if action_name == 'search' %>
-        <small >
-          <%= link_to drawer_codetools_path(drawer), class: 'drawer-link mt-2' do %>
-            <%= octicon "archive" %> <%= drawer.title %>
+        <div class="d-flex">
+          <% if codetool.public? %>
+            <div class="public-icon" ><%= octicon "megaphone" %></div>
           <% end %>
+          <div class="toggle-codetool-content-icon" ><%= octicon "chevron-down", class: "codetool" + "#{codetool.id}", height: 24 %></div>
+        </div>
+      </div>
+    <% end %>
+    <div class="collapse multi-collapse" id=<%= "codetool#{codetool.id}" %> >
+      <div class="codetool-content">
+        <%= markdown(codetool.content) %>
+      </div>
+      <% drawer = codetool&.drawer %>
+      <% if drawer %>
+        <div class="codetool-footer d-flex flex-row justify-content-between">
+        <div class="p-2">
+        <small class="codetool-time">
+          <%= time_ago_in_words(codetool.created_at)  %>ago by <%= codetool.user.username %>
         </small>
+        <% if action_name == 'search' %>
+          <small >
+            <%= link_to drawer_codetools_path(drawer), class: 'drawer-link mt-2' do %>
+              <%= octicon "archive" %> <%= drawer.title %>
+            <% end %>
+          </small>
+        <% end %>
+        </div>
+        <% if codetool.user == current_user %>
+          <div class="p-2">
+            <%= link_to edit_drawer_codetool_path(drawer, codetool), class: 'edit-codetool-icon', 'data-toggle':'tooltip', title: "Edit Codetool" do %>
+              <%= octicon "pencil", height: 18 %>
+            <% end %>
+            <%= link_to drawer_codetool_path(drawer, codetool), method: :delete, class: 'delete-codetool-icon','data-toggle':'tooltip',
+                                                                title: "Delete Codetool", data: { confirm: "Are you sure you want to delete codetool?" } do %>
+              <%= octicon "trashcan", height: 18 %>
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
-      </div>
-      <div class="p-2">
-      <%= link_to edit_drawer_codetool_path(drawer, codetool), class: 'edit-codetool-icon', 'data-toggle':'tooltip', title: "Edit Codetool" do %>
-        <%= octicon "pencil", height: 18 %>
-      <% end %>
-      <%= link_to drawer_codetool_path(drawer, codetool), method: :delete, class: 'delete-codetool-icon','data-toggle':'tooltip',
-                                                          title: "Delete Codetool", data: { confirm: "Are you sure you want to delete codetool?" } do %>
-        <%= octicon "trashcan", height: 18 %>
-      <% end %>
-      </div>
       </div>
     </div>
-    <% end %>
   </div>
 </div>

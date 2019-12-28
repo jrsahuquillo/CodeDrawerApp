@@ -9,7 +9,8 @@ class User < ApplicationRecord
   validate :validate_username
   has_many :drawers
   has_many :codetools
-
+  has_many :friendships
+  has_many :friends, through: :friendships, class_name: "User"
   attr_accessor :login
 
   def login
@@ -26,6 +27,14 @@ class User < ApplicationRecord
     if User.where(email: username).exists?
       errors.add(:username, :invalid)
     end
+  end
+
+  def self.search(search_friends)
+    self.where("username ILIKE ? OR email ILIKE ?", "%#{search_friends}%", "%#{search_friends}%").uniq
+  end
+
+  def current_user_friend?(current_user)
+    current_user.friendships.map(&:friend_id).include?(id)
   end
 
 end

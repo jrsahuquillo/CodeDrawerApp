@@ -28,6 +28,7 @@ class DrawersController < ApplicationController
 
   def create
     @drawer = Drawer.new(drawer_params)
+    @drawer.position = 0
     @drawer.user = current_user
     if @drawer.save
       flash[:success] = "Drawer has been created"

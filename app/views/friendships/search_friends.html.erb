@@ -1,0 +1,41 @@
+<div class="detail-friends">
+  <div class="container">
+
+    <h1>Search your Code-Friends</h1>
+
+    <div class="row">
+      <div class="col-md-12">
+          <div class="input-group">
+          <%= form_tag(search_friends_path(@user), class: "input-group", method: "get", id: "search-friends-form", value: 'search') do %>
+            <%= text_field_tag :search_friends, params[:search_friends], placeholder: "Search Friends", class: 'form-control py-2 border-right-0 border search-friend', 'aria-label': 'Search' %>
+            <span class="input-group-append">
+              <%= button_tag(type: :submit, class: 'input-group-text bg search-friends-button') do %>
+                <%= octicon "search" %>
+              <% end %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <% @searched_friends.each do |friend| %>
+        <% unless friend == current_user %>
+          <div class="col-sm-4 py-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><%= friend.username %></h5>
+                <% if friend.current_user_friend?(current_user) %>
+                  <%= link_to "Unfollow", friends_path(friend_id: friend), method: :delete, class:"btn btn-outline-danger" %>
+                <% else %>
+                  <%= link_to "Follow", friends_path(friend_id: friend), method: :post, class:"btn btn-outline-success" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+  </div>
+</div>

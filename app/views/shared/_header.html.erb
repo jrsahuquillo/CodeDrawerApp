@@ -1,6 +1,6 @@
 <header role="banner">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="navbar-brand"><%= octicon "archive", height: 36, class: 'logo' %>  Codedrawer</div>
+    <a class="navbar-brand" href="/"><%= octicon "archive", height: 36, class: 'logo' %>  Codedrawer</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,6 +28,9 @@
           </li>
         <% end %>
         <li class="nav-item active">
+          <%= link_to 'Search Friends', search_friends_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item active">
           <%= link_to 'Markdown Syntax', 'https://www.markdownguide.org/basic-syntax/', class: 'nav-link', target: '_blank' %>
         </li>
           <% end %>
@@ -49,8 +52,7 @@
   </nav>
 </header>
 
-
-<% if current_user && !current_device_is_mobile? %>
+<% if (current_user && !current_device_is_mobile?) %>
   <div id="sidebar" class="drawers-sidebar">
     <div class="drawers-list-sidebar full-height">
       <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %>">
@@ -62,6 +64,16 @@
           </div>
         <% end %>
       </div>
+      <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %>">
+        <%= link_to friends_path, class: 'drawer-link-sidebar' do %>
+          <div class="drawer-item-menu">
+            <h5>
+              <%= octicon "organization", height: 24 %> Friends Drawer
+            </h5>
+          </div>
+        <% end %>
+      </div>
+
       <div id="drawers-list" data-url="<%= sort_drawer_drawers_path %>">
         <% @drawers ||= current_user.drawers %>
         <% @drawers.each do |drawer| %>
