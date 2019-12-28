@@ -9,6 +9,6 @@ class Drawer < ApplicationRecord
   after_initialize :set_defaults, unless: :persisted?
 
   def set_defaults
-    self.position  ||= 0
+    self.position ||= 0
   end
 end
