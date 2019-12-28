@@ -36,6 +36,7 @@ gem 'rouge', '~> 1.10', '>= 1.10.1'
 gem 'unicorn'
 gem 'awesome_print'
 gem 'listen', '~> 3.1', '>= 3.1.5'
+gem "rack", ">= 2.0.8"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
