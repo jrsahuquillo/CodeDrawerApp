@@ -1,0 +1,37 @@
+<div id="sidebar" class="drawers-sidebar">
+  <div class="drawers-list-sidebar full-height">
+    <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %>">
+      <%= link_to new_drawer_path, class: 'drawer-link-sidebar' do %>
+        <div class="drawer-item-menu">
+          <h5>
+            <%= octicon "plus", height: 24 %> New Drawer
+          </h5>
+        </div>
+      <% end %>
+    </div>
+    <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %>">
+      <%= link_to friends_path, class: 'drawer-link-sidebar' do %>
+        <div class="drawer-item-menu">
+          <h5>
+            <%= octicon "organization", height: 24 %> Friends Drawer
+          </h5>
+        </div>
+      <% end %>
+    </div>
+
+    <div id="drawers-list" data-url="<%= sort_drawer_drawers_path %>">
+      <% drawers ||= current_user.drawers %>
+      <% drawers.each do |drawer| %>
+        <div class="drawer-item-sidebar <%= check_active_link(drawer.id) %>" id="<%= dom_id(drawer) %>">
+          <%= link_to drawer_codetools_path(drawer), class: 'drawer-link-sidebar', 'data-turbolinks': false do %>
+            <div class="drawer-item-menu">
+              <h5>
+                <%= octicon "grabber", height: 24 %>&nbsp;&nbsp; <%= octicon "archive", height: 26 %>&nbsp; <%= drawer.title.truncate(50) %>
+              </h5>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
