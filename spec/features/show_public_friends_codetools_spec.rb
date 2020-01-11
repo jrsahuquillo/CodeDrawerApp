@@ -14,4 +14,11 @@ RSpec.feature "Show public friends codetools" do
     visit '/friends'
     expect(page).to have_content(@codetool.title)
   end
+
+  scenario "friendship icon is displayed" do
+    login_as(@user1)
+    visit '/search-friends'
+    expect(page).to have_css(".octicon-organization")
+    expect(page).to have_content("Follow back")
+  end
 end
