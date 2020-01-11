@@ -33,8 +33,11 @@ class User < ApplicationRecord
     self.where("username ILIKE ? OR email ILIKE ?", "%#{search_friends}%", "%#{search_friends}%").uniq
   end
 
-  def current_user_friend?(current_user)
-    current_user.friendships.map(&:friend_id).include?(id)
+  def friend?(friend)
+    friends.pluck(:friend_id).include?(friend.id)
   end
 
+  def followed_back_by?(friend)
+    friend.friends.pluck(:friend_id).include?(id)
+  end
 end

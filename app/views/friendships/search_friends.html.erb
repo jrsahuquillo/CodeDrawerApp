@@ -26,12 +26,12 @@
               <div class="card-body">
                 <h5 class="card-title"><%= friend.username %></h5>
                 <div class="friend-info">
-                  <% if follows_back?(friend) %>
+                  <% if current_user.followed_back_by?(friend) %>
                     <span class="friend-followback-info">
                       <%= octicon "organization", height: 24  %>
                     </span>
                   <% end %>
-                  <% if friend.current_user_friend?(current_user) %>
+                  <% if current_user.friend?(friend) %>
                     <%= link_to "Unfollow", friends_path(friend_id: friend), method: :delete, class:"btn btn-outline-danger" %>
                   <% else %>
                     <%= link_to follow_button(friend), friends_path(friend_id: friend), method: :post, class:"btn btn-outline-success" %>

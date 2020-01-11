@@ -11,6 +11,7 @@ class FriendshipsController < ApplicationController
     if @friendship.save
       flash[:notice] = "You are following to #{@friend.username}"
     else
+      binding.pry
       flash[:alert] = "#{@friend.username} " + "#{@friend.errors.messages[:friend_id].first}"
     end
     redirect_to search_friends_path
