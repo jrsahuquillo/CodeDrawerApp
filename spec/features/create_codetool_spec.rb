@@ -38,6 +38,13 @@ RSpec.feature "Creating Codetools" do
     expect(page.html).to include("<code>Lorem Ipsum</code>")
   end
 
+  scenario "a user creates a new codetool with checkbox markdown" do
+    fill_in "Title", with: "Creating a Codetool with Checkbox Markdown"
+    fill_in "Content", with: "- [x] Lorem Ipsum"
+    click_button "Create Codetool"
+    expect(page).to have_css("input[type='checkbox']")
+  end
+
   scenario "a user creates a new public codetool" do
     fill_in "Title", with: "Creating a Codetool"
     fill_in "Content", with: "Lorem Ipsum"

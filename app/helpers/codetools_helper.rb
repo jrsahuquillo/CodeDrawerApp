@@ -1,10 +1,13 @@
 module CodetoolsHelper
+  require 'markdown_checkboxes'
 
   def markdown(content)
-    Redcarpet::Markdown.new(CustomRender,
-                                        fenced_code_blocks: true,
-                                        tables: true
-                            ).render(content).html_safe
+    parser = CheckboxMarkdown.new(
+                        CustomRender,
+                        fenced_code_blocks: true,
+                        tables: true
+                        )
+    parser.render(content).html_safe
   end
 
 end
