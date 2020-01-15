@@ -38,6 +38,7 @@ set(:config_files, %w(
   log_rotation
   database.yml
   secrets.yml
+  application.yml
   unicorn.rb
   sidekiq.yml
   nginx.conf
