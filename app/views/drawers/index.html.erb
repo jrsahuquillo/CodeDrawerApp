@@ -27,26 +27,20 @@
   <% if @drawers.empty? %>
     <h1 id="no-drawers">No drawers created</h1>
   <% else %>
-    <% @drawers.in_groups_of(2, false).each do |drawers_row| %>
-      <div class="row">
-        <% drawers_row.each do |drawer| %>
-        <div class="col-sm-6">
-          <div class="card drawer-list">
-            <%= link_to drawer_codetools_path(drawer), class: 'drawer-detail' do %>
-              <div class="card-body">
-                <h4 class="drawer-title">
-                  <%= octicon "archive", height: 36 %> <%= drawer&.title %>
-                </h4>
-                <small class="drawer-description">
-                  <%= truncate(drawer.description, length: 140) %>
-                </small><br>
-                <small class="drawer-time-author">
-                  <%= set_item_time(drawer) %>
-                </small>
-              </div>
-            <% end %>
+    <% @drawers.each do |drawer| %>
+      <div class="card drawer-list">
+        <%= link_to drawer_codetools_path(drawer), class: 'drawer-detail' do %>
+          <div class="card-body">
+            <h4 class="drawer-title">
+              <%= octicon "archive", height: 36 %> <%= drawer&.title %>
+            </h4>
+            <small class="drawer-description">
+              <%= truncate(drawer.description, length: 140) %>
+            </small><br>
+            <small class="drawer-time-author">
+              <%= set_item_time(drawer) %>
+            </small>
           </div>
-        </div>
         <% end %>
       </div>
     <% end %>
