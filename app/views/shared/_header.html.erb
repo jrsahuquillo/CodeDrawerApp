@@ -15,21 +15,18 @@
               <% end %>
           <% end %>
         </li>
+        <li class="nav-item active">
+          <%= link_to search_friends_path, class: 'nav-link' do %>
+            <%= octicon 'organization'  %> Search Friends
+          <% end %>
+        </li>
         <% if current_device_is_mobile? %>
           <li class="nav-item active">
             <%= link_to drawers_path, class: 'nav-link' do %>
-              <%= octicon 'list-unordered'%> Drawers List
-            <% end %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to new_drawer_path, class: 'nav-link' do %>
-              <%= octicon 'plus'%> New Drawer
+              <%= octicon 'list-unordered' %> Drawers List
             <% end %>
           </li>
         <% end %>
-        <li class="nav-item active">
-          <%= link_to 'Search Friends', search_friends_path, class: 'nav-link' %>
-        </li>
         <li class="nav-item active">
           <%= link_to 'Markdown Syntax', 'https://www.markdownguide.org/basic-syntax/', class: 'nav-link', target: '_blank' %>
         </li>

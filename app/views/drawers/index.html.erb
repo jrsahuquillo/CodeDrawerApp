@@ -1,26 +1,54 @@
-<div class="drawer-list">
+<div class="container-fluid drawer-list">
   <h3 class='text-center'>Drawers list</h3>
-  <% if @drawers.empty? %>
-    <h1 id="no-drawers">No drawers created</h1>
-  <% else %>
-    <% @drawers.each do |drawer| %>
-
-      <div class="card drawer-list">
-        <%= link_to drawer_codetools_path(drawer), class: 'drawer-detail' do %>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card drawer-list new-drawer">
+        <%= link_to new_drawer_path, class: 'drawer-detail' do %>
           <div class="card-body">
             <h4 class="drawer-title">
-              <%= octicon "archive", height: 36 %> <%= drawer.title %>
+              <%= octicon "plus", height: 24 %> New Drawer
             </h4>
-            <small class="drawer-description">
-              <%= truncate(drawer.description, length: 140) %>
-            </small><br>
-            <small class="drawer-time-author">
-              <%= set_item_time(drawer) %>
-            </small>
           </div>
         <% end %>
       </div>
-
+    </div>
+    <div class="col-sm-6">
+      <div class="card drawer-list">
+        <%= link_to friends_path, class: 'drawer-detail' do %>
+        <div class="card-body">
+          <h4 class="drawer-title">
+            <%= octicon "organization", height: 24 %> Friends Drawer
+          </h4>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% if @drawers.empty? %>
+    <h1 id="no-drawers">No drawers created</h1>
+  <% else %>
+    <% @drawers.in_groups_of(2, false).each do |drawers_row| %>
+      <div class="row">
+        <% drawers_row.each do |drawer| %>
+        <div class="col-sm-6">
+          <div class="card drawer-list">
+            <%= link_to drawer_codetools_path(drawer), class: 'drawer-detail' do %>
+              <div class="card-body">
+                <h4 class="drawer-title">
+                  <%= octicon "archive", height: 36 %> <%= drawer&.title %>
+                </h4>
+                <small class="drawer-description">
+                  <%= truncate(drawer.description, length: 140) %>
+                </small><br>
+                <small class="drawer-time-author">
+                  <%= set_item_time(drawer) %>
+                </small>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>
