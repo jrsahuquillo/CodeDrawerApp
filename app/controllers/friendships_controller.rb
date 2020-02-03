@@ -20,7 +20,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find_by(user_id: current_user.id, friend_id: params[:friend_id])
     @friend = @friendship.friend
     if @friendship.destroy
-      flash[:notice] = "You unfollowed to #{@friend.username}"
+      flash[:notice] = "You unfollowed #{@friend.username}"
     else
       flash[:alert] = "#{@friend.username} " + "#{@friendship.errors.messages[:friend_id].first}"
     end
