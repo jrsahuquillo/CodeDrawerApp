@@ -5,11 +5,13 @@ RSpec.feature "Creating Drawers" do
   before do
     @user = User.create!(email: "example_user@example.com", username: "example_user", password: "password")
     login_as(@user)
+    visit "/"
+    within(".new-drawer") do
+        click_link "New Drawer"
+    end
   end
 
   scenario "a user creates a new drawer" do
-    visit "/"
-    click_link "New Drawer"
     fill_in "Title", with: "Creating a Drawer"
     fill_in "Description", with: "Lorem Ipsum"
     click_button "Create Drawer"
@@ -23,8 +25,6 @@ RSpec.feature "Creating Drawers" do
   end
 
   scenario "a user fails to create a new drawer without title" do
-    visit "/"
-    click_link "New Drawer"
     fill_in "Title", with: ""
     fill_in "Description", with: "Lorem Ipsum"
     click_button "Create Drawer"
@@ -34,8 +34,6 @@ RSpec.feature "Creating Drawers" do
   end
 
   scenario "a user creates a new drawer without description" do
-    visit "/"
-    click_link "New Drawer"
     fill_in "Title", with: "Creating a Drawer without description"
     fill_in "Description", with: ""
     click_button "Create Drawer"
