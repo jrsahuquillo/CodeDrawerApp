@@ -23,4 +23,8 @@ module ApplicationHelper
     render inline: "#{state} #{time_ago_in_words(time_ago)} ago by #{item.user.username}"
   end
 
+  def type_of_container
+    ["devise/registrations", "devise/sessions", "devise/passwords"].include?(params[:controller]) ? "container" : "container-fluid"
+  end
+
 end
