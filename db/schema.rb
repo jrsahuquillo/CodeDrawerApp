@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_125527) do
+ActiveRecord::Schema.define(version: 2020_02_07_222749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,11 @@ ActiveRecord::Schema.define(version: 2019_12_28_125527) do
     t.boolean "public", default: false
     t.index ["drawer_id"], name: "index_codetools_on_drawer_id"
     t.index ["user_id"], name: "index_codetools_on_user_id"
+  end
+
+  create_table "drawer_friends", force: :cascade do |t|
+    t.integer "drawer_id"
+    t.integer "friend_id"
   end
 
   create_table "drawers", force: :cascade do |t|

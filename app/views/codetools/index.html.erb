@@ -14,7 +14,7 @@
     </div>
 
     <div class="col text-right">
-      <%= link_to edit_drawer_path(@drawer), class: 'edit-drawer-icon', 'data-toggle':'tooltip', title: "Edit Drawer" do %>
+      <%= link_to edit_drawer_path(@drawer), class: 'edit-drawer-icon', 'data-toggle':'tooltip', title: "Edit Drawer", 'data-turbolinks': false do %>
         <%= octicon "pencil", height: 24 %>
       <% end %>
 

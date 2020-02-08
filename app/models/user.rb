@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :codetools
   has_many :friendships
   has_many :friends, through: :friendships, class_name: "User"
+  # has_many :drawer_friends
+  # has_many :drawers, through: :drawer_friends
   attr_accessor :login
 
   def login
