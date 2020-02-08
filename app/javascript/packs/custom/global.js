@@ -24,10 +24,8 @@ $(document).ready(function(){
     theme: 'bootstrap'
   });
 
-  $('.select2').blur(function(e) {
-
+  $('.select2').blur(function() {
       $( "#event_friend_ids" ).select2("close");
-
   });
 
 });
