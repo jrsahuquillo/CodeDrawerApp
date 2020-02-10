@@ -7,9 +7,12 @@
       </div>
       <small class="glyphicon glyphicon-calendar" id="drawer-date">
         <%= octicon "calendar" %> <%= @drawer.created_at.strftime("%d-%b-%Y") %>
-      </small>
+      </small>&nbsp;
       <small class="drawer-author">
-        Created by: <%= @drawer.user.username %>
+        <span>Created by: <strong> <%= @drawer.user.username %></strong></span>
+      </small>&nbsp;
+      <small class="drawer-collaborators">
+        <%= drawer_collaborators %>
       </small>
     </div>
 

@@ -26,7 +26,7 @@
           <%= link_to drawer_codetools_path(drawer), class: 'drawer-link-sidebar', 'data-turbolinks': false do %>
             <div class="drawer-item-menu">
               <h5>
-                <%= octicon "grabber", height: 24 %>&nbsp;&nbsp; <%= octicon "archive", height: 26 %>&nbsp; <%= drawer.title.truncate(50) %>
+                <%= octicon "grabber", height: 24 %>&nbsp;&nbsp; <%= octicon "archive", height: 26 %>&nbsp;<%= drawer_title(drawer) %>
               </h5>
             </div>
           <% end %>
