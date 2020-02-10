@@ -6,8 +6,8 @@ class Drawer < ApplicationRecord
   belongs_to :user
   has_many :codetools, dependent: :destroy
 
-  has_many :drawer_friends
-  has_many :friends, through: :drawer_friends, dependent: :destroy
+  has_many :drawer_collaborators
+  has_many :friends, through: :drawer_collaborators, dependent: :destroy
 
   after_initialize :set_defaults, unless: :persisted?
 

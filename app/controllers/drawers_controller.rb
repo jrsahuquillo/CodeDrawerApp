@@ -31,7 +31,7 @@ class DrawersController < ApplicationController
     @drawer.position = 0
     @drawer.user = current_user
     if @drawer.save
-      drawer_friends_create
+      drawer_collaborators_create
       flash[:success] = "Drawer has been created"
       redirect_to drawer_codetools_path(@drawer)
     else
@@ -63,7 +63,7 @@ class DrawersController < ApplicationController
       redirect_to drawer_codetools_path(@drawer)
     else
       if @drawer.update(drawer_params)
-        drawer_friends_update
+        drawer_collaborators_update
         flash[:success] = "Drawer has been updated"
         redirect_to drawer_codetools_path(@drawer)
       else
@@ -101,23 +101,23 @@ class DrawersController < ApplicationController
     params.require(:drawer).permit(:title, :description)
   end
 
-  def drawer_friends_params
+  def drawer_collaborators_params
     params.require(:drawer).permit(friend_ids:[])
   end
 
-  def drawer_friends_create
-    drawer_friends_params[:friend_ids].each do |friend_id|
+  def drawer_collaborators_create
+    drawer_collaborators_params[:friend_ids].each do |friend_id|
       if friend_id.present?
-        DrawerFriend.create(drawer_id: @drawer.id, friend_id: friend_id)
+        DrawerCollaborator.create(drawer_id: @drawer.id, friend_id: friend_id)
       end
     end
   end
 
-  def drawer_friends_update
-    DrawerFriend.where(drawer_id: @drawer.id).destroy_all
-    drawer_friends_params[:friend_ids].each do |friend_id|
+  def drawer_collaborators_update
+    DrawerCollaborator.where(drawer_id: @drawer.id).destroy_all
+    drawer_collaborators_params[:friend_ids].each do |friend_id|
       if friend_id.present?
-        DrawerFriend.create(drawer_id: @drawer.id, friend_id: friend_id)
+        DrawerCollaborator.create(drawer_id: @drawer.id, friend_id: friend_id)
       end
     end
   end

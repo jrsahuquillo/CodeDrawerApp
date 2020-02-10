@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_02_07_222749) do
     t.index ["user_id"], name: "index_codetools_on_user_id"
   end
 
-  create_table "drawer_friends", force: :cascade do |t|
+  create_table "drawer_collaborators", force: :cascade do |t|
     t.integer "drawer_id"
     t.integer "friend_id"
     t.datetime "created_at", precision: 6, null: false
