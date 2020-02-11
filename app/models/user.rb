@@ -34,6 +34,10 @@ class User < ApplicationRecord
     self.where("username ILIKE ? OR email ILIKE ?", "%#{search_friends}%", "%#{search_friends}%").uniq
   end
 
+  def collaborated_drawers
+    Drawer.includes(:drawer_collaborators).map{|drawer| drawer.drawer_collaborators.where(friend_id: id) }.flatten.map(&:drawer)
+  end
+
   def friend?(friend)
     friends.pluck(:friend_id).include?(friend.id)
   end

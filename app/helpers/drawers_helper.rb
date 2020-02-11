@@ -11,6 +11,10 @@ module DrawersHelper
     current_user.drawers.sort_by(&:position)
   end
 
+  def collaborated_drawers
+    current_user.collaborated_drawers
+  end
+
   def drawer_title(drawer)
     "#{drawer.title.truncate(50)}&nbsp;&nbsp;#{octicon 'organization' if drawer.friends.present?}".html_safe
   end
