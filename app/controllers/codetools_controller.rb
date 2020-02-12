@@ -31,6 +31,7 @@ class CodetoolsController < ApplicationController
 
   def create
     @codetool = @drawer.codetools.build(codetool_params)
+    @codetool.position = 0
     @codetool.user = current_user
 
     if @codetool.save
