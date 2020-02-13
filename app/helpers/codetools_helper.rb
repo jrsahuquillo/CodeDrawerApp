@@ -5,10 +5,12 @@ module CodetoolsHelper
     parser = CheckboxMarkdown.new(
                         CustomRender,
                         fenced_code_blocks: true,
-                        tables: true
+                        tables: true,
+                        strikethrough: true
                         )
     parser.render(content).html_safe
   end
+
 
   def codetool_breadcrumb_title
     "<div class='h3 text codetool-form'> Editing:
