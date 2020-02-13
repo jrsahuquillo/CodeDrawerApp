@@ -34,7 +34,7 @@
         </div>
         <% if codetool.user == current_user %>
           <div class="p-2">
-            <%= link_to edit_drawer_codetool_path(drawer, codetool), class: 'edit-codetool-icon', 'data-toggle':'tooltip', title: "Edit Codetool" do %>
+            <%= link_to edit_drawer_codetool_path(drawer, codetool), class: 'edit-codetool-icon', 'data-toggle':'tooltip', title: "Edit Codetool", 'data-turbolinks': false do %>
               <%= octicon "pencil", height: 18 %>
             <% end %>
             <%= link_to drawer_codetool_path(drawer, codetool), method: :delete, class: 'delete-codetool-icon','data-toggle':'tooltip',

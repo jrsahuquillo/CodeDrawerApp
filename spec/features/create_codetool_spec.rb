@@ -49,7 +49,7 @@ RSpec.feature "Creating Codetools" do
   scenario "a user creates a new public codetool" do
     fill_in "Title", with: "Creating a Codetool"
     fill_in "Content", with: "Lorem Ipsum"
-    find('#codetool_public').set(true)
+    find('#public_checkbox').set(true)
     click_button "Create Codetool"
     expect(Codetool.last.public).to eq(true)
   end
