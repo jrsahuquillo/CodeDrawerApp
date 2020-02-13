@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class='row'>
     <div class='col-sm'>
-      <%= form_for([@drawer, @codetool], :html => {class: "form-horizontal", role: "form"}) do |f| %>
+      <%= form_for([@drawer, @codetool], html: {class: "form-horizontal", role: "form"}) do |f| %>
         <% if @codetool.errors.any? %>
         <div class="alert alert-danger">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -48,7 +48,7 @@
               <%= f.label :public, class: 'form-check-label' do %>
                 <%= octicon "megaphone", height: 24 %>
               <% end %>
-              <%= f.check_box :public %>
+              <%= f.check_box :public, id: 'public_checkbox' %>
             </div>
           </div>
         </div>

@@ -30,7 +30,7 @@ RSpec.feature "Editing Codetools" do
     click_link @drawer.title
     find('.show-codetool').click
     click_link "Edit Codetool"
-    find('#codetool_public').set(true)
+    find('#public_checkbox').set(true)
     click_button "Update Codetool"
     @codetool.reload
     expect(@codetool.public).to eq(true)

@@ -31,4 +31,18 @@ $(document).ready(function(){
     }
   });
 
+  $publicCheckbox = $('#public_checkbox')
+  $publicCheckbox.click(function(){
+    if($publicCheckbox.prop("checked")) {
+      message = confirm("Are you sure to make this Codetool public?");
+      if(message) {
+        return true;
+      } else {
+       return false;
+      }
+   } else {
+     return true;
+   }
+  });
+
 });
