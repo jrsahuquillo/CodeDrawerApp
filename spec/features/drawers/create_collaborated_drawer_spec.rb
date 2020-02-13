@@ -49,13 +49,24 @@ RSpec.feature "Creating collaborated drawer" do
     expect(page.current_path).to eq(drawer_codetools_path(@drawer.id))
   end
 
-  scenario "user who collaborates can edit but not delete codetools in collaborated drawer" do
+  scenario "user who collaborates can edit but not delete other users codetools in collaborated drawer" do
     login_as(@user2)
     visit '/'
     click_link @drawer.title
     click_link @codetool.title
+
     expect(page).not_to have_css('.delete-codetool-icon')
     expect(page).to have_css('.edit-codetool-icon')
+
+    click_link "Edit Codetool"
+    expect(page).to have_content("Editing: #{@drawer.title} #{@drawer.user.username} / #{@codetool.title} #{@codetool.user.username}")
+
+    fill_in "Title", with: "Changing a Codetool"
+    fill_in "Content", with: "Lorem Ipsum changed"
+    click_button "Update Codetool"
+
+    expect(page).to have_content("Changing a Codetool")
+    expect(page).to have_content("Lorem Ipsum changed")
   end
 
 

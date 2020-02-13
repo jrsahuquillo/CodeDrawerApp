@@ -47,14 +47,14 @@ class CodetoolsController < ApplicationController
   end
 
   def edit
-    unless @codetool.user == current_user
+    unless @codetool.user == current_user || @codetool.drawer.friends.include?(current_user)
       flash[:alert] = "You can only edit your own codetool."
       redirect_to drawer_codetools_path(@drawer)
     end
   end
 
   def update
-    unless @codetool.user == current_user
+    unless @codetool.user == current_user || @codetool.drawer.friends.include?(current_user)
       flash[:danger] = "You can only edit your own codetool."
       redirect_to drawer_codetools_path(@drawer)
     else
