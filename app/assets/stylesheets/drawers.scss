@@ -12,8 +12,24 @@
     border-radius: 0.25rem;
 }
 
-.drawer-item-sidebar{
+.drawer-item-sidebar {
     padding: 0.2rem 0;
+    .card {
+      background-color: #3F4448 !important;
+      .card-header {
+        padding: 0.75rem 0;
+      }
+      .card-body {
+        padding: 0 !important;
+      }
+      .card-body:hover {
+        background-color: #3F4448 !important;
+      }
+      .btn-link {
+        color: white;
+        text-decoration: none;
+      }
+    }
 }
 
 .drawer-item-menu{

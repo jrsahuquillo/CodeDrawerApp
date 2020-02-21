@@ -9,26 +9,43 @@
         </div>
       <% end %>
     </div>
+
+    <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %> accordion" id="collaborated-drawers-list">
+      <div class="card">
+          <div class="card-header drawer-item-menu " id="heading">
+            <h5 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <%= octicon "organization", height: 24 %> Collaborated Drawers <%= octicon "chevron-down", height: 24 %>
+              </button>
+            </h5>
+        </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="heading" data-parent="#collaborated-drawers-list">
+          <div class="card-body">
+            <div id="collaborated-drawers-list">
+              <% collaborated_drawers.each do |drawer| %>
+                <div class="drawer-item-sidebar <%= check_active_link(drawer.id) %>" id="<%= dom_id(drawer) %>">
+                  <%= link_to drawer_codetools_path(drawer), class: 'drawer-link-sidebar', 'data-turbolinks': false do %>
+                    <div class="drawer-item-menu">
+                      <h5>
+                        <%= octicon "archive", height: 26 %>&nbsp;<%= drawer_title(drawer) %>
+                      </h5>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %>">
       <%= link_to friends_path, class: 'drawer-link-sidebar' do %>
         <div class="drawer-item-menu">
           <h5>
             <%= octicon "organization", height: 24 %> Friends Drawer
           </h5>
-        </div>
-      <% end %>
-    </div>
-
-    <div id="collaborated-drawers-list">
-      <% collaborated_drawers.each do |drawer| %>
-        <div class="drawer-item-sidebar <%= check_active_link(drawer.id) %>" id="<%= dom_id(drawer) %>">
-          <%= link_to drawer_codetools_path(drawer), class: 'drawer-link-sidebar', 'data-turbolinks': false do %>
-            <div class="drawer-item-menu">
-              <h5>
-                <%= octicon "archive", height: 26 %>&nbsp;<%= drawer_title(drawer) %>
-              </h5>
-            </div>
-          <% end %>
         </div>
       <% end %>
     </div>
