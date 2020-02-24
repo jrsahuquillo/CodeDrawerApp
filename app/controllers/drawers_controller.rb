@@ -10,11 +10,15 @@ class DrawersController < ApplicationController
     else
       if current_user.collaborated_drawers.present? || current_user.drawers.present?
         return redirect_to drawer_codetools_path(current_user.drawers.first) if current_user.drawers.present?
-        return redirect_to drawer_codetools_path(current_user.collaborated_drawers.first) if current_user.collaborated_drawers.present? 
+        return redirect_to drawer_codetools_path(current_user.collaborated_drawers.first) if current_user.collaborated_drawers.present?
       else
         @drawers = []
       end
     end
+  end
+
+  def collaborated_drawers
+    @collaborated_drawers = current_user.collaborated_drawers
   end
 
   def sort_drawer

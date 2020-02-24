@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   get '/friends', to: 'friendships#index'
   post '/friends', to: 'friendships#create'
   delete '/friends', to: 'friendships#destroy'
+
+  get '/collaborated_drawers', to: 'drawers#collaborated_drawers'
+
 end

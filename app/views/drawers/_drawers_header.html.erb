@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card drawer-list new-drawer">
+      <%= link_to new_drawer_path, class: 'drawer-detail' do %>
+        <div class="card-body">
+          <h4 class="drawer-title">
+            <%= octicon "plus", height: 24 %> New Drawer
+          </h4>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card drawer-list">
+      <%= link_to friends_path, class: 'drawer-detail' do %>
+      <div class="card-body">
+        <h4 class="drawer-title">
+          <%= octicon "organization", height: 24 %> Friends Drawer
+        </h4>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card drawer-list">
+      <% if params[:action] == "collaborated_drawers" %>
+        <%= link_to drawers_path, class: 'drawer-detail' do %>
+          <div class="card-body">
+            <h4 class="drawer-title">
+              <%= octicon "organization", height: 24 %> Drawers
+            </h4>
+          </div>
+        <% end %>
+      <% else %>
+      <%= link_to collaborated_drawers_path, class: 'drawer-detail' do %>
+        <div class="card-body">
+          <h4 class="drawer-title">
+            <%= octicon "organization", height: 24 %> Collaborated Drawers
+          </h4>
+        </div>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
