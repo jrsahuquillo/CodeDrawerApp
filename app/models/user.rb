@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :codetools
   has_many :friendships
   has_many :friends, through: :friendships, class_name: "User"
+
   attr_accessor :login
 
   def login
@@ -31,6 +32,10 @@ class User < ApplicationRecord
 
   def self.search(search_friends)
     self.where("username ILIKE ? OR email ILIKE ?", "%#{search_friends}%", "%#{search_friends}%").uniq
+  end
+
+  def collaborated_drawers
+    Drawer.includes(:drawer_collaborators).map{|drawer| drawer.drawer_collaborators.where(friend_id: id) }.flatten.map(&:drawer)
   end
 
   def friend?(friend)

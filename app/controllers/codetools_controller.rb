@@ -6,8 +6,12 @@ class CodetoolsController < ApplicationController
   before_action :set_codetool, only: [:edit, :update, :destroy]
 
   def index
-    return resource_not_found if @drawer.user != current_user
-    @codetools = @drawer.codetools.order(position: :asc)
+    # if @drawer.friends.exclude?(current_user) || @drawer.user != current_user
+    if  @drawer.user != current_user && @drawer.friends.exclude?(current_user)
+      return resource_not_found
+    end
+    @codetools = @drawer.codetools.order(position: :asc) if @drawer.user == current_user
+    @codetools = @drawer.codetools if @drawer.friends.include?(current_user)
   end
 
   def sort_codetool
@@ -43,14 +47,14 @@ class CodetoolsController < ApplicationController
   end
 
   def edit
-    unless @codetool.user == current_user
+    unless @codetool.user == current_user || @codetool.drawer.friends.include?(current_user)
       flash[:alert] = "You can only edit your own codetool."
       redirect_to drawer_codetools_path(@drawer)
     end
   end
 
   def update
-    unless @codetool.user == current_user
+    unless @codetool.user == current_user || @codetool.drawer.friends.include?(current_user)
       flash[:danger] = "You can only edit your own codetool."
       redirect_to drawer_codetools_path(@drawer)
     else

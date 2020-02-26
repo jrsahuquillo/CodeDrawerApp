@@ -41,6 +41,19 @@
           <%= f.text_area :description, rows: 5, class: 'form-control', placeholder: 'Description of drawer' %>
         </div>
       </div>
+
+      <div class='form-group'>
+        <div class='control-label col-sm'>
+          <%= f.label :friends %>
+        </div>
+        <div class='col-sm'>
+          <div class='dropdown'>
+          <%= f.select(:friend_ids, current_user.friends.all.collect {|friend| [friend.username, friend.id]}, {}, id: "event_friend_ids", class: "form-control dropdown", multiple: true, selected: f.object.friends) %>
+          </div>
+        </div>
+      </div>
+
+
       <div class='form-group'>
         <div class='col-md-offset-1 col-sm'>
           <%= f.submit class: 'btn btn-primary pull-right' %>

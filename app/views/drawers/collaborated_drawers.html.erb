@@ -1,10 +1,10 @@
 <div class="container-fluid drawer-list">
-  <div class='h3 text-center'>Drawers list</div>
+  <div class='h3 text-center'>Collaborated Drawers list</div>
   <%= render 'drawers_header' %>
-  <% if @drawers.empty? %>
+  <% if @collaborated_drawers.empty? %>
     <div class="h1" id="no-drawers">No drawers created</div>
   <% else %>
-    <% @drawers.each do |drawer| %>
+    <% @collaborated_drawers.each do |drawer| %>
       <div class="card drawer-list">
         <%= link_to drawer_codetools_path(drawer), class: 'drawer-detail' do %>
           <div class="card-body">

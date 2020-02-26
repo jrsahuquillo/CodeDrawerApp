@@ -1,28 +1,33 @@
  <div class="detail-drawer">
   <div class="row">
     <div class="col-8">
-      <h1 class="drawer-detail-title"><%= octicon "archive", height: 42 %> <%= @drawer.title %></h1>
+      <div class="h1 drawer-detail-title"><%= octicon "archive", height: 42 %> <%= @drawer.title %></div>
       <div class="drawer-description">
         <%= @drawer.description %>
       </div>
       <small class="glyphicon glyphicon-calendar" id="drawer-date">
         <%= octicon "calendar" %> <%= @drawer.created_at.strftime("%d-%b-%Y") %>
-      </small>
+      </small>&nbsp;
       <small class="drawer-author">
-        Created by: <%= @drawer.user.username %>
+        <span>Created by: <strong> <%= @drawer.user.username %></strong></span>
+      </small>&nbsp;
+      <small class="drawer-collaborators">
+        <%= drawer_collaborators %>
       </small>
     </div>
 
-    <div class="col text-right">
-      <%= link_to edit_drawer_path(@drawer), class: 'edit-drawer-icon', 'data-toggle':'tooltip', title: "Edit Drawer" do %>
-        <%= octicon "pencil", height: 24 %>
-      <% end %>
+    <% unless @drawer.friends.include?(current_user) %>
+      <div class="col text-right">
+        <%= link_to edit_drawer_path(@drawer), class: 'edit-drawer-icon', 'data-toggle':'tooltip', title: "Edit Drawer", 'data-turbolinks': false do %>
+          <%= octicon "pencil", height: 24 %>
+        <% end %>
 
-      <%= link_to drawer_path(@drawer), method: :delete, class: 'delete-drawer-icon','data-toggle':'tooltip', title: "Delete Drawer",
-                                        data: { confirm: "Are you sure you want to delete drawer?" } do %>
-        <%= octicon "trashcan", height: 24 %>
-      <% end %>
-    </div>
+        <%= link_to drawer_path(@drawer), method: :delete, class: 'delete-drawer-icon','data-toggle':'tooltip', title: "Delete Drawer",
+                                          data: { confirm: "Are you sure you want to delete drawer?" } do %>
+          <%= octicon "trashcan", height: 24 %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 
@@ -33,7 +38,7 @@
         <div class="card-body">
           <div class="codetools-header">
             <%= link_to new_drawer_codetool_path, class: 'new-codetool-icon', 'data-toggle':'tooltip', title: "New Codetool", 'data-turbolinks': false do %>
-            <h4 class="codetool-title"><%= octicon "plus", height: 18 %>&nbsp; New Codetool</h4>
+            <div class="h4 codetool-title"><%= octicon "plus", height: 18 %>&nbsp; New Codetool</div>
             <% end %>
           </div>
         </div>
