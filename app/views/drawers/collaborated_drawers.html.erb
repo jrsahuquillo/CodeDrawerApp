@@ -1,16 +1,16 @@
 <div class="container-fluid drawer-list">
-  <h3 class='text-center'>Collaborated Drawers list</h3>
+  <div class='h3 text-center'>Collaborated Drawers list</div>
   <%= render 'drawers_header' %>
   <% if @collaborated_drawers.empty? %>
-    <h1 id="no-drawers">No drawers created</h1>
+    <div class="h1" id="no-drawers">No drawers created</div>
   <% else %>
     <% @collaborated_drawers.each do |drawer| %>
       <div class="card drawer-list">
         <%= link_to drawer_codetools_path(drawer), class: 'drawer-detail' do %>
           <div class="card-body">
-            <h4 class="drawer-title">
+            <div class="h4 drawer-title">
               <%= octicon "archive", height: 36 %> <%= drawer&.title %>
-            </h4>
+            </div>
             <small class="drawer-description">
               <%= truncate(drawer.description, length: 140) %>
             </small><br>

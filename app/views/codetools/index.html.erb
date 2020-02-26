@@ -1,7 +1,7 @@
  <div class="detail-drawer">
   <div class="row">
     <div class="col-8">
-      <h1 class="drawer-detail-title"><%= octicon "archive", height: 42 %> <%= @drawer.title %></h1>
+      <div class="h1 drawer-detail-title"><%= octicon "archive", height: 42 %> <%= @drawer.title %></div>
       <div class="drawer-description">
         <%= @drawer.description %>
       </div>
@@ -38,7 +38,7 @@
         <div class="card-body">
           <div class="codetools-header">
             <%= link_to new_drawer_codetool_path, class: 'new-codetool-icon', 'data-toggle':'tooltip', title: "New Codetool", 'data-turbolinks': false do %>
-            <h4 class="codetool-title"><%= octicon "plus", height: 18 %>&nbsp; New Codetool</h4>
+            <div class="h4 codetool-title"><%= octicon "plus", height: 18 %>&nbsp; New Codetool</div>
             <% end %>
           </div>
         </div>

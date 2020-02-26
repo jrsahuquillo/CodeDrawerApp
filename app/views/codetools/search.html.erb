@@ -1,5 +1,5 @@
 <% if @searched_codetools.present? %>
-  <h3 class='text-center codetool-form'>Searched codetools</h3>
+  <div class='h3 text-center codetool-form'>Searched codetools</div>
   <ul>
     <% @searched_codetools.each do |codetool| %>
       <%= render 'codetool_item', codetool: codetool, drawer: codetool.drawer %>
