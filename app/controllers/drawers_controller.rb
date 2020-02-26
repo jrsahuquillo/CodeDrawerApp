@@ -17,10 +17,6 @@ class DrawersController < ApplicationController
     end
   end
 
-  def collaborated_drawers
-    @collaborated_drawers = current_user.collaborated_drawers
-  end
-
   def sort_drawer
     params[:drawer].each_with_index do |id, index|
       current_user.drawers.where(id: id).update_all( position: index + 1 )

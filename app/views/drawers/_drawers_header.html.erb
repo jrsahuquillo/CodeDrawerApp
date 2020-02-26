@@ -21,25 +21,35 @@
       <% end %>
     </div>
   </div>
-  <div class="col-sm-6">
-    <div class="card drawer-list">
-      <% if params[:action] == "collaborated_drawers" %>
-        <%= link_to drawers_path, class: 'drawer-detail' do %>
-          <div class="card-body">
-            <h4 class="drawer-title">
-              <%= octicon "organization", height: 24 %> Drawers
-            </h4>
-          </div>
-        <% end %>
-      <% else %>
-      <%= link_to collaborated_drawers_path, class: 'drawer-detail' do %>
+
+  <div class="col-sm-6" id="collaborated-drawers-list">
+    <div class="card drawer-list  accordion">
+      <%= link_to '', class: 'drawer-detail', id:'heading', 'data-toggle': 'collapse', 'data-target': '#collapseOne', 'aria-expanded': 'true', 'aria-controls': 'collapseOne' do %>
         <div class="card-body">
           <h4 class="drawer-title">
-            <%= octicon "organization", height: 24 %> Collaborated Drawers
+            <%= octicon "organization", height: 24 %> Collaborated Drawers <%= octicon "chevron-down", height: 24 %>
           </h4>
         </div>
       <% end %>
-      <% end %>
+
+      <div id="collapseOne" class="collapse" aria-labelledby="heading" data-parent="#collaborated-drawers-list">
+        <div class="card-body">
+          <div id="collaborated-drawers-list">
+            <% collaborated_drawers.each do |drawer| %>
+              <div class="drawer-item-sidebar <%= check_active_link(drawer.id) %>" id="<%= dom_id(drawer) %>">
+                <%= link_to drawer_codetools_path(drawer), class: 'drawer-link-sidebar', 'data-turbolinks': false do %>
+                  <div class="drawer-item-menu">
+                    <h5>
+                      <%= octicon "archive", height: 26 %>&nbsp;<%= drawer_title(drawer) %>
+                    </h5>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
