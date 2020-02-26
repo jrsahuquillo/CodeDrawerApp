@@ -39,6 +39,7 @@ gem 'listen', '~> 3.1', '>= 3.1.5'
 gem "rack", ">= 2.0.8"
 gem 'markdown_checkboxes', '~> 1.0'
 gem 'select2-rails'
+gem "nokogiri", ">= 1.10.8"
 
 
 group :development, :test do
