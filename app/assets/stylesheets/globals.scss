@@ -48,3 +48,11 @@ h6, .h6 {
 .container-fluid  {
     padding: 0 5px !important;
 }
+
+.search-form-wrapper {
+  padding-right: 1rem;
+  .search-field {
+    width: 350px !important;
+  }
+
+}
