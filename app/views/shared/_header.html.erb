@@ -35,7 +35,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= user_signed_in? ? "#{current_user.username}" : "Start session" %>
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
             <% if user_signed_in? %>
               <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'dropdown-item', id: 'sign-in-menu' %>
             <% else %>
