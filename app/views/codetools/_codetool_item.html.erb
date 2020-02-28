@@ -3,7 +3,7 @@
     <%= link_to "#codetool" + "#{codetool.id}", class: "show-codetool", 'data-toggle': 'collapse', 'aria-expanded': 'false', 'aria-controls': "codetool" + "#{codetool.id}" do %>
       <div class="codetool-header">
         <div class="h4 codetool-title">
-          <%= octicon "grabber", height: 24 %>&nbsp; <%= codetool.title %>
+          <%= octicon "grabber", height: 24 unless params[:controller] == 'friendships' %>&nbsp; <%= codetool.title %>
         </div>
         <div class="d-flex">
           <% if codetool.public? %>
