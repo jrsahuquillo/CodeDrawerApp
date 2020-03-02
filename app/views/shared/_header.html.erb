@@ -17,7 +17,7 @@
           </li>
           <li class="nav-item active">
             <%= link_to search_friends_path, class: 'nav-link' do %>
-              <%= octicon 'organization'  %> Search Friends
+              <%= octicon 'organization', height: 24 %> Friends
             <% end %>
           </li>
           <% if current_device_is_mobile? %>
@@ -28,7 +28,14 @@
             </li>
           <% end %>
           <li class="nav-item active">
-            <%= link_to 'Markdown Syntax', 'https://www.markdownguide.org/basic-syntax/', class: 'nav-link', target: '_blank' %>
+            <%= link_to 'https://www.markdownguide.org/basic-syntax/', class: 'nav-link', target: '_blank' do %>
+                <%= octicon 'markdown', height: 24 %>
+            <% end %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to 'https://github.com/jrsahuquillo/CodeDrawer', class: 'nav-link', target: '_blank' do %>
+                <%= octicon 'mark-github', height: 24 %>
+            <% end %>
           </li>
         <% end %>
         <li class="nav-item active dropdown">

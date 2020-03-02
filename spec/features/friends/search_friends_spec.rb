@@ -6,7 +6,7 @@ RSpec.feature "Searching Friends" do
     @user2 = User.create!(email: "example_user2@example.com", username: "example_user2", password: "password2")
     login_as(user1)
     visit '/'
-    click_link "Search Friends"
+    click_link "Friends"
   end
 
   scenario "a user follows other user searched by user name" do
