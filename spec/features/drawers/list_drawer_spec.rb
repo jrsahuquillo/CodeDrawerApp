@@ -32,7 +32,7 @@ RSpec.feature "Listing Drawers" do
     expect(page).not_to have_link(@drawer1.title)
     expect(page).not_to have_link(@drawer2.title)
 
-    within("h1#no-drawers") do
+    within(".h1#no-drawers") do
       expect(page).to have_content("No drawers created")
     end
   end
