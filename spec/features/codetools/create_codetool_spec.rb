@@ -28,7 +28,13 @@ RSpec.feature "Creating Codetools" do
   scenario "a user creates a new codetool without content" do
     fill_in "Title", with: "Creating a Codetool with Markdown"
     click_button "Create Codetool"
-      expect(page).to have_content(@drawer.codetools.last.title)
+    expect(page).to have_content(@drawer.codetools.last.title)
+  end
+
+  scenario "a user can´t create a new codetool without title" do
+    click_button "Create Codetool"
+    expect(page).to have_content("Codetool has not been created")
+    expect(page).to have_content("Title can't be blank")
   end
 
   scenario "a user creates a new codetool with bold markdown" do
