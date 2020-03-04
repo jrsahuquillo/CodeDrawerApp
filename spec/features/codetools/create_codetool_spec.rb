@@ -25,6 +25,12 @@ RSpec.feature "Creating Codetools" do
     expect(page.current_path).to eq(drawer_codetools_path(@drawer.id))
   end
 
+  scenario "a user creates a new codetool without content" do
+    fill_in "Title", with: "Creating a Codetool with Markdown"
+    click_button "Create Codetool"
+      expect(page).to have_content(@drawer.codetools.last.title)
+  end
+
   scenario "a user creates a new codetool with bold markdown" do
     fill_in "Title", with: "Creating a Codetool with Markdown"
     fill_in "Content", with: "**Lorem Ipsum**"
