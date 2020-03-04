@@ -84,3 +84,10 @@ a.drawer-link-sidebar {
         color: #24292e;
     }
 }
+
+#collaborated-drawers-list {
+    .rotated{
+        transform: rotate(-180deg);
+        transition: all 0.5s;
+    }
+}

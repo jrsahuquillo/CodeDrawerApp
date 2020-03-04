@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+  // Rotate arrow icon when collapse codetools
   collapseShowAfterEdit();
 
   $('.show-codetool').click(function () {
@@ -16,6 +17,7 @@ $(document).ready(function(){
     }
   }
 
+  // Drag and drop codetools sorting
   $('#codetools-list').sortable({
     axis: "y",
     cursor: "move",
@@ -31,6 +33,7 @@ $(document).ready(function(){
     }
   });
 
+  //Warning when a codetools is made public
   $publicCheckbox = $('#public_checkbox')
   $publicCheckbox.click(function(){
     if($publicCheckbox.prop("checked")) {
