@@ -37,7 +37,23 @@
                 <%= octicon 'mark-github', height: 24 %>
             <% end %>
           </li>
+
         <% end %>
+
+        <% if user_signed_in? %>
+          <li class="nav-item active dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= octicon "bell", height: 24 %>
+                <span class="notifications-badge badge badge-warning badge-pill">1</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+              <div class="dropdown-item">
+                Notifications soon!
+              </div>
+            </div>
+          </li>
+        <% end %>
+
         <li class="nav-item active dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= user_signed_in? ? "#{current_user.username}" : "Start session" %>
