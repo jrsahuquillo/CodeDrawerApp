@@ -22,6 +22,7 @@ require('jquery-ui');
 require("packs/custom/global")
 require("packs/custom/drawers")
 require("packs/custom/codetools")
+require("packs/custom/notifications")
 
 import 'bootstrap'
 import './src/application.scss'

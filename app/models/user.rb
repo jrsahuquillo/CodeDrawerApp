@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, through: :friendships, class_name: "User"
 
+  has_many :notifications, foreign_key: :recipient_id
+
   attr_accessor :login
 
   def login

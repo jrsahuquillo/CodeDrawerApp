@@ -9,6 +9,8 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.new(user_id: current_user.id, friend_id: params[:friend_id])
     @friend = @friendship.friend
     if @friendship.save
+      # Create notification
+      Notification.create(recipient: @friend, actor: current_user, action: "is following", notifiable: @friendship )
       flash[:notice] = "You are following to #{@friend.username}"
     else
       flash[:alert] = "#{@friend.username} " + "#{@friend.errors.messages[:friend_id].first}"

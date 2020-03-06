@@ -64,7 +64,8 @@ class DrawersController < ApplicationController
       redirect_to drawer_codetools_path(@drawer)
     else
       if @drawer.update(drawer_params)
-        drawer_collaborators_update
+        DrawerCollaborator.where(drawer_id: @drawer.id).destroy_all
+        drawer_collaborators_create
         flash[:success] = "Drawer has been updated"
         redirect_to drawer_codetools_path(@drawer)
       else
@@ -110,16 +111,10 @@ class DrawersController < ApplicationController
     drawer_collaborators_params[:friend_ids].each do |friend_id|
       if friend_id.present?
         DrawerCollaborator.create(drawer_id: @drawer.id, friend_id: friend_id)
+        Notification.create(recipient: User.find(friend_id), actor: current_user, action: "made you collaborator", notifiable: @drawer )
       end
     end
   end
 
-  def drawer_collaborators_update
-    DrawerCollaborator.where(drawer_id: @drawer.id).destroy_all
-    drawer_collaborators_params[:friend_ids].each do |friend_id|
-      if friend_id.present?
-        DrawerCollaborator.create(drawer_id: @drawer.id, friend_id: friend_id)
-      end
-    end
-  end
+
 end
