@@ -22,7 +22,7 @@ $(document).on('turbolinks:load',function(){
       );
     } else if (notification.notifiable["type"] == "Drawer") {
       $('#notifications .dropdown-menu').append(
-        "<div class='dropdown-item' id='notification_" + notification.id + "'>" + notification.actor + " " + notification.action + " of a drawer</div>"
+        "<div class='dropdown-item' id='notification_" + notification.id + "'>" + notification.actor + " " + notification.action + " of " + notification.notifiable["title"] + " drawer</div>"
       );
     } else if (notification.notifiable["type"] == "User") {
       $('#notifications .dropdown-menu').append(

@@ -5,8 +5,9 @@ json.array! @notifications do |notification|
   json.action       notification.action
   json.created_at   notification.created_at
   json.notifiable do
-    json.type notification.notifiable.class.to_s
+    json.type   notification.notifiable.class.to_s
+    json.title  notification.notifiable.title
+    # json.path   drawer_codetools_path(notification.notifiable.id)
   end
-  # json.url          root_path
 
 end
