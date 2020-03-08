@@ -6,9 +6,8 @@ RSpec.feature "Creating Drawers" do
     @user = User.create!(email: "example_user@example.com", username: "example_user", password: "password")
     login_as(@user)
     visit "/"
-    within(".new-drawer") do
-        click_link "New Drawer"
-    end
+    click_link "New Drawer"
+
   end
 
   scenario "a user creates a new drawer" do

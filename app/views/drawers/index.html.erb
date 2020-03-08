@@ -1,6 +1,6 @@
 <div class="container-fluid drawer-list">
   <div class='h3 text-center'>Drawers list</div>
-  <%= render 'drawers_header' %>
+  <%= render 'drawers_header' if current_device_is_mobile? %>
   <% if @drawers.empty? %>
     <div class="h1" id="no-drawers">No drawers created</div>
   <% else %>
