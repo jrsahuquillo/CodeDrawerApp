@@ -3,6 +3,7 @@
     <a class="navbar-brand" href="/"><%= octicon "archive", height: 36, class: 'logo' %>  Codedrawer</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
+      <span class="notifications-badge badge badge-warning badge-pill"></span>
     </button>
     <div class="navbar-collapse collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
@@ -38,6 +39,21 @@
             <% end %>
           </li>
         <% end %>
+
+        <% if user_signed_in? %>
+          <li id="notifications" class="nav-item active dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= octicon "bell", height: 24 %>
+                <span class="notifications-badge badge badge-warning badge-pill"></span>
+            </a>
+            <div class="notifications-list dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+              <% if current_user.notifications.unread.blank? %>
+                <div class="dropdown-item">No notifications</div>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+
         <li class="nav-item active dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= user_signed_in? ? "#{current_user.username}" : "Start session" %>

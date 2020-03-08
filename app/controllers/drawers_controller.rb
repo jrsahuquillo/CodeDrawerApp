@@ -32,7 +32,7 @@ class DrawersController < ApplicationController
     @drawer.position = 0
     @drawer.user = current_user
     if @drawer.save
-      drawer_collaborators_create
+      set_drawer_collaborators
       flash[:success] = "Drawer has been created"
       redirect_to drawer_codetools_path(@drawer)
     else
@@ -64,7 +64,7 @@ class DrawersController < ApplicationController
       redirect_to drawer_codetools_path(@drawer)
     else
       if @drawer.update(drawer_params)
-        drawer_collaborators_update
+        set_drawer_collaborators
         flash[:success] = "Drawer has been updated"
         redirect_to drawer_codetools_path(@drawer)
       else
@@ -92,6 +92,7 @@ class DrawersController < ApplicationController
       flash[:warning] = message
       redirect_to root_path
     end
+
   private
 
   def set_drawer
@@ -106,20 +107,21 @@ class DrawersController < ApplicationController
     params.require(:drawer).permit(friend_ids:[])
   end
 
-  def drawer_collaborators_create
-    drawer_collaborators_params[:friend_ids].each do |friend_id|
-      if friend_id.present?
-        DrawerCollaborator.create(drawer_id: @drawer.id, friend_id: friend_id)
-      end
+  def set_drawer_collaborators
+    initial_friends_ids = @drawer.friends.map(&:id).map(&:to_s)
+    friends_ids = drawer_collaborators_params[:friend_ids].reject { |e| e.to_s.empty? }
+
+    added_collaborators = initial_friends_ids + friends_ids - initial_friends_ids
+    added_collaborators.each do |friend_id|
+      DrawerCollaborator.create(drawer_id: @drawer.id, friend_id: friend_id)
+      Notification.create(recipient: User.find(friend_id), actor: current_user, action: "made you collaborator", notifiable: @drawer )
+    end
+
+    removed_collaborators = initial_friends_ids - friends_ids
+    removed_collaborators.each do |friend_id|
+      DrawerCollaborator.where(drawer_id: @drawer.id, friend_id: friend_id).destroy_all
+      Notification.create(recipient: User.find(friend_id), actor: current_user, action: "removed you as collaborator", notifiable: @drawer )
     end
   end
 
-  def drawer_collaborators_update
-    DrawerCollaborator.where(drawer_id: @drawer.id).destroy_all
-    drawer_collaborators_params[:friend_ids].each do |friend_id|
-      if friend_id.present?
-        DrawerCollaborator.create(drawer_id: @drawer.id, friend_id: friend_id)
-      end
-    end
-  end
 end

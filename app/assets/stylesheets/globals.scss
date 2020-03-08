@@ -5,9 +5,9 @@ body {
 }
 
 .logo {
-    margin-right: 8px;
-    fill: currentColor;
-  }
+  margin-right: 8px;
+  fill: currentColor;
+}
 
 a.nav-link:hover {
   color: hsla(0,0%,100%,.7) !important;
@@ -54,5 +54,24 @@ h6, .h6 {
   .search-field {
     width: 350px !important;
   }
+}
 
+.notifications-badge {
+  position: absolute;
+  right: 2.2rem;
+  top: 1.5rem;
+}
+
+.nav-item {
+  padding: 0 0.2rem;
+}
+
+@media only screen and (max-width: 768px) {
+  html {
+    overflow-x: hidden;
+  }
+  body {
+    overflow-x: hidden;
+    position: relative;
+  }
 }
