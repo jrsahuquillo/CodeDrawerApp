@@ -21,4 +21,10 @@ RSpec.feature "Show public friends codetools" do
     expect(page).to have_css(".octicon-organization")
     expect(page).to have_content("Follow back")
   end
+
+  scenario "a user shows friend public codetools by friend" do
+    visit '/search-friends'
+    click_link @user1.username
+    expect(page).to have_content(@codetool.title)
+  end
 end
