@@ -24,7 +24,16 @@
           <div class="col-sm-4 py-2">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title"><%= link_to friend.username, user_public_codetools_path(friend.id) %></h5>
+                <div class="h5 friend-codetool-title card-title">
+                  <% if friend.codetools.is_public.any? %>
+                    <%= link_to friend.username, user_public_codetools_path(friend.id) %>
+                    <span class="total-public-codetools badge badge-pill badge-secondary">
+                      <%= friend.codetools.is_public.count %> <%= octicon "broadcast", height: 16 %>
+                    </span>
+                  <% else %>
+                    <%= friend.username %>
+                  <% end %>
+                </div>
                 <div class="friend-info">
                   <% if current_user.followed_back_by?(friend) %>
                     <span class="friend-followback-info">

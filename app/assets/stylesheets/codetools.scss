@@ -93,3 +93,11 @@
 .blank-search {
     margin: 2rem;
 }
+
+.friend-codetool-title a {
+  color: #586069;
+  &:hover {
+    color: #24292e;
+    text-decoration: none;
+  }
+}
