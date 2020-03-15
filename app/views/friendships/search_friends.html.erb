@@ -26,7 +26,9 @@
               <div class="card-body">
                 <div class="h5 friend-codetool-title card-title">
                   <% if friend.codetools.is_public.any? %>
-                    <%= link_to friend.username, user_public_codetools_path(friend.id) %>
+                    <div class="friend-codetool-name">
+                      <%= link_to friend.username, user_public_codetools_path(friend.id) %>
+                    </div>
                     <span class="total-public-codetools badge badge-pill badge-secondary">
                       <%= friend.codetools.is_public.count %> <%= octicon "broadcast", height: 16 %>
                     </span>
