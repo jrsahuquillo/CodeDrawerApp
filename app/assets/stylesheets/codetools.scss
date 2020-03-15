@@ -93,3 +93,24 @@
 .blank-search {
     margin: 2rem;
 }
+
+.friend-codetool-title {
+  color: #586069;
+  a {
+    color: #24292e;
+    &:hover {
+      color: #24292e;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
+  &.card-title{
+    min-height: 3.5rem;
+    margin-bottom: 0 !important;
+  }
+
+}
+
+.total-public-codetools {
+  margin-top: 1rem;
+}
