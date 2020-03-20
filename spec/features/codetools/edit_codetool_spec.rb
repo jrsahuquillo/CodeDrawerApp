@@ -35,7 +35,7 @@ RSpec.feature "Editing Codetools" do
     @codetool.reload
     expect(@codetool.public).to eq(true)
     expect(page).to have_css('.public-icon')
-    visit "/friends"
+    visit "/public_codetools"
     expect(page).to have_content(@drawer.title)
   end
 end

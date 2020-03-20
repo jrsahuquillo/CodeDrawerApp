@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   get '/search', to: 'codetools#search'
   get '/search-friends', to: 'friendships#search_friends'
-  get '/friends', to: 'friendships#index'
+  get '/public_codetools', to: 'friendships#index'
   post '/friends', to: 'friendships#create'
   delete '/friends', to: 'friendships#destroy'
 
@@ -28,5 +28,7 @@ Rails.application.routes.draw do
       post :mark_as_read
     end
   end
+
+  resources :favorite_codetools
 
 end

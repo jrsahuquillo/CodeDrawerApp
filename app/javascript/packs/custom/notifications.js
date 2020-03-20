@@ -18,15 +18,19 @@ $(document).on('turbolinks:load',function(){
   function filterNotifications(notification) {
     if (notification.notifiable["type"] == "Friendship") {
       $('#notifications .dropdown-menu').append(
-        "<div class='dropdown-item' id='notification_" + notification.id + "'>" + notification.actor + " " + notification.action + " you</div>"
+        "<div class='dropdown-item' id='notification_" + notification.id + "'><small>" + notification.actor + " " + notification.action + " you</small></div>"
       );
     } else if (notification.notifiable["type"] == "Drawer") {
       $('#notifications .dropdown-menu').append(
-        "<div class='dropdown-item' id='notification_" + notification.id + "'>" + notification.actor + " " + notification.action + " of a drawer</div>"
+        "<div class='dropdown-item' id='notification_" + notification.id + "'><small>" + notification.actor + " " + notification.action + " of a drawer</small></div>"
+      );
+    } else if (notification.notifiable["type"] == "FavoriteCodetool") {
+      $('#notifications .dropdown-menu').append(
+        "<div class='dropdown-item'id='notification_" + notification.id + "'><small>" + notification.actor + " " + notification.action + " one of your codetools</small></div>"
       );
     } else if (notification.notifiable["type"] == "User") {
       $('#notifications .dropdown-menu').append(
-        "<div class='dropdown-item'id='notification_" + notification.id + "'> Welcome to notifications! </div>"
+        "<div class='dropdown-item'id='notification_" + notification.id + "'><small> Welcome to notifications! </small></div>"
       );
     }
   };

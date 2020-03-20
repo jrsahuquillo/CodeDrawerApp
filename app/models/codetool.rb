@@ -14,4 +14,12 @@ class Codetool < ApplicationRecord
      current_user.codetools.include?(self)
   end
 
+  def favorited?(current_user_id)
+    FavoriteCodetool.where(user_id: current_user_id, codetool_id: self.id).present?
+  end
+
+  def total_favorites
+    FavoriteCodetool.where(codetool_id: self.id).count
+  end
+
 end
