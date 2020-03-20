@@ -1,5 +1,6 @@
 
 class CodetoolsController < ApplicationController
+
   before_action :authenticate_user!, :search
   before_action :set_drawer, except: [:search]
   before_action :set_drawers
@@ -75,6 +76,7 @@ class CodetoolsController < ApplicationController
       redirect_to drawer_codetools_path(@drawer)
     else
       if @codetool.destroy
+        FavoriteCodetool.where(codetool_id: @codetool.id).destroy_all
         flash[:success] = "Codetool has been deleted"
         redirect_to drawer_codetools_path(@drawer)
       end

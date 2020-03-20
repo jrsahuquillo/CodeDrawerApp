@@ -47,4 +47,10 @@ class User < ApplicationRecord
   def followed_back_by?(friend)
     friend.friends.pluck(:friend_id).include?(id)
   end
+
+  def total_favorite_codetools
+    friend_favorite_codetools = self.codetools.map(&:id)
+    favorite_codetools = FavoriteCodetool.all.map(&:codetool_id)
+    (friend_favorite_codetools & favorite_codetools).count
+  end
 end

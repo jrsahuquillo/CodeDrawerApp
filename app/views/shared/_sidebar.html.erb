@@ -11,10 +11,10 @@
     </div>
 
     <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %>">
-      <%= link_to friends_path, class: 'drawer-link-sidebar' do %>
+      <%= link_to favorite_codetools_path, class: 'drawer-link-sidebar' do %>
         <div class="drawer-item-menu">
           <div class="h4">
-            <%= octicon "radio-tower", height: 24 %> Friends Codetools
+            <%= octicon "star", height: 24 %> Favorite Codetools
           </div>
         </div>
       <% end %>

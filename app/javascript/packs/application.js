@@ -23,6 +23,7 @@ require("packs/custom/global")
 require("packs/custom/drawers")
 require("packs/custom/codetools")
 require("packs/custom/notifications")
+require("packs/custom/favorites")
 
 import 'bootstrap'
 import './src/application.scss'

@@ -24,18 +24,29 @@
           <div class="col-sm-4 py-2">
             <div class="card">
               <div class="card-body">
+
                 <div class="h5 friend-codetool-title card-title">
                   <% if friend.codetools.is_public.any? %>
-                    <div class="friend-codetool-name">
-                      <%= link_to friend.username, user_public_codetools_path(friend.id) %>
-                    </div>
-                    <span class="total-public-codetools badge badge-pill badge-secondary">
-                      <%= friend.codetools.is_public.count %> <%= octicon "broadcast", height: 16 %>
+                  <div class="friend-codetool-name">
+                    <% if current_user.friend?(friend) %>
+                        <%= link_to friend.username, user_public_codetools_path(friend.id) %>
+                    <% else %>
+                        <%= friend.username %>
+                    <% end %>
+                  </div>
+                    <span class="total-public-codetools badge badge-pill badge-info">
+                      <%= friend.codetools.is_public.count %> <%= octicon "rss", height: 16 %>
                     </span>
+                    <% if total_favorites(friend) > 0 %>
+                      <span class="total-favorite-codetools badge badge-pill badge-warning">
+                        <%= friend.total_favorite_codetools %> <%= octicon "star", height: 16 %>
+                      </span>
+                    <% end %>
                   <% else %>
                     <%= friend.username %>
                   <% end %>
                 </div>
+
                 <div class="friend-info">
                   <% if current_user.followed_back_by?(friend) %>
                     <span class="friend-followback-info">

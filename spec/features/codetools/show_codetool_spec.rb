@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Showing a Drawer" do
+RSpec.feature "Showing a Codetool" do
   before do
     user = User.create(email: "example_user@example.com", username: "example_user", password: "password")
     login_as(user)

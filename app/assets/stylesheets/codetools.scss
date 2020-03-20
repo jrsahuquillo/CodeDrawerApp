@@ -45,8 +45,8 @@
     margin: 1rem 0;
 }
 
-.public-icon {
-    margin: 0 1rem;
+.public-icon, .favorite-icon {
+    margin: 0 0.8rem;
 }
 
 .show-codetool, .new-codetool {
@@ -61,10 +61,14 @@
             transform: rotate(-180deg);
             transition: all 0.5s;
         }
+
+        .toggle-codetool-content-icon {
+          padding: 0 0.8rem;
+        }
     }
 }
 #codetools-list .codetool-title {
-    width: 90%;
+    // width: 90%;
     cursor: move;
 }
 .codetool-content {
@@ -79,7 +83,7 @@
 
 .edit-codetool-icon,
 .delete-codetool-icon {
-    padding-left: 8px;
+    padding-left: 16px;
     color: #586069;
     &:hover{
         color: #24292e;

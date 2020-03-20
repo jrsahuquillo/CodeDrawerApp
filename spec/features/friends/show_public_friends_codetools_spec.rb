@@ -11,7 +11,7 @@ RSpec.feature "Show public friends codetools" do
   end
 
   scenario "a user shows a friend public codetools" do
-    visit '/friends'
+    visit '/public_codetools'
     expect(page).to have_content(@codetool.title)
   end
 
