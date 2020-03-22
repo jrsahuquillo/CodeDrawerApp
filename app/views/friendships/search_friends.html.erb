@@ -37,7 +37,7 @@
                     <span class="total-public-codetools badge badge-pill badge-info">
                       <%= friend.codetools.is_public.count %> <%= octicon "rss", height: 16 %>
                     </span>
-                    <% if total_favorites(friend) > 0 %>
+                    <% if total_favorites(friend).present? %>
                       <span class="total-favorite-codetools badge badge-pill badge-warning">
                         <%= friend.total_favorite_codetools %> <%= octicon "star", height: 16 %>
                       </span>

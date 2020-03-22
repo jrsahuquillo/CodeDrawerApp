@@ -7,7 +7,7 @@
         </div>
         <div class="d-flex">
           <div class="favorite-icon">
-            <% if codetool.total_favorites > 0 %>
+            <% if codetool.total_favorites.present? %>
               <%= octicon "star" %> <span class="total-favorites badge badge-light"><%= codetool.total_favorites %></span>
             <% end %>
           </div>
