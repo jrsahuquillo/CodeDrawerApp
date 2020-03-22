@@ -8,12 +8,12 @@
       <small class="glyphicon glyphicon-calendar" id="drawer-date">
         <%= octicon "calendar" %> <%= @drawer.created_at.strftime("%d-%b-%Y") %>
       </small>&nbsp;
-      <small class="drawer-author">
-        <span>Created by: <strong> <%= @drawer.user.username %></strong></span>
-      </small>&nbsp;
-      <small class="drawer-collaborators">
+      <span class="drawer-author">
+        <span>Created by: <strong> <%= link_to (content_tag :span, @drawer.user.username, class: 'badge badge-warning'), user_public_codetools_path(@drawer.user.id) %></strong></span>
+      </span>&nbsp;
+      <span class="drawer-collaborators">
         <%= drawer_collaborators %>
-      </small>
+      </span>
     </div>
 
     <% unless @drawer.friends.include?(current_user) %>
