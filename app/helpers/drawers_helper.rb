@@ -29,4 +29,7 @@ module DrawersHelper
     end
   end
 
+  def current_drawer_collaborated?
+    collaborated_drawers.map(&:id).include?(params[:drawer_id].to_i)
+  end
 end

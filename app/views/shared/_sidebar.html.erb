@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <div id="collapseOne" class="collapse" aria-labelledby="heading" data-parent="#collaborated-drawers-list">
+        <div id="collapseOne" class="collapse <%= 'show' if current_drawer_collaborated? %>" aria-labelledby="heading" data-parent="#collaborated-drawers-list">
           <div class="card-body">
             <div id="collaborated-drawers-list">
               <% collaborated_drawers.each do |drawer| %>
