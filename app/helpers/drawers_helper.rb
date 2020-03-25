@@ -23,8 +23,7 @@ module DrawersHelper
     if @drawer.friends.present?
       drawer_friends = ""
       @drawer.friends.each do |friend|
-        friend = friend.username
-        drawer_friends << "#{content_tag :span, friend, class: 'badge badge-secondary'}&nbsp;"
+        drawer_friends << "#{ link_to (content_tag :span, friend.username, class: 'badge badge-secondary'), user_public_codetools_path(friend.id)} &nbsp;"
       end
       "<span>Collaborators: #{drawer_friends}</span>".html_safe
     end
