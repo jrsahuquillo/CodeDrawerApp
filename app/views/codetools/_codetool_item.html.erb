@@ -3,7 +3,7 @@
     <%= link_to "#codetool" + "#{codetool.id}", class: "show-codetool", 'data-toggle': 'collapse', 'aria-expanded': 'false', 'aria-controls': "codetool" + "#{codetool.id}" do %>
       <div class="codetool-header">
         <div class="h4 codetool-title">
-          <%= octicon "grabber", height: 24 if codetool.belongs_to_current_user?(current_user) %>&nbsp; <%= codetool.title %>
+          <%= octicon "grabber", height: 24 if codetool.belongs_to_current_user?(current_user) %>&nbsp; <%= params[:search] ? highlight(codetool.title, params[:search]) : codetool.title %>
         </div>
         <div class="d-flex">
           <div class="favorite-icon">
@@ -20,9 +20,9 @@
         </div>
       </div>
     <% end %>
-    <div class="collapse multi-collapse" id=<%= "codetool#{codetool.id}" %> >
+    <div class="collapse multi-collapse <%= 'show' if params[:search] %>" id=<%= "codetool#{codetool.id}" %> >
       <div class="codetool-content">
-        <%= markdown(codetool.content) %>
+        <%= params[:search] ? highlight(markdown(codetool.content), params[:search]) : markdown(codetool.content) %>
       </div>
       <% drawer = codetool&.drawer %>
       <% if drawer %>
