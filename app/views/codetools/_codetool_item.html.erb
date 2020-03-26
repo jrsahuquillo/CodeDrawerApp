@@ -20,7 +20,7 @@
         </div>
       </div>
     <% end %>
-    <div class="collapse multi-collapse <%= 'show' if params[:search] %>" id=<%= "codetool#{codetool.id}" %> >
+    <div class="collapse multi-collapse" id=<%= "codetool#{codetool.id}" %> >
       <div class="codetool-content">
         <%= params[:search] ? highlight(markdown(codetool.content), params[:search]) : markdown(codetool.content) %>
       </div>
