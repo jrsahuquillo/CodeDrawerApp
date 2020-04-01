@@ -11,7 +11,7 @@
               <%= octicon "star" %> <span class="total-favorites badge badge-light"><%= codetool.total_favorites %></span>
             <% end %>
           </div>
-          <% if codetool.public? && codetool.belongs_to_current_user?(current_user) %>
+          <% if codetool.public? %>
             <div class="public-icon" ><%= octicon "rss" %></div>
           <% else %>
               <div class="public-icon" ><%= octicon "lock" %></div>
