@@ -19,6 +19,7 @@ RSpec.feature "Creating Codetools" do
     expect(Codetool.last.user).to eq(@user)
     expect(Codetool.last.position).to eq(0)
     expect(Codetool.last.public).to eq(false)
+    expect(Codetool.last.slug).to eq(Codetool.last.title.parameterize)
     expect(page).to have_content("Codetool has been created")
     expect(page).to have_content(@drawer.codetools.last.title)
     expect(page).to have_content(@drawer.codetools.last.content)
