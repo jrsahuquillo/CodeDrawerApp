@@ -6,6 +6,8 @@ class Codetool < ApplicationRecord
 
   scope :is_public, ->{ where(public: true) }
 
+  after_validation :set_slug, only: [:create, :update]
+
   def self.search(search)
     self.where("title ILIKE ? OR content ILIKE ?", "%#{search}%", "%#{search}%").uniq
   end
@@ -20,6 +22,14 @@ class Codetool < ApplicationRecord
 
   def total_favorites
     FavoriteCodetool.where(codetool_id: self.id).count
+  end
+
+  def set_slug
+    self.slug = title.to_s.parameterize
+  end
+
+  def to_param
+    "#{id}-#{slug}"
   end
 
 end

@@ -3,7 +3,7 @@
     <%= link_to "#codetool" + "#{codetool.id}", class: "show-codetool", 'data-toggle': 'collapse', 'aria-expanded': 'false', 'aria-controls': "codetool" + "#{codetool.id}" do %>
       <div class="codetool-header">
         <div class="h4 codetool-title">
-          <%= octicon "grabber", height: 24 if codetool.belongs_to_current_user?(current_user) %>&nbsp; <%= params[:search] ? highlight(codetool.title, params[:search]) : codetool.title %>
+          <%= octicon "grabber", height: 24 if current_user && codetool.belongs_to_current_user?(current_user) %>&nbsp; <%= params[:search] ? highlight(codetool.title, params[:search]) : codetool.title %>
         </div>
         <div class="d-flex">
           <div class="favorite-icon">
@@ -42,7 +42,7 @@
 
           <div class="p-2 d-flex flex-row justify-content-between">
 
-            <% if codetool.public? && !codetool.belongs_to_current_user?(current_user) %>
+            <% if codetool.public? && current_user && !codetool.belongs_to_current_user?(current_user) %>
               <div class="favorite-buttons">
                 <div class='destroy-favorite <%= "d-none" unless codetool.favorited?(current_user.id) %>' >
                   <%= button_to favorite_codetool_path(current_user, codetool_id: codetool.id),
@@ -59,6 +59,11 @@
                   <% end %>
                 </div>
               </div>
+            <% end %>
+
+            <%= link_to '', class: "link-codetool-icon #{dom_id(codetool)}", 'data-clipboard-text': "#{drawer_codetool_url(drawer, codetool)}", 'data-toggle':'tooltip', title: "Link to Codetool", remote: true do %>
+              <div class="codetool-link"><%= octicon "clippy", height: 18 %></div>
+              <div class="codetool-check" hidden><%= octicon "check", height: 18 %></div>
             <% end %>
 
             <% if drawer.friends.include?(current_user) || codetool.user == current_user %>

@@ -7,7 +7,7 @@
     </button>
     <div class="navbar-collapse collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
-        <% if current_user%>
+        <% if current_user %>
           <li class="nav-item active search-form-wrapper">
             <%= form_tag(search_path(@drawer), method: "get", class: "form-inline my-2 my-lg-1", id: "search-form") do %>
                 <%= text_field_tag :search, params[:search], class: "search-field form-control mr-sm-2", placeholder: "Search (CRTL + F)", 'aria-label': 'Search' %>

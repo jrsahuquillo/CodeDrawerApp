@@ -1,10 +1,10 @@
 
 class CodetoolsController < ApplicationController
 
-  before_action :authenticate_user!, :search
+  before_action :authenticate_user!, :search, except: [:show]
   before_action :set_drawer, except: [:search]
-  before_action :set_drawers
-  before_action :set_codetool, only: [:edit, :update, :destroy]
+  before_action :set_drawers, except: [:show]
+  before_action :set_codetool, only: [:show, :edit, :update, :destroy]
 
   def index
     # if @drawer.friends.exclude?(current_user) || @drawer.user != current_user
@@ -46,6 +46,9 @@ class CodetoolsController < ApplicationController
       flash[:alert] = "Codetool has not been created"
       render :new
     end
+  end
+
+  def show
   end
 
   def edit
