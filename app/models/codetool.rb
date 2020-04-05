@@ -24,12 +24,13 @@ class Codetool < ApplicationRecord
     FavoriteCodetool.where(codetool_id: self.id).count
   end
 
-  def set_slug
-    self.slug = title.to_s.parameterize
-  end
-
   def to_param
     "#{id}-#{slug}"
   end
 
+  private
+
+  def set_slug
+    self.slug = title.to_s.parameterize
+  end
 end

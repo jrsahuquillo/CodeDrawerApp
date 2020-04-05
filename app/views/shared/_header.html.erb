@@ -72,6 +72,6 @@
   </nav>
 </header>
 
-<% if (current_user && !current_device_is_mobile?) %>
+<% if (current_user && !current_device_is_mobile?) && !show_codetool_page? %>
   <%= render 'shared/sidebar', drawers: @drawers %>
 <% end %>

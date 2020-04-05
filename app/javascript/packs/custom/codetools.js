@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load', function () {
 
   // Rotate arrow icon when collapse codetools
   collapseShowAfterEdit();
@@ -49,7 +49,8 @@ $(document).ready(function(){
   });
 
   // Copy codetools url to clipboard
-  $('.link-codetool-icon').click(function(){
+  $('.link-codetool-icon').click(function(e){
+    e.preventDefault;
     value = $(this).data('clipboard-text');
     var $temp = $("<input>");
     $("body").append($temp);

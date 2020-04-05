@@ -20,7 +20,7 @@
         </div>
       </div>
     <% end %>
-    <div class="collapse multi-collapse" id=<%= "codetool#{codetool.id}" %> >
+    <div class="collapse multi-collapse <%= 'show' if show_codetool_page? %>" id=<%= "codetool#{codetool.id}" %> >
       <div class="codetool-content">
         <%= params[:search] ? highlight(markdown(codetool.content), params[:search]) : markdown(codetool.content) %>
       </div>
@@ -61,7 +61,17 @@
               </div>
             <% end %>
 
-            <%= link_to '', class: "link-codetool-icon #{dom_id(codetool)}", 'data-clipboard-text': "#{drawer_codetool_url(drawer, codetool)}", 'data-toggle':'tooltip', title: "Link to Codetool", remote: true do %>
+            <% if show_codetool_page? && codetool.belongs_to_current_user?(current_user) %>
+              <%= link_to drawer_codetools_path(drawer), class: "link-codetool-icon", 'data-toggle':'tooltip', title: "Return to drawer" do %>
+                <div class="codetool-link"><%= octicon "dependent", height: 18 %></div>
+              <% end %>
+            <% else %>
+              <%= link_to drawer_codetool_path(drawer, codetool), class: "link-codetool-icon", 'data-toggle':'tooltip', title: "Show Codetool", target: :_blank do %>
+                <div class="codetool-link"><%= octicon "link", height: 18 %></div>
+              <% end %>
+            <% end %>
+
+            <%= link_to drawer_codetool_path(drawer, codetool), class: "link-codetool-icon #{dom_id(codetool)}", 'data-clipboard-text': "#{drawer_codetool_url(drawer, codetool)}", 'data-toggle':'tooltip', title: "Copy to clipboard", remote: true do %>
               <div class="codetool-link"><%= octicon "clippy", height: 18 %></div>
               <div class="codetool-check" hidden><%= octicon "check", height: 18 %></div>
             <% end %>
