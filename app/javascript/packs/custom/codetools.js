@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load', function () {
 
   // Rotate arrow icon when collapse codetools
   collapseShowAfterEdit();
@@ -33,7 +33,7 @@ $(document).ready(function(){
     }
   });
 
-  //Warning when a codetools is made public
+  // Warning when a codetools is made public
   $publicCheckbox = $('#public_checkbox')
   $publicCheckbox.click(function(){
     if($publicCheckbox.prop("checked")) {
@@ -46,6 +46,27 @@ $(document).ready(function(){
    } else {
      return true;
    }
+  });
+
+  // Copy codetools url to clipboard
+  $('.link-codetool-icon').click(function(e){
+    e.preventDefault;
+    value = $(this).data('clipboard-text');
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val(value).select();
+    document.execCommand("copy");
+    $codetoolLink = $(this).children('.codetool-link')
+    $codetoolCheck = $(this).children('.codetool-check')
+    $codetoolLink.hide();
+    $codetoolCheck.removeAttr('hidden');
+    $(function () {
+      setTimeout(function () {
+        $codetoolLink.show();
+        $codetoolCheck.attr('hidden', true);
+      }, 1000);
+    })
+    $temp.remove();
   });
 
 });

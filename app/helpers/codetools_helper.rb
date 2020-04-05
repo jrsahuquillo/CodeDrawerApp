@@ -22,4 +22,7 @@ module CodetoolsHelper
     </div>".html_safe
   end
 
+  def show_codetool_page?
+    params[:controller] == "codetools" && params[:action] == "show"
+  end
 end
