@@ -60,5 +60,6 @@ class User < ApplicationRecord
   def populate_data
     load Rails.root.join('lib', 'tasks', 'populate_data.rake').to_s
     Rake::Task['db:populate_data'].execute(self)
+    Rake.application.clear
   end
 end

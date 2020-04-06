@@ -1,6 +1,7 @@
 namespace :db do
   desc 'Populate initial data when user creation is validated'
   task populate_data: :environment do |t, arg|
+
     drawer = Drawer.new(
       title: "Drawer Example",
       description: "This is a drawer 🗄. It contains the codetools 📄🛠.\r\nYou can select friends 👥 to share the drawer and make them collaborators of all containing codetools.",
