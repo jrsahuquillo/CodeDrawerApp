@@ -12,8 +12,8 @@ class Codetool < ApplicationRecord
     self.where("title ILIKE ? OR content ILIKE ?", "%#{search}%", "%#{search}%").uniq
   end
 
-  def belongs_to_current_user?(current_user)
-     current_user.codetools.include?(self)
+  def belongs_to_user?(user)
+     user.present? && user.codetools.include?(self)
   end
 
   def favorited?(current_user_id)
