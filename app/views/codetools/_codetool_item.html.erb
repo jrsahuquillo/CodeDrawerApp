@@ -41,39 +41,42 @@
           </div>
 
           <div class="p-2 d-flex flex-row justify-content-between">
-
-            <% if codetool.public? && !show_codetool_page? && !codetool.belongs_to_user?(current_user) %>
-              <div class="favorite-buttons">
-                <div class='destroy-favorite <%= "d-none" unless codetool.favorited?(current_user.id) %>' >
-                  <%= button_to favorite_codetool_path(current_user, codetool_id: codetool.id),
-                                                                          method: :delete, remote: true,
-                                                                          class: "btn btn-outline-warning btn-sm" do %>
-                    <%= octicon "star" %> <span class="total-favorites badge badge-light"><%= codetool.total_favorites %></span>
-                  <% end %>
+            <% if codetool.public? %>
+              <% if !show_codetool_page? && !codetool.belongs_to_user?(current_user) %>
+                <div class="favorite-buttons">
+                  <div class='destroy-favorite <%= "d-none" unless codetool.favorited?(current_user.id) %>' >
+                    <%= button_to favorite_codetool_path(current_user, codetool_id: codetool.id),
+                                                                            method: :delete, remote: true,
+                                                                            class: "btn btn-outline-warning btn-sm" do %>
+                      <%= octicon "star" %> <span class="total-favorites badge badge-light"><%= codetool.total_favorites %></span>
+                    <% end %>
+                  </div>
+                  <div class='create-favorite <%= "d-none" if codetool.favorited?(current_user.id) %>' >
+                    <%= button_to favorite_codetools_path(current_user, codetool_id: codetool.id),
+                                                                            method: :post, remote: true,
+                                                                            class: "btn btn-outline-secondary btn-sm" do %>
+                      <%= octicon "star" %> <span class="total-favorites badge badge-light"><%= codetool.total_favorites %></span>
+                    <% end %>
+                  </div>
                 </div>
-                <div class='create-favorite <%= "d-none" if codetool.favorited?(current_user.id) %>' >
-                  <%= button_to favorite_codetools_path(current_user, codetool_id: codetool.id),
-                                                                           method: :post, remote: true,
-                                                                           class: "btn btn-outline-secondary btn-sm" do %>
-                    <%= octicon "star" %> <span class="total-favorites badge badge-light"><%= codetool.total_favorites %></span>
+              <% end %>
+
+              <% if show_codetool_page? %>
+                <% if codetool.belongs_to_user?(current_user) %>
+                  <%= link_to drawer_codetools_path(drawer), class: "link-codetool-icon", 'data-toggle':'tooltip', title: "Return to drawer" do %>
+                    <div class="codetool-link"><%= octicon "dependent", height: 18 %></div>
                   <% end %>
-                </div>
-              </div>
-            <% end %>
-
-            <% if show_codetool_page? && codetool.belongs_to_user?(current_user) %>
-              <%= link_to drawer_codetools_path(drawer), class: "link-codetool-icon", 'data-toggle':'tooltip', title: "Return to drawer" do %>
-                <div class="codetool-link"><%= octicon "dependent", height: 18 %></div>
+                <% end %>
+              <% else %>
+                <%= link_to drawer_codetool_path(drawer, codetool), class: "detail-codetool-icon", 'data-toggle':'tooltip', title: "Show Codetool", target: :_blank do %>
+                  <div class="codetool-link"><%= octicon "link", height: 18 %></div>
+                <% end %>
               <% end %>
-            <% else %>
-              <%= link_to drawer_codetool_path(drawer, codetool), class: "detail-codetool-icon", 'data-toggle':'tooltip', title: "Show Codetool", target: :_blank do %>
-                <div class="codetool-link"><%= octicon "link", height: 18 %></div>
-              <% end %>
-            <% end %>
 
-            <%= link_to drawer_codetool_path(drawer, codetool), class: "link-codetool-icon #{dom_id(codetool)}", 'data-clipboard-text': "#{drawer_codetool_url(drawer, codetool)}", 'data-toggle':'tooltip', title: "Copy to clipboard", remote: true do %>
-              <div class="codetool-link"><%= octicon "clippy", height: 18 %></div>
-              <div class="codetool-check" hidden><%= octicon "check", height: 18 %></div>
+              <%= link_to drawer_codetool_path(drawer, codetool), class: "link-codetool-icon #{dom_id(codetool)}", 'data-clipboard-text': "#{drawer_codetool_url(drawer, codetool)}", 'data-toggle':'tooltip', title: "Copy to clipboard", remote: true do %>
+                <div class="codetool-link"><%= octicon "clippy", height: 18 %></div>
+                <div class="codetool-check" hidden><%= octicon "check", height: 18 %></div>
+              <% end %>
             <% end %>
 
             <% if drawer.friends.include?(current_user) || codetool.user == current_user %>

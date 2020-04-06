@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <%= render 'codetool_item', codetool: @codetool, drawer: @drawer %>
+      <% if @codetool.public? %>
+        <%= render 'codetool_item', codetool: @codetool, drawer: @drawer %>
+      <% else %>
+        <div class="h4 text-center alert alert-warning" role="alert">
+          <%= octicon "alert", height: 24 %> This Codetool is not public. Ask <%= @codetool.user.username %> to make it public to show it.
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
