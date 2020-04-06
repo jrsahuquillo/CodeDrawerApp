@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <% if @codetool.public? %>
+      <% if @codetool.public? || current_user.present? && current_drawer_collaborated? %>
         <%= render 'codetool_item', codetool: @codetool, drawer: @drawer %>
       <% else %>
         <div class="h4 text-center alert alert-warning" role="alert">
-          <%= octicon "alert", height: 24 %> This Codetool is not public. Ask <%= @codetool.user.username %> to make it public to show it.
+          <%= octicon "alert", height: 24 %> This Codetool is not public. Ask <%= @codetool.user.username %> to make it public to show it<br>or log in if you are collaborator of this codetool drawer.
         </div>
       <% end %>
     </div>
