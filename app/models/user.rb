@@ -9,15 +9,13 @@ class User < ApplicationRecord
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   validate :validate_username
-  after_validation :populate_data, only: :create
+  after_create :populate_data
 
   has_many :drawers
   has_many :codetools
   has_many :friendships
   has_many :friends, through: :friendships, class_name: "User"
   has_many :notifications, foreign_key: :recipient_id
-
-
 
   attr_accessor :login
 
@@ -60,8 +58,7 @@ class User < ApplicationRecord
   end
 
   def populate_data
-    # binding.pry
-    # load File.join(RAILS_ROOT, 'lib', 'tasks', 'populate_data.rake')
-    # Rake::Task[populate_data].invoke
+    load Rails.root.join('lib', 'tasks', 'populate_data.rake').to_s
+    Rake::Task['db:populate_data'].execute(self)
   end
 end
