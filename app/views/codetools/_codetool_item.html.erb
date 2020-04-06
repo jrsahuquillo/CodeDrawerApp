@@ -42,7 +42,7 @@
 
           <div class="p-2 d-flex flex-row justify-content-between">
 
-            <% if codetool.public? && !codetool.belongs_to_user?(current_user) %>
+            <% if codetool.public? && !show_codetool_page? && !codetool.belongs_to_user?(current_user) %>
               <div class="favorite-buttons">
                 <div class='destroy-favorite <%= "d-none" unless codetool.favorited?(current_user.id) %>' >
                   <%= button_to favorite_codetool_path(current_user, codetool_id: codetool.id),
