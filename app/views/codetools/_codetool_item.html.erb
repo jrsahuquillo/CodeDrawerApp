@@ -60,13 +60,15 @@
               </div>
             <% end %>
 
-            <% if show_codetool_page? && codetool.belongs_to_user?(current_user) %>
-              <%= link_to drawer_codetools_path(drawer), class: "link-codetool-icon", 'data-toggle':'tooltip', title: "Return to drawer" do %>
-                <div class="codetool-link"><%= octicon "dependent", height: 18 %></div>
-              <% end %>
-            <% else %>
-              <%= link_to drawer_codetool_path(drawer, codetool), class: "detail-codetool-icon", 'data-toggle':'tooltip', title: "Show Codetool", target: :_blank do %>
-                <div class="codetool-link"><%= octicon "link", height: 18 %></div>
+            <% if codetool.belongs_to_user?(current_user) %>
+              <% if show_codetool_page? %>
+                <%= link_to drawer_codetools_path(drawer), class: "link-codetool-icon", 'data-toggle':'tooltip', title: "Return to drawer" do %>
+                  <div class="codetool-link"><%= octicon "dependent", height: 18 %></div>
+                <% end %>
+              <% else %>
+                <%= link_to drawer_codetool_path(drawer, codetool), class: "detail-codetool-icon", 'data-toggle':'tooltip', title: "Show Codetool", target: :_blank do %>
+                  <div class="codetool-link"><%= octicon "link", height: 18 %></div>
+                <% end %>
               <% end %>
             <% end %>
 
