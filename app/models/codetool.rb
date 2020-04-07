@@ -3,10 +3,10 @@ class Codetool < ApplicationRecord
   belongs_to :user
 
   validates :title, presence: true
+  after_validation :set_slug, only: [:create, :update]
 
   scope :is_public, ->{ where(public: true) }
 
-  after_validation :set_slug, only: [:create, :update]
 
   def self.search(search)
     self.where("title ILIKE ? OR content ILIKE ?", "%#{search}%", "%#{search}%").uniq
