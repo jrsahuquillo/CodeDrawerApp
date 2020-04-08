@@ -1,5 +1,6 @@
 class Drawer < ApplicationRecord
   validates :title, presence: true
+  after_validation :set_slug, only: [:create, :update]
 
   default_scope { order(created_at: :desc)}
 
@@ -14,4 +15,15 @@ class Drawer < ApplicationRecord
   def set_defaults
     self.position ||= 0
   end
+
+  def to_param
+    "#{id}-#{slug}"
+  end
+
+  private
+
+  def set_slug
+    self.slug = title.to_s.parameterize
+  end
+
 end
