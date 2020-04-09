@@ -2,7 +2,9 @@
 class FavoriteCodetoolsController < ApplicationController
 
   def index
-    @favorite_codetools = FavoriteCodetool.where(user_id: current_user.id).map{|favorite| favorite.codetool}
+    @favorite_codetools = FavoriteCodetool.where(user_id: current_user.id)
+                                          .map{|favorite| favorite.codetool}
+                                          .sort_by(&:total_favorites).reverse
   end
 
   def create
