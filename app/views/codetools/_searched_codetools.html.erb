@@ -1,0 +1,9 @@
+  <div class='h3 text-center codetool-form'><%= title %> Search</div>
+  <ul>
+    <% searched_codetools.each do |codetool| %>
+      <%= render 'codetool_item', codetool: codetool, drawer: codetool.drawer %>
+    <% end %>
+  </ul>
+    <p class="blank-search">There are no codetools containing the term(s) <%= params[:search] %>.</p>
+<% end %>
+
