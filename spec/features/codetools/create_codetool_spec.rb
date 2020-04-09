@@ -14,6 +14,7 @@ RSpec.feature "Creating Codetools" do
     fill_in "Title", with: "Creating a Codetool"
     fill_in "Content", with: "Lorem Ipsum"
     click_button "Create Codetool"
+    @drawer.reload
 
     expect(Codetool.last.drawer).to eq(@drawer)
     expect(Codetool.last.user).to eq(@user)
@@ -23,7 +24,7 @@ RSpec.feature "Creating Codetools" do
     expect(page).to have_content("Codetool has been created")
     expect(page).to have_content(@drawer.codetools.last.title)
     expect(page).to have_content(@drawer.codetools.last.content)
-    expect(page.current_path).to eq(drawer_codetools_path(@drawer.id))
+    expect(page.current_path).to eq(drawer_codetools_path(@drawer))
   end
 
   scenario "a user creates a new codetool without content" do
