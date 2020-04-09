@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-12">
       <% if @codetool.public? || current_user.present? && (@codetool.user == current_user || current_drawer_collaborated?) %>
+        <%= codetool_breadcrumb_title %>
         <%= render 'codetool_item', codetool: @codetool, drawer: @drawer %>
       <% else %>
         <div class="h4 text-center alert alert-warning" role="alert">

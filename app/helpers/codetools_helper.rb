@@ -13,7 +13,8 @@ module CodetoolsHelper
 
 
   def codetool_breadcrumb_title
-    "<div class='h3 text codetool-form'> Editing:
+    action = params[:action] == "edit" ? 'Editing' : 'Show'
+    "<div class='h3 text codetool-breadcrumb'> #{action}:
       <span class='h6'> #{@drawer.title}
         <small class='badge badge-secondary'> #{@drawer.user.username} </small>
       / #{@codetool.title}
