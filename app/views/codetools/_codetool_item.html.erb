@@ -12,9 +12,9 @@
             <% end %>
           </div>
           <% if codetool.public? %>
-            <div class="public-icon" ><%= octicon "rss" %></div>
+            <div class="public-icon" ><%= octicon "organization" %></div>
           <% else %>
-              <div class="public-icon" ><%= octicon "lock" %></div>
+              <div class="nil-icon"><%= octicon nil %></div>
           <% end %>
           <div class="toggle-codetool-content-icon" ><%= octicon "chevron-down", class: "codetool" + "#{codetool.id}", height: 24 %></div>
         </div>

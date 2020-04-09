@@ -45,8 +45,12 @@
     margin: 1rem 0;
 }
 
-.public-icon, .favorite-icon {
+.public-icon, .favorite-icon, .nil-icon {
     margin: 0 0.8rem;
+}
+
+.nil-icon {
+    width: 1rem;
 }
 
 .show-codetool, .new-codetool {
