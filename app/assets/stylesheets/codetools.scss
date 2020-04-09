@@ -53,6 +53,10 @@
     width: 1rem;
 }
 
+.dnd-codetool-icon {
+    opacity: 0.5;
+}
+
 .show-codetool, .new-codetool {
     color: inherit !important; /* blue colors for links too */
     text-decoration: inherit !important; /* no underline */

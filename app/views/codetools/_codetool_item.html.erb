@@ -3,7 +3,11 @@
     <%= link_to "#codetool" + "#{codetool.id}", class: "show-codetool", 'data-toggle': 'collapse', 'aria-expanded': 'false', 'aria-controls': "codetool" + "#{codetool.id}" do %>
       <div class="codetool-header">
         <div class="h4 codetool-title">
-          <%= octicon "grabber", height: 24 if codetool.belongs_to_user?(current_user) %>&nbsp; <%= params[:search] ? highlight(codetool.title, params[:search]) : codetool.title %>
+          <span class="dnd-codetool-icon">
+            <%= octicon "kebab-vertical", height: 24 if codetool.belongs_to_user?(current_user) %>
+          </span>
+            &nbsp;
+          <%= params[:search] ? highlight(codetool.title, params[:search]) : codetool.title %>
         </div>
         <div class="d-flex">
           <div class="favorite-icon">
