@@ -14,11 +14,12 @@ module CodetoolsHelper
 
   def codetool_breadcrumb_title
     action = params[:action] == "edit" ? 'Editing' : 'Show'
+    badge_style = @drawer.user == current_user ? 'warning' : 'secondary'
     "<div class='h3 text codetool-breadcrumb'> #{action}:
       <span class='h6'> #{@drawer.title}
-        <small class='badge badge-secondary'> #{@drawer.user.username} </small>
+        <small class='badge badge-#{badge_style}'> #{@drawer.user.username} </small>
       / #{@codetool.title}
-        <small class='badge badge-secondary'> #{@codetool.user.username} </small>
+        <small class='badge badge-#{badge_style}'> #{@codetool.user.username} </small>
       </span>
     </div>".html_safe
   end
