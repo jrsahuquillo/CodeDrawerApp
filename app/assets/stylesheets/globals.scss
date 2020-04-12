@@ -79,4 +79,12 @@ mark {
     overflow-x: hidden;
     position: relative;
   }
+
+  .search-form-wrapper {
+    padding-right: 1rem;
+    .search-field {
+      margin-right: 0.5rem;
+      width: 81% !important;
+    }
+  }
 }
