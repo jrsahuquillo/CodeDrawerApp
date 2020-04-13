@@ -3,18 +3,22 @@
     <%= link_to "#codetool" + "#{codetool.id}", class: "show-codetool", 'data-toggle': 'collapse', 'aria-expanded': 'false', 'aria-controls': "codetool" + "#{codetool.id}" do %>
       <div class="codetool-header">
         <div class="h4 codetool-title">
-          <%= octicon "grabber", height: 24 if codetool.belongs_to_user?(current_user) %>&nbsp; <%= params[:search] ? highlight(codetool.title, params[:search]) : codetool.title %>
+          <span class="dnd-codetool-icon">
+            <%= octicon "kebab-vertical", height: 24 if codetool.belongs_to_user?(current_user) %>
+          </span>
+            &nbsp;
+          <%= params[:search] ? highlight(codetool.title, params[:search]) : codetool.title %>
         </div>
         <div class="d-flex">
           <div class="favorite-icon">
-            <% if codetool.total_favorites.present? %>
+            <% unless codetool.total_favorites.zero? %>
               <%= octicon "star" %> <span class="total-favorites badge badge-light"><%= codetool.total_favorites %></span>
             <% end %>
           </div>
           <% if codetool.public? %>
-            <div class="public-icon" ><%= octicon "rss" %></div>
+            <div class="public-icon" ><%= octicon "organization" %></div>
           <% else %>
-              <div class="public-icon" ><%= octicon "lock" %></div>
+              <div class="nil-icon"><%= octicon nil %></div>
           <% end %>
           <div class="toggle-codetool-content-icon" ><%= octicon "chevron-down", class: "codetool" + "#{codetool.id}", height: 24 %></div>
         </div>
@@ -41,7 +45,7 @@
           </div>
 
           <div class="p-2 d-flex flex-row justify-content-between">
-            <% if !show_codetool_page? && !codetool.belongs_to_user?(current_user) %>
+            <% unless show_codetool_page? %>
               <div class="favorite-buttons">
                 <div class='destroy-favorite <%= "d-none" unless codetool.favorited?(current_user.id) %>' >
                   <%= button_to favorite_codetool_path(current_user, codetool_id: codetool.id),

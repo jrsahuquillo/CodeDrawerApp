@@ -2,11 +2,36 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#sidebar {
+  float: left;
+   min-width: 25%;
+}
+.new-drawer-button {
+  float: left;
+  background-color: #FFC104;
+  font-size: 0.8rem;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  border-radius: 0.25rem;
+  .drawer-item-menu {
+    color: #393D41;
+  }
+  &:hover{
+    .drawer-item-menu {
+      color: white;
+    }
+  }
+
+}
+
+.new-drawer-text {
+  padding-left: 0.5rem;
+}
+
 .drawers-sidebar {
   float: left;
   background-color: #3F4448;
   font-size: 0.8rem;
-  width: 25%;
   margin-top: 2rem;
   margin-left: 2rem;
   border-radius: 0.25rem;
@@ -33,7 +58,10 @@
 }
 
 .drawer-item-menu{
-  padding: 0.5rem 0.2rem 0 0.5rem;
+  padding: 0.5rem 0.2rem 0 0.8rem;
+  .dnd-drawer-icon {
+    opacity: 0.5;
+  }
 }
 
 a.drawer-link-sidebar {
@@ -44,9 +72,16 @@ a.drawer-link-sidebar {
 .drawer-item-sidebar.active,
 .drawer-item-sidebar:hover {
   background-color: #586069;
-  &:last-child {
-    border-radius: 0.25rem;
+  &:first-child {
+    border-radius: 0.25rem 0.25rem 0 0;
   }
+  &:last-child {
+    border-radius: 0 0.25rem 0.25rem;
+  }
+}
+
+.new-drawer-item:hover {
+  border-radius:  0.25rem !important;
 }
 
 .drawer-form {
@@ -54,7 +89,8 @@ a.drawer-link-sidebar {
 }
 
 .card.drawer-list.new-drawer {
-  border: #dfdfdf 4px dashed;
+  border: none;
+  background-color: #FFC104;
   border-radius: 0.25rem;
 }
 

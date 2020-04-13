@@ -3,101 +3,128 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .codetool-form {
-    margin: 20px;
+  margin: 20px;
+}
+
+.markdown-link {
+  color: #586068;
+  .octicon {
+    fill: currentColor;
+  }
+  &:hover {
+    color: #3D4246;
+  }
+}
+
+.codetool-breadcrumb {
+  margin: 20px;
+  padding: 1rem 0;
 }
 
 .card-body {
-    padding: 1rem !important;
+  padding: 1rem !important;
 }
 
 .card.mt-2.new-codetool {
-    border: #dfdfdf 4px dashed;
-    border-radius: 0.25rem;
-    margin: 0 1rem;
-    a:hover {
-        text-decoration: inherit;
-    }
+  border: #dfdfdf 4px dashed;
+  border-radius: 0.25rem;
+  margin: 0 1rem;
+  a:hover {
+      text-decoration: inherit;
+  }
 }
 .card-body:hover {
-    background: #F6F8FA !important;
+  background: #F6F8FA !important;
 }
 
 .codetools-header {
-    .card{
-        border: none;
-    }
+  .card{
+    border: none;
+  }
 
-    .new-codetool-icon {
-        color: #586069;
-        .octicon {
-            fill: currentColor;
-        }
-        &:hover{
-            color: #24292e;
-        }
-        h6 {
-            padding-top: 16px;
-        }
+  .new-codetool-icon {
+    color: #586069;
+    .octicon {
+      fill: currentColor;
     }
+    &:hover{
+      color: #24292e;
+    }
+    h6 {
+      padding-top: 16px;
+    }
+  }
 }
 
 .public-check {
-    margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
-.public-icon, .favorite-icon {
-    margin: 0 0.8rem;
+.public-icon, .favorite-icon, .nil-icon {
+  margin: 0 0.8rem;
+}
+
+.nil-icon {
+  width: 1rem;
+}
+
+.dnd-codetool-icon {
+  opacity: 0.5;
 }
 
 .show-codetool, .new-codetool {
-    color: inherit !important; /* blue colors for links too */
-    text-decoration: inherit !important; /* no underline */
+  color: inherit !important; /* blue colors for links too */
+  text-decoration: inherit !important; /* no underline */
 
-    .codetool-header {
-        display: flex;
-        justify-content: space-between;
+  .codetool-header {
+    display: flex;
+    justify-content: space-between;
 
-        .rotated{
-            transform: rotate(-180deg);
-            transition: all 0.5s;
-        }
+    .rotated{
+      transform: rotate(-180deg);
+      transition: all 0.5s;
+      }
 
-        .toggle-codetool-content-icon {
-          padding: 0 0.8rem;
-        }
+    .toggle-codetool-content-icon {
+      padding: 0 0.8rem;
     }
+  }
 }
 #codetools-list .codetool-title {
-    // width: 90%;
-    cursor: move;
+  // width: 90%;
+  cursor: move;
 }
 .codetool-content {
-    border-top: 0.5px solid #dee2e6;
-    padding: 8px;
+  border-top: 0.5px solid #dee2e6;
+  padding: 8px;
+  .highlight.plaintext {
+    padding: 0.5rem;
+    background-color: #dfdfdf;
+  }
 }
 
 .codetool-footer {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .detail-codetool-icon,
 .link-codetool-icon,
 .edit-codetool-icon,
 .delete-codetool-icon {
-    padding-left: 1.5rem;
-    color: #586069;
-    &:hover{
-        color: #24292e;
-    }
+  padding-left: 1.5rem;
+  color: #586069;
+  &:hover{
+      color: #24292e;
+  }
 }
 
 .octicon-chevron-down {
-    transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .blank-search {
-    margin: 2rem;
+  margin: 2rem;
 }
 
 .friend-codetool-title {
