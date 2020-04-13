@@ -114,7 +114,7 @@ class DrawersController < ApplicationController
     added_collaborators = initial_friends_ids + friends_ids - initial_friends_ids
     added_collaborators.each do |friend_id|
       DrawerCollaborator.create(drawer_id: @drawer.id, friend_id: friend_id)
-      Notification.create(recipient: User.find(friend_id), actor: current_user, action: "made you collaborator of", notifiable: @drawer )
+      Notification.create(recipient: User.find(friend_id), actor: current_user, action: "added you as collaborator of", notifiable: @drawer )
     end
 
     removed_collaborators = initial_friends_ids - friends_ids

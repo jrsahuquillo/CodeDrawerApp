@@ -21,12 +21,19 @@ $(document).on('turbolinks:load',function(){
         "<div class='dropdown-item' id='notification_" + notification.id + "'><small>" + notification.actor + " " + notification.action + " you</small></div>"
       );
     } else if (notification.notifiable["type"] == "Drawer") {
-      $('#notifications .dropdown-menu').append(
-        "<div class='dropdown-item' id='notification_" + notification.id + "'><small>" + notification.actor + " " + notification.action + "<a href=" + notification.notifiable['path'] + "> " + notification.notifiable['title'] + "</a></small></div>"
-      );
+      if (notification.action == "added you as collaborator of") {
+        $('#notifications .dropdown-menu').append(
+          "<div class='dropdown-item' id='notification_" + notification.id + "'><small>" + notification.actor + " " + notification.action + "<a href=" + notification.notifiable['path'] + "> " + notification.notifiable['title'] + "</a></small></div>"
+        );
+      } else {
+        $('#notifications .dropdown-menu').append(
+          "<div class='dropdown-item' id='notification_" + notification.id + "'><small>" + notification.actor + " " + notification.action + " <strong>" + notification.notifiable['title'] + "</strong></small></div>"
+        );
+      }
+
     } else if (notification.notifiable["type"] == "FavoriteCodetool") {
       $('#notifications .dropdown-menu').append(
-        "<div class='dropdown-item'id='notification_" + notification.id + "'><small>" + notification.actor + " " + notification.action + "<a href=" + notification.notifiable['path'] + "> " + notification.notifiable['title'] + "</a></small></div>"
+        "<div class='dropdown-item'id='notification_" + notification.id + "'><small>" + notification.actor + " " + notification.action + "<strong><a href=" + notification.notifiable['path'] + "> " + notification.notifiable['title'] + "</a></strong></small></div>"
       );
     } else if (notification.notifiable["type"] == "User") {
       $('#notifications .dropdown-menu').append(
