@@ -6,7 +6,19 @@ json.array! @notifications do |notification|
   json.created_at   notification.created_at
   json.notifiable do
     json.type   notification.notifiable.class.to_s
-    # json.path   drawer_codetools_path(notification.notifiable.id)
+    json.path   notifiable_path(notification.notifiable)
+    json.title  notifiable_title(notification.notifiable)
   end
+end
 
+def notifiable_path(item)
+  type = item.class.to_s
+  return drawer_codetool_path(item.codetool.drawer, item.codetool) if type == "FavoriteCodetool"
+  return drawer_codetools_path(item) if type == "Drawer"
+end
+
+def notifiable_title(item)
+  type = item.class.to_s
+  return item.codetool.title if type == "FavoriteCodetool"
+  return item.title if type == "Drawer"
 end

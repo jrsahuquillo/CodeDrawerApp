@@ -22,11 +22,11 @@ $(document).on('turbolinks:load',function(){
       );
     } else if (notification.notifiable["type"] == "Drawer") {
       $('#notifications .dropdown-menu').append(
-        "<div class='dropdown-item' id='notification_" + notification.id + "'><small>" + notification.actor + " " + notification.action + " of a drawer</small></div>"
+        "<div class='dropdown-item' id='notification_" + notification.id + "'><small>" + notification.actor + " " + notification.action + "<a href=" + notification.notifiable['path'] + "> " + notification.notifiable['title'] + "</a></small></div>"
       );
     } else if (notification.notifiable["type"] == "FavoriteCodetool") {
       $('#notifications .dropdown-menu').append(
-        "<div class='dropdown-item'id='notification_" + notification.id + "'><small>" + notification.actor + " " + notification.action + " one of your codetools</small></div>"
+        "<div class='dropdown-item'id='notification_" + notification.id + "'><small>" + notification.actor + " " + notification.action + "<a href=" + notification.notifiable['path'] + "> " + notification.notifiable['title'] + "</a></small></div>"
       );
     } else if (notification.notifiable["type"] == "User") {
       $('#notifications .dropdown-menu').append(
