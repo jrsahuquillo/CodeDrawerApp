@@ -68,17 +68,17 @@
             <% if codetool.belongs_to_user?(current_user) %>
               <% if show_codetool_page? %>
                 <%= link_to drawer_codetools_path(drawer), class: "link-codetool-icon", 'data-toggle':'tooltip', title: "Return to drawer" do %>
-                  <div class="codetool-link"><%= octicon "dependent", height: 18 %></div>
+                  <div class="codetool-link"><%= octicon "reply", height: 18 %></div>
                 <% end %>
               <% else %>
                 <%= link_to drawer_codetool_path(drawer, codetool), class: "detail-codetool-icon", 'data-toggle':'tooltip', title: "Show Codetool", target: :_blank do %>
-                  <div class="codetool-link"><%= octicon "link", height: 18 %></div>
+                  <div class="codetool-link"><%= octicon "unfold", height: 18 %></div>
                 <% end %>
               <% end %>
             <% end %>
 
             <%= link_to drawer_codetool_path(drawer, codetool), class: "link-codetool-icon #{dom_id(codetool)}", 'data-clipboard-text': "#{drawer_codetool_url(drawer, codetool)}", 'data-toggle':'tooltip', title: "Copy to clipboard", remote: true do %>
-              <div class="codetool-link"><%= octicon "clippy", height: 18 %></div>
+              <div class="codetool-link"><%= octicon "link", height: 18 %></div>
               <div class="codetool-check" hidden><%= octicon "check", height: 18 %></div>
             <% end %>
 
