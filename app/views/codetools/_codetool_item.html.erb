@@ -24,7 +24,8 @@
         </div>
       </div>
     <% end %>
-    <div class="collapse multi-collapse <%= 'show' if show_codetool_page? %>" id=<%= "codetool#{codetool.id}" %> >
+
+    <div class="collapse multi-collapse <%= 'show' if show_codetool_page? || recent_created_or_updated?(codetool) %>" id=<%= "codetool#{codetool.id}" %> >
       <div class="codetool-content">
         <%= params[:search] ? highlight(markdown(codetool.content), params[:search]) : markdown(codetool.content) %>
       </div>
