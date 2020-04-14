@@ -19,11 +19,11 @@
     <% unless @drawer.friends.include?(current_user) %>
       <div class="col text-right">
         <div class="btn-group" role="group">
-          <%= link_to edit_drawer_path(@drawer), class: 'edit-drawer-icon btn btn-outline-primary', 'data-toggle':'tooltip', title: "Edit Drawer", 'data-turbolinks': false do %>
+          <%= link_to edit_drawer_path(@drawer), class: 'edit-drawer-icon btn btn-outline-dark', 'data-toggle':'tooltip', title: "Edit Drawer", 'data-turbolinks': false do %>
             <%= octicon "pencil", height: 22 %>
           <% end %>
 
-          <%= link_to drawer_path(@drawer), method: :delete, class: 'delete-drawer-icon btn btn-outline-danger','data-toggle':'tooltip', title: "Delete Drawer",
+          <%= link_to drawer_path(@drawer), method: :delete, class: 'delete-drawer-icon btn btn-outline-dark','data-toggle':'tooltip', title: "Delete Drawer",
                                             data: { confirm: "Are you sure you want to delete drawer?\nAll content will be deleted." } do %>
             <%= octicon "trashcan", height: 24 %>
           <% end %>
