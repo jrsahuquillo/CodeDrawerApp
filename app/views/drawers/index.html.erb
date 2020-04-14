@@ -9,14 +9,15 @@
         <%= link_to drawer_codetools_path(drawer), class: 'drawer-detail' do %>
           <div class="card-body">
             <div class="h4 drawer-title">
-              <%= octicon "archive", height: 36 %> <%= drawer&.title %>
+              <%= drawer&.title %>
+              <% if drawer.friends.present? %>
+                <span class='collaborated-drawer-icon float-right'><%= octicon 'organization'%></span>
+              <% end%>
             </div>
             <small class="drawer-description">
               <%= truncate(drawer.description, length: 140) %>
             </small><br>
-            <small class="drawer-time-author">
-              <%= set_item_time(drawer) %>
-            </small>
+            
           </div>
         <% end %>
       </div>

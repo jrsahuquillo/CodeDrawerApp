@@ -15,10 +15,6 @@ module DrawersHelper
     current_user.collaborated_drawers
   end
 
-  def drawer_title(drawer)
-    "#{drawer.title.truncate(50)}&nbsp;&nbsp;#{octicon 'organization' if drawer.friends.present?}".html_safe
-  end
-
   def drawer_collaborators
     if @drawer.friends.present?
       drawer_friends = ""
