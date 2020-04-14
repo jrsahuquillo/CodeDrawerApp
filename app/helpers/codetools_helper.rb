@@ -27,4 +27,9 @@ module CodetoolsHelper
   def show_codetool_page?
     params[:controller] == "codetools" && params[:action] == "show"
   end
+
+  def recent_created_or_updated?(codetool)
+    params[:show] == codetool.to_param
+  end
+
 end

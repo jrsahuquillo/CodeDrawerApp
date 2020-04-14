@@ -41,7 +41,7 @@ class CodetoolsController < ApplicationController
 
     if @codetool.save
       flash[:notice] = "Codetool has been created"
-      redirect_to drawer_codetools_path(@drawer)
+      redirect_to drawer_codetools_path(@drawer, show: @codetool.to_param)
     else
       flash[:alert] = "Codetool has not been created"
       render :new
@@ -65,7 +65,7 @@ class CodetoolsController < ApplicationController
     else
       if @codetool.update(codetool_params)
         flash[:success] = "Codetool has been updated"
-        redirect_to drawer_codetools_path(@drawer)
+        redirect_to drawer_codetools_path(@drawer, show: @codetool.to_param)
       else
         flash.now[:danger] = "Codetool has not been updated"
         render :edit
