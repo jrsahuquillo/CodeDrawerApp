@@ -125,8 +125,15 @@ a.drawer-link-sidebar {
 }
 
 #collaborated-drawers-list {
+  .drawer-item-menu {
+    padding-left: 2rem;
+  }
   .rotated{
       transform: rotate(-180deg);
       transition: all 0.5s;
   }
+}
+
+.collaborated-drawer-icon {
+  padding-right: 1rem;
 }

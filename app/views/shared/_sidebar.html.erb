@@ -12,7 +12,6 @@
     </div>
   </div>
 
-
   <div class="drawers-sidebar">
     <div class="drawers-list-sidebar full-height">
       <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %>">
@@ -25,34 +24,21 @@
         <% end %>
       </div>
 
-      <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %> accordion" id="collaborated-drawers-list">
-        <div class="card">
-            <div class="card-header drawer-item-menu " id="heading">
-              <div class="h4 mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  <%= octicon "organization", height: 24 %> Collaborated Drawers <%= octicon "chevron-down", height: 24 %>
-                </button>
+      <div id="collaborated-drawers-list">
+        <% collaborated_drawers.each do |drawer| %>
+          <div class="drawer-item-sidebar <%= check_active_link(drawer.id) %>" id="<%= dom_id(drawer) %>">
+            <%= link_to drawer_codetools_path(drawer), class: 'drawer-link-sidebar', 'data-turbolinks': false do %>
+              <div class="drawer-item-menu">
+                <div class="h4">
+                  <%= drawer.title.truncate(50) %>
+                  <% if drawer.friends.present? %>
+                    <span class='collaborated-drawer-icon float-right'><%= octicon 'organization'%></span>
+                  <% end%>
+                </div>
               </div>
+            <% end %>
           </div>
-
-          <div id="collapseOne" class="collapse <%= 'show' if current_drawer_collaborated? %>" aria-labelledby="heading" data-parent="#collaborated-drawers-list">
-            <div class="card-body">
-              <div id="collaborated-drawers-list">
-                <% collaborated_drawers.each do |drawer| %>
-                  <div class="drawer-item-sidebar <%= check_active_link(drawer.id) %>" id="<%= dom_id(drawer) %>">
-                    <%= link_to drawer_codetools_path(drawer), class: 'drawer-link-sidebar', 'data-turbolinks': false do %>
-                      <div class="drawer-item-menu">
-                        <div class="h4">
-                          <%= octicon "archive", height: 26 %>&nbsp;<%= drawer_title(drawer) %>
-                        </div>
-                      </div>
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
+        <% end %>
       </div>
 
       <div id="drawers-list" data-url="<%= sort_drawer_drawers_path %>">
@@ -65,8 +51,11 @@
                   <span class="dnd-drawer-icon">
                     <%= octicon "kebab-vertical", height: 24 %>
                   </span>
-                  &nbsp;&nbsp;
-                  <%= octicon "archive", height: 26 %>&nbsp;<%= drawer_title(drawer) %>
+                  &nbsp;
+                  <%= drawer.title.truncate(50) %>
+                  <% if drawer.friends.present? %>
+                    <span class='collaborated-drawer-icon float-right'><%= octicon 'organization'%></span>
+                  <% end%>
                 </div>
               </div>
             <% end %>
