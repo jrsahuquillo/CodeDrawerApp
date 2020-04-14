@@ -59,7 +59,7 @@
 
 .drawer-item-menu{
   padding: 0.5rem 0.2rem 0 0.8rem;
-  .dnd-drawer-icon {
+  .drawer-list-icon {
     opacity: 0.5;
   }
 }
@@ -125,9 +125,7 @@ a.drawer-link-sidebar {
 }
 
 #collaborated-drawers-list {
-  .drawer-item-menu {
-    padding-left: 2rem;
-  }
+
   .rotated{
       transform: rotate(-180deg);
       transition: all 0.5s;

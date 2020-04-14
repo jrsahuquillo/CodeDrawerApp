@@ -30,6 +30,10 @@
             <%= link_to drawer_codetools_path(drawer), class: 'drawer-link-sidebar', 'data-turbolinks': false do %>
               <div class="drawer-item-menu">
                 <div class="h4">
+                  <span class="drawer-list-icon">
+                    <%= octicon "primitive-square" %>
+                  </span>
+                  &nbsp;
                   <%= drawer.title.truncate(50) %>
                   <% if drawer.friends.present? %>
                     <span class='collaborated-drawer-icon float-right'><%= octicon 'organization'%></span>
@@ -48,7 +52,7 @@
             <%= link_to drawer_codetools_path(drawer), class: 'drawer-link-sidebar', 'data-turbolinks': false do %>
               <div class="drawer-item-menu">
                 <div class="h4">
-                  <span class="dnd-drawer-icon">
+                  <span class="drawer-list-icon">
                     <%= octicon "kebab-vertical", height: 24 %>
                   </span>
                   &nbsp;
