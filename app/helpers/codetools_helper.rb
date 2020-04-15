@@ -13,7 +13,6 @@ module CodetoolsHelper
 
 
   def codetool_breadcrumb_title
-    # action = params[:action] == "edit" ? 'Editing:' : ''
     badge_style = @drawer.user == current_user ? 'warning' : 'secondary'
     "<div class='h3 text codetool-breadcrumb'> #{'Edition:' if params[:action] == "edit"}
       <span class='h6'> #{@drawer.title}
