@@ -33,7 +33,9 @@
 yarn-debug.log*
 .yarn-integrity
 
-*.pem
 
 # Ignore environment variables
 config/application.yml
+codedrawer.pem
+.pem
+*.pem
