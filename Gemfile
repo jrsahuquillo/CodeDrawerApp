@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.1'
+gem 'rails', '~> 6.0', '>= 6.0.2.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'mysql2', '~> 0.4.4'
@@ -39,8 +39,6 @@ gem 'listen', '~> 3.1', '>= 3.1.5'
 gem "rack", ">= 2.0.8"
 gem 'markdown_checkboxes', '~> 1.0'
 gem 'select2-rails'
-gem "nokogiri", ">= 1.10.8"
-
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
