@@ -16,7 +16,8 @@
     "select2": "^4.0.13",
     "serialize-javascript": "2.1.2",
     "turbolinks": "^5.2.0",
-    "kind-of":"^6.0.3"
+    "kind-of":"^6.0.3",
+    "node": ">=8.16.0"
   },
   "version": "0.1.0",
   "devDependencies": {
