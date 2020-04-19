@@ -1,6 +1,7 @@
 json.array! @notifications do |notification|
   json.id           notification.id
   json.actor        notification.actor.username
+  json.actor_path   user_public_codetools_path(notification.actor.id)
   json.recipient    notification.recipient.username
   json.action       notification.action
   json.created_at   notification.created_at
