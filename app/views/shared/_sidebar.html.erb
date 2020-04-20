@@ -14,6 +14,18 @@
 
   <div class="drawers-sidebar">
     <div class="drawers-list-sidebar full-height">
+
+      <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %>">
+        <%= link_to pin_codetools_path, class: 'drawer-link-sidebar' do %>
+          <div class="drawer-item-menu">
+            <div class="h4">
+              <%= octicon "pin" %>&nbsp;
+              <span>Work Board</span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
       <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %>">
         <%= link_to favorite_codetools_path, class: 'drawer-link-sidebar' do %>
           <div class="drawer-item-menu">
