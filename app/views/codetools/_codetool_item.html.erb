@@ -65,6 +65,24 @@
               </div>
             <% end %>
 
+            <div id="pin_<%= dom_id(codetool)%>" class="pin-button">
+              <% if codetool.pinned?(current_user.id) %>
+                <%= link_to pin_codetool_path(current_user, codetool_id: codetool.id),
+                                                            method: :delete, remote: true,
+                                                            class: "pinned-codetool-icon",
+                                                            title: "Unpin from workboard" do %>
+                  <div class="codetool-pinned"><%= octicon "pin", height: 18 %></div>
+                <% end %>
+              <% else %>
+                <%= link_to pin_codetools_path(codetool_id: codetool.id),
+                                                            method: :post, remote: true,
+                                                            class: "unpinned-codetool-icon",
+                                                            title: "Pin to workboard" do %>
+                  <div class="codetool-unpinned"><%= octicon "pin", height: 18 %></div>
+                <% end %>
+              <% end %>
+            </div>
+
             <% if codetool.belongs_to_user?(current_user) %>
               <% if show_codetool_page? %>
                 <%= link_to drawer_codetools_path(drawer), class: "link-codetool-icon", 'data-toggle':'tooltip', title: "Return to drawer" do %>

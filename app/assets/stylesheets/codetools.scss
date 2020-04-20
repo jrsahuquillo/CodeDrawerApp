@@ -111,11 +111,15 @@
 .detail-codetool-icon,
 .link-codetool-icon,
 .edit-codetool-icon,
-.delete-codetool-icon {
+.delete-codetool-icon,
+.codetool-unpinned,
+.codetool-pinned {
   padding-left: 1.5rem;
   color: #586069;
+  transition: transform .2s;
   &:hover{
       color: #24292e;
+      transform: scale(1.2);
   }
 }
 
@@ -146,4 +150,13 @@
 
 .total-public-codetools {
   margin-top: 1rem;
+}
+
+.codetool-unpinned {
+  color: #586068;
+  opacity: 0.3;
+}
+
+.codetool-pinned {
+  color: #24292e;
 }

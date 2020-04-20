@@ -24,6 +24,10 @@ class Codetool < ApplicationRecord
     FavoriteCodetool.where(codetool_id: self.id).count
   end
 
+  def pinned?(current_user_id)
+    PinCodetool.where(user_id: current_user_id, codetool_id: self.id).present?
+  end
+
   def to_param
     "#{id}-#{slug}"
   end
