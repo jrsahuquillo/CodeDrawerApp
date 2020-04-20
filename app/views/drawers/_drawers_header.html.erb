@@ -10,6 +10,19 @@
       <% end %>
     </div>
   </div>
+
+  <div class="col-sm-6">
+    <div class="card drawer-list">
+      <%= link_to pin_codetools_path, class: 'drawer-detail' do %>
+      <div class="card-body">
+        <div class="h4 drawer-title">
+          <%= octicon "pin", height: 24 %> Work Board
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
   <div class="col-sm-6">
     <div class="card drawer-list">
       <%= link_to favorite_codetools_path, class: 'drawer-detail' do %>
