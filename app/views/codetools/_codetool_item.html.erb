@@ -101,7 +101,7 @@
             <% end %>
 
             <% if drawer.friends.include?(current_user) || codetool.user == current_user %>
-              <%= link_to edit_drawer_codetool_path(drawer, codetool), class: 'edit-codetool-icon', 'data-toggle':'tooltip', title: "Edit Codetool" do %>
+              <%= link_to edit_drawer_codetool_path(drawer, codetool), class: 'edit-codetool-icon', 'data-toggle':'tooltip', title: "Edit Codetool", 'data-turbolinks': false do %>
                 <%= octicon "pencil", height: 18 %>
               <% end %>
             <% end %>

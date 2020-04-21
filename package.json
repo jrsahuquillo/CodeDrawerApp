@@ -8,16 +8,17 @@
     "@rails/webpacker": "4.2.0",
     "acorn-node": "^2.0.0",
     "bootstrap": "4.3.1",
+    "bootstrap4-toggle": "^3.6.1",
     "jquery": "^3.4.1",
     "jquery-ui": "^1.12.1",
     "jquery-ui-dist": "^1.12.1",
+    "kind-of": "^6.0.3",
     "minimist": "^1.2.5",
+    "node": ">=8.16.0",
     "popper.js": "^1.15.0",
     "select2": "^4.0.13",
     "serialize-javascript": "2.1.2",
-    "turbolinks": "^5.2.0",
-    "kind-of":"^6.0.3",
-    "node": ">=8.16.0"
+    "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {

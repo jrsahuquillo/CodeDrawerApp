@@ -56,8 +56,11 @@
   }
 }
 
-.public-check {
-  margin: 0.5rem 0;
+.p-2.form-footer {
+  padding: 1rem 0 !important;
+  .form-check {
+    padding-left: 0 !important;
+  }
 }
 
 .public-icon, .favorite-icon, .nil-icon {

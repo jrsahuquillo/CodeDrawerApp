@@ -69,7 +69,4 @@ $(document).on('turbolinks:load', function () {
     $temp.remove();
   });
 
-  // $('.pin-button').click(function (e) {
-  //   debugger;
-  // });
 });

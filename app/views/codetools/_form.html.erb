@@ -49,13 +49,12 @@
           <div class="public-check">
             <div class='form-check'>
               <div class='control-label col-sm'>
-                <%= f.label :public %>
-              </div>
-              <div class='control-label col-sm'>
-                <%= f.check_box :public, id: 'public_checkbox' %>&nbsp;
-                <%= f.label :public, class: 'form-check-label' do %>
-                  <%= octicon "organization", height: 36 %>
-                <% end %>
+                <%= f.check_box :public, id: 'public_checkbox', 'data-toggle': 'toggle',
+                                                                'data-size': 'sm',
+                                                                'data-on': "#{octicon 'organization'}",
+                                                                'data-off': "#{octicon 'lock'}",
+                                                                'data-onstyle': 'outline-primary',
+                                                                'data-offstyle': 'light' %>
               </div>
             </div>
           </div>
