@@ -163,3 +163,8 @@
 .codetool-pinned {
   color: #24292e;
 }
+
+img[src*="#wide"] {
+   width:100%;
+   height:100%;
+}
