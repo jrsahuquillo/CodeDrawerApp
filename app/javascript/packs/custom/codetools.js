@@ -35,8 +35,8 @@ $(document).on('turbolinks:load', function () {
 
   // Warning when a codetools is made public
   $publicCheckbox = $('#public_checkbox')
-  $publicCheckbox.click(function(){
-    if($publicCheckbox.prop("checked")) {
+  $publicCheckbox.change(function(){
+    if($publicCheckbox.prop('checked')) {
       message = confirm("Are you sure to make this Codetool public?");
       if(message) {
         return true;
@@ -69,7 +69,4 @@ $(document).on('turbolinks:load', function () {
     $temp.remove();
   });
 
-  // $('.pin-button').click(function (e) {
-  //   debugger;
-  // });
 });
