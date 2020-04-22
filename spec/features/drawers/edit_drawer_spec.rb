@@ -15,6 +15,7 @@ RSpec.feature "Editing Drawers" do
     fill_in "Title", with: "Updated Title"
     fill_in "Description", with: "Updated Description of Drawer"
     click_button "Update Drawer"
+    @drawer.reload
 
     expect(page).to have_content("Drawer has been updated")
     expect(page).to have_content("Updated Title")

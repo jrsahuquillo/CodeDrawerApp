@@ -30,5 +30,7 @@ Rails.application.routes.draw do
   end
 
   resources :favorite_codetools
+  resources :pin_codetools
+  match 'pin_codetools', to: 'pin_codetools#clear', via: :delete
 
 end

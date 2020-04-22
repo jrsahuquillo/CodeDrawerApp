@@ -1,0 +1,23 @@
+ <div class="pinned-codetools">
+  <div class="row">
+    <div class="col-12 d-flex flex-row">
+      <div class="h1">Work Board</div>
+      <div class="col text-right" style="float: right;">
+        <%= link_to pin_codetools_path, method: :delete, remote: :true,
+                                        class: "clear-pinned-codetools btn btn-outline-dark #{ 'disabled' unless @pinned_codetools.present?}",
+                                        title: "Clear all", data: { confirm: "Are you sure you want to clear Work Board?" } do %>
+          <%= octicon "browser", height: 22 %> Clear
+        <% end %>
+      </div>
+    </div>
+    <div class="col-12">
+      <% if @pinned_codetools.present? %>
+        <% @pinned_codetools.each do |pinned_codetool| %>
+          <%= render './codetools/codetool_item', codetool: pinned_codetool, drawer: pinned_codetool.drawer %>
+        <% end %>
+      <% else %>
+          <div class="blank-pins">There are no pinned codetools. Pin the most useful to have them more accesible.</div>
+      <% end %>
+    </div>
+  </div>
+</div>

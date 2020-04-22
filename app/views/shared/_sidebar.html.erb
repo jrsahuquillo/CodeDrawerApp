@@ -1,68 +1,84 @@
-<div id="sidebar" class="drawers-sidebar">
-  <div class="drawers-list-sidebar full-height">
-    <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %>">
-      <%= link_to new_drawer_path, class: 'drawer-link-sidebar' do %>
+<div id="sidebar"class="d-flex flex-column bd-highlight mb-3">
+  <div class="new-drawer-button">
+    <div class="drawer-item-sidebar new-drawer-item">
+      <%= link_to new_drawer_path, class: 'drawer-link-sidebar', 'data-turbolinks': false do %>
         <div class="drawer-item-menu">
-          <div class="h4">
-            <%= octicon "plus", height: 24 %> New Drawer
+          <div class="h2 new-drawer-item-menu">
+            <%= octicon "plus", height: 24 %>
+            <span class="new-drawer-text">New Drawer</span>
           </div>
         </div>
       <% end %>
     </div>
+  </div>
 
-    <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %>">
-      <%= link_to favorite_codetools_path, class: 'drawer-link-sidebar' do %>
-        <div class="drawer-item-menu">
-          <div class="h4">
-            <%= octicon "star", height: 24 %> Favorite Codetools
-          </div>
-        </div>
-      <% end %>
-    </div>
+  <div class="drawers-sidebar">
+    <div class="drawers-list-sidebar full-height">
 
-    <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %> accordion" id="collaborated-drawers-list">
-      <div class="card">
-          <div class="card-header drawer-item-menu " id="heading">
-            <div class="h4 mb-0">
-              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                <%= octicon "organization", height: 24 %> Collaborated Drawers <%= octicon "chevron-down", height: 24 %>
-              </button>
-            </div>
-        </div>
-
-        <div id="collapseOne" class="collapse <%= 'show' if current_drawer_collaborated? %>" aria-labelledby="heading" data-parent="#collaborated-drawers-list">
-          <div class="card-body">
-            <div id="collaborated-drawers-list">
-              <% collaborated_drawers.each do |drawer| %>
-                <div class="drawer-item-sidebar <%= check_active_link(drawer.id) %>" id="<%= dom_id(drawer) %>">
-                  <%= link_to drawer_codetools_path(drawer), class: 'drawer-link-sidebar', 'data-turbolinks': false do %>
-                    <div class="drawer-item-menu">
-                      <div class="h4">
-                        <%= octicon "archive", height: 26 %>&nbsp;<%= drawer_title(drawer) %>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
-              <% end %>
+      <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %>">
+        <%= link_to pin_codetools_path, class: 'drawer-link-sidebar' do %>
+          <div class="drawer-item-menu">
+            <div class="h4">
+              <%= octicon "pin" %>&nbsp;
+              <span>Work Board</span>
             </div>
           </div>
-        </div>
+        <% end %>
       </div>
-    </div>
 
-    <div id="drawers-list" data-url="<%= sort_drawer_drawers_path %>">
-      <% drawers ||= sorted_drawers %>
-      <% drawers.each do |drawer| %>
-        <div class="drawer-item-sidebar <%= check_active_link(drawer.id) %>" id="<%= dom_id(drawer) %>">
-          <%= link_to drawer_codetools_path(drawer), class: 'drawer-link-sidebar', 'data-turbolinks': false do %>
-            <div class="drawer-item-menu">
-              <div class="h4">
-                <%= octicon "grabber", height: 24 %>&nbsp;&nbsp; <%= octicon "archive", height: 26 %>&nbsp;<%= drawer_title(drawer) %>
-              </div>
+      <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %>">
+        <%= link_to favorite_codetools_path, class: 'drawer-link-sidebar' do %>
+          <div class="drawer-item-menu">
+            <div class="h4">
+              <%= octicon "star" %>&nbsp;
+              <span>Favorite Codetools</span>
             </div>
-          <% end %>
-        </div>
-      <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div id="collaborated-drawers-list">
+        <% collaborated_drawers.each do |drawer| %>
+          <div class="drawer-item-sidebar <%= check_active_link(drawer.id) %>" id="<%= dom_id(drawer) %>">
+            <%= link_to drawer_codetools_path(drawer), class: 'drawer-link-sidebar', 'data-turbolinks': false do %>
+              <div class="drawer-item-menu">
+                <div class="h4">
+                  <span class="drawer-list-icon">
+                    <%= octicon "primitive-square" %>
+                  </span>
+                  &nbsp;
+                  <%= drawer.title.truncate(50) %>
+                  <% if drawer.friends.present? %>
+                    <span class='collaborated-drawer-icon float-right'><%= octicon 'organization'%></span>
+                  <% end%>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div id="drawers-list" data-url="<%= sort_drawer_drawers_path %>">
+        <% drawers ||= sorted_drawers %>
+        <% drawers.each do |drawer| %>
+          <div class="drawer-item-sidebar <%= check_active_link(drawer.id) %>" id="<%= dom_id(drawer) %>">
+            <%= link_to drawer_codetools_path(drawer), class: 'drawer-link-sidebar', 'data-turbolinks': false do %>
+              <div class="drawer-item-menu">
+                <div class="h4">
+                  <span class="drawer-list-icon">
+                    <%= octicon "kebab-vertical", height: 24 %>
+                  </span>
+                  &nbsp;
+                  <%= drawer.title.truncate(50) %>
+                  <% if drawer.friends.present? %>
+                    <span class='collaborated-drawer-icon float-right'><%= octicon 'organization'%></span>
+                  <% end%>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

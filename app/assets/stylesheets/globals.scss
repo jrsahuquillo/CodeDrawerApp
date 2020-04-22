@@ -46,7 +46,7 @@ h6, .h6 {
 }
 
 .container-fluid  {
-    padding: 0 5px !important;
+  padding: 0 5px !important;
 }
 
 .search-form-wrapper {
@@ -70,6 +70,15 @@ mark {
   font-weight: bold;
   background: #FFC104 !important;
 }
+.github-link a{
+  position: fixed;
+  bottom: 5px;
+  right:5px;
+  color: #586068;
+  &:hover {
+    color: #3D4246;
+  }
+}
 
 @media only screen and (max-width: 768px) {
   html {
@@ -78,5 +87,13 @@ mark {
   body {
     overflow-x: hidden;
     position: relative;
+  }
+
+  .search-form-wrapper {
+    padding-right: 1rem;
+    .search-field {
+      margin-right: 0.5rem;
+      width: 81% !important;
+    }
   }
 }

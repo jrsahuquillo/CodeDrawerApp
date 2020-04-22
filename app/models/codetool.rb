@@ -3,17 +3,17 @@ class Codetool < ApplicationRecord
   belongs_to :user
 
   validates :title, presence: true
+  after_validation :set_slug, only: [:create, :update]
 
   scope :is_public, ->{ where(public: true) }
 
-  after_validation :set_slug, only: [:create, :update]
 
   def self.search(search)
     self.where("title ILIKE ? OR content ILIKE ?", "%#{search}%", "%#{search}%").uniq
   end
 
-  def belongs_to_current_user?(current_user)
-     current_user.codetools.include?(self)
+  def belongs_to_user?(user)
+     user.present? && user.codetools.include?(self)
   end
 
   def favorited?(current_user_id)
@@ -22,6 +22,10 @@ class Codetool < ApplicationRecord
 
   def total_favorites
     FavoriteCodetool.where(codetool_id: self.id).count
+  end
+
+  def pinned?(current_user_id)
+    PinCodetool.where(user_id: current_user_id, codetool_id: self.id).present?
   end
 
   def to_param

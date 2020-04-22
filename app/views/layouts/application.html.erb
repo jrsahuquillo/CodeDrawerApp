@@ -15,5 +15,11 @@
   <body>
     <%= render 'shared/header' %>
     <%= render 'shared/main' %>
+    <div class="github-link">
+      <%= link_to 'https://github.com/jrsahuquillo/CodeDrawer', target: '_blank', title: 'Fork me on Github' do %>
+        <%= octicon 'mark-github', height: 24 %>
+      <% end %>
+    </div>
+
   </body>
 </html>

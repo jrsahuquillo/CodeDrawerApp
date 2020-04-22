@@ -1,0 +1,6 @@
+<%= link_to pin_codetools_path(codetool_id: params[:codetool_id]),
+                              method: :post, remote: true,
+                              class: "unpinned-codetool-icon",
+                              title: "Pin to workboard" do %>
+  <div class="codetool-unpinned"><%= octicon "pin", height: 18 %></div>
+<% end %>

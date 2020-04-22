@@ -2,7 +2,9 @@
 class FavoriteCodetoolsController < ApplicationController
 
   def index
-    @favorite_codetools = FavoriteCodetool.where(user_id: current_user.id).map{|favorite| favorite.codetool}
+    @favorite_codetools = FavoriteCodetool.where(user_id: current_user.id)
+                                          .map{|favorite| favorite.codetool}
+                                          .sort_by(&:total_favorites).reverse
   end
 
   def create
@@ -10,7 +12,9 @@ class FavoriteCodetoolsController < ApplicationController
     unless codetool_already_favorited?
       @favorite_codetool = FavoriteCodetool.new(user_id: current_user.id, codetool_id: codetool_id)
       if @favorite_codetool.save
-        Notification.create(recipient: @favorite_codetool.codetool.user, actor: current_user, action: "favorited", notifiable: @favorite_codetool )
+        if @favorite_codetool.codetool.user != current_user
+          Notification.create(recipient: @favorite_codetool.codetool.user, actor: current_user, action: "favorited", notifiable: @favorite_codetool )
+        end
       else
         flash[:alert] = "Codetool has not been favorited"
       end

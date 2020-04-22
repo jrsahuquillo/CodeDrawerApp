@@ -39,6 +39,7 @@ RSpec.feature "Creating collaborated drawer" do
     fill_in "Title", with: "Creating a Codetool"
     fill_in "Content", with: "Lorem Ipsum"
     click_button "Create Codetool"
+    @drawer.reload
 
     expect(Codetool.last.drawer).to eq(@drawer)
     expect(Codetool.last.user).to eq(@user2)
@@ -46,7 +47,7 @@ RSpec.feature "Creating collaborated drawer" do
     expect(page).to have_content("Codetool has been created")
     expect(page).to have_content(@drawer.codetools.last.title)
     expect(page).to have_content(@drawer.codetools.last.content)
-    expect(page.current_path).to eq(drawer_codetools_path(@drawer.id))
+    expect(page.current_path).to eq(drawer_codetools_path(@drawer))
   end
 
   scenario "user who collaborates can edit but not delete other users codetools in collaborated drawer" do
@@ -59,7 +60,7 @@ RSpec.feature "Creating collaborated drawer" do
     expect(page).to have_css('.edit-codetool-icon')
 
     click_link "Edit Codetool"
-    expect(page).to have_content("Editing: #{@drawer.title} #{@drawer.user.username} / #{@codetool.title} #{@codetool.user.username}")
+    expect(page).to have_content("Edition: #{@drawer.title} #{@drawer.user.username} / #{@codetool.title} #{@codetool.user.username}")
 
     fill_in "Title", with: "Changing a Codetool"
     fill_in "Content", with: "Lorem Ipsum changed"

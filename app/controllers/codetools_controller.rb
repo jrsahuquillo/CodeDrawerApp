@@ -22,12 +22,12 @@ class CodetoolsController < ApplicationController
   end
 
   def search
-    searched_user_codetools = params[:search].blank? ? [] : current_user.codetools.search(params[:search])
-    searched_friends_public_codetools = []
+    @searched_user_codetools = params[:search].blank? ? [] : current_user.codetools.search(params[:search])
+    @searched_friends_public_codetools = []
     current_user.friends.each do |friend|
-      searched_friends_public_codetools << friend.codetools.is_public.search(params[:search])
+      @searched_friends_public_codetools << friend.codetools.is_public.search(params[:search])
     end
-    @searched_codetools = searched_user_codetools + searched_friends_public_codetools.flatten
+    @searched_friends_public_codetools = @searched_friends_public_codetools.flatten
   end
 
   def new
@@ -41,7 +41,7 @@ class CodetoolsController < ApplicationController
 
     if @codetool.save
       flash[:notice] = "Codetool has been created"
-      redirect_to drawer_codetools_path(@drawer)
+      redirect_to drawer_codetools_path(@drawer, show: @codetool.to_param)
     else
       flash[:alert] = "Codetool has not been created"
       render :new
@@ -65,7 +65,7 @@ class CodetoolsController < ApplicationController
     else
       if @codetool.update(codetool_params)
         flash[:success] = "Codetool has been updated"
-        redirect_to drawer_codetools_path(@drawer)
+        redirect_to drawer_codetools_path(@drawer, show: @codetool.to_param)
       else
         flash.now[:danger] = "Codetool has not been updated"
         render :edit
