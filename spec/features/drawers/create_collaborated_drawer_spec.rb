@@ -18,7 +18,7 @@ RSpec.feature "Creating collaborated drawer" do
 
   scenario "user who collaborates drawer displays drawer title and creator username" do
     login_as(@user2)
-    visit '/'
+    visit drawer_codetools_path(@drawer)
     expect(page).to have_content(@user1.username)
     expect(page).to have_content(@drawer.title)
     expect(page).to have_content(@codetool.title)
@@ -26,7 +26,7 @@ RSpec.feature "Creating collaborated drawer" do
 
   scenario "user who collaborates can not edit or delete collaborated drawer" do
     login_as(@user2)
-    visit '/'
+    visit drawer_codetools_path(@drawer)
     expect(page).not_to have_css('.edit-drawer-icon')
     expect(page).not_to have_css('.delete-drawer-icon')
   end

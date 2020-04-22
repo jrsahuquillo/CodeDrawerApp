@@ -9,11 +9,10 @@ RSpec.feature "Delete a Drawer" do
   end
 
   scenario "A user deletes a drawer" do
-    visit "/"
+    visit drawer_codetools_path(@drawer)
     click_link @drawer.title
     find('.delete-drawer-icon').click
 
     expect(page).to have_content("Drawer has been deleted")
-    expect(page.current_path).to eq(drawers_path)
   end
 end

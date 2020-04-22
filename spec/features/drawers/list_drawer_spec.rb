@@ -20,22 +20,21 @@ RSpec.feature "Listing Drawers" do
     expect(page).to have_link(@drawer2.title)
   end
 
-  scenario "a user has no drawers" do
-    Drawer.delete_all
+  # scenario "a user has no drawers" do
+  #   Drawer.delete_all
+  #   visit "/"
 
-    visit "/"
+  #   expect(page).not_to have_content(@drawer1.title)
+  #   expect(page).not_to have_content(@drawer1.description)
+  #   expect(page).not_to have_content(@drawer2.title)
+  #   expect(page).not_to have_content(@drawer2.description)
+  #   expect(page).not_to have_link(@drawer1.title)
+  #   expect(page).not_to have_link(@drawer2.title)
 
-    expect(page).not_to have_content(@drawer1.title)
-    expect(page).not_to have_content(@drawer1.description)
-    expect(page).not_to have_content(@drawer2.title)
-    expect(page).not_to have_content(@drawer2.description)
-    expect(page).not_to have_link(@drawer1.title)
-    expect(page).not_to have_link(@drawer2.title)
-
-    within(".h1#no-drawers") do
-      expect(page).to have_content("No drawers created")
-    end
-  end
+  #   within(".h1#no-drawers") do
+  #     expect(page).to have_content("No drawers created")
+  #   end
+  # end
 
   scenario "a user lists only all his drawers" do
     user2 = User.create(email: "example_user2@example.com", username: "example_user2", password: "password")

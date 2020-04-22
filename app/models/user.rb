@@ -1,3 +1,5 @@
+require 'rake'
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -7,6 +9,7 @@ class User < ApplicationRecord
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   validate :validate_username
+  after_create :populate_data
 
   has_many :drawers
   has_many :codetools
@@ -52,5 +55,11 @@ class User < ApplicationRecord
     friend_favorite_codetools = self.codetools.map(&:id)
     favorite_codetools = FavoriteCodetool.all.map(&:codetool_id)
     (friend_favorite_codetools & favorite_codetools).count
+  end
+
+  def populate_data
+    load Rails.root.join('lib', 'tasks', 'populate_data.rake').to_s
+    Rake::Task['db:populate_data'].execute(self)
+    Rake.application.clear
   end
 end
