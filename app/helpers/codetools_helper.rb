@@ -14,7 +14,7 @@ module CodetoolsHelper
 
   def codetool_breadcrumb_title
     badge_style = @drawer.user == current_user ? 'warning' : 'secondary'
-    "<div class='h3 text codetool-breadcrumb'> #{'Edition:' if params[:action] == "edit"}
+    "<div class='h3 text codetool-breadcrumb'> #{'Edition:' if action_name == "edit"}
       <span class='h6'> #{@drawer.title}
         <small class='badge badge-#{badge_style}'> #{@drawer.user.username} </small>
       / #{@codetool.title}
@@ -24,7 +24,7 @@ module CodetoolsHelper
   end
 
   def show_codetool_page?
-    params[:controller] == "codetools" && params[:action] == "show"
+    controller_name == "codetools" && action_name == "show"
   end
 
   def recent_created_or_updated?(codetool)

@@ -15,7 +15,7 @@
   <div class="drawers-sidebar">
     <div class="drawers-list-sidebar full-height">
 
-      <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %>">
+      <div class="drawer-item-sidebar <%= 'active' if controller_name == 'drawers' %>">
         <%= link_to pin_codetools_path, class: 'drawer-link-sidebar' do %>
           <div class="drawer-item-menu">
             <div class="h4">
@@ -26,7 +26,7 @@
         <% end %>
       </div>
 
-      <div class="drawer-item-sidebar <%= 'active' if params[:controller] == 'drawers' %>">
+      <div class="drawer-item-sidebar <%= 'active' if controller_name == 'drawers' %>">
         <%= link_to favorite_codetools_path, class: 'drawer-link-sidebar' do %>
           <div class="drawer-item-menu">
             <div class="h4">

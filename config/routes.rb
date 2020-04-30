@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root to: "drawers#index"
+  devise_for :users, controllers: { omniauth_callbacks: 'callbacks' }
+  root to: 'drawers#index'
 
   get '/users/:id/public_codetools' => 'users#public_codetools', as: :user_public_codetools
 

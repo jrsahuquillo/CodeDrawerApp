@@ -39,6 +39,7 @@ gem 'listen', '~> 3.1', '>= 3.1.5'
 gem "rack", ">= 2.0.8"
 gem 'markdown_checkboxes', '~> 1.0'
 gem 'select2-rails'
+gem 'omniauth-github'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
