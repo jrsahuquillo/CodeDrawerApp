@@ -63,7 +63,7 @@ class CodetoolsController < ApplicationController
       flash[:danger] = "You can only edit your own codetool."
       redirect_to drawer_codetools_path(@drawer)
     else
-      if user_can_select_drawer?(@drawer.id) &&
+      if user_can_select_drawer?(params[:codetool][:drawer_id].to_i) &&
          @codetool.update(codetool_params)
         flash[:success] = "Codetool has been updated"
         redirect_to drawer_codetools_path(@drawer, show: @codetool.to_param)
