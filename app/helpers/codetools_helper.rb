@@ -31,4 +31,8 @@ module CodetoolsHelper
     params[:show] == codetool.to_param
   end
 
+  def disabled?
+    @codetool.persisted? && @codetool.user != current_user
+  end
+
 end
