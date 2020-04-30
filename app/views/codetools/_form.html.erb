@@ -59,6 +59,12 @@
             </div>
           </div>
 
+          <div class='form-group col-6'>
+            <div class='dropdown'>
+            <%= f.select(:drawer_id, current_user.drawers.all.collect {|drawer| [drawer.title, drawer.id]}, {}, id: "event_drawer_ids", class: "form-control dropdown", selected: f.object.drawer, disabled: @codetool.user != current_user ) %>
+            </div>
+          </div>
+
           <%= link_to 'https://www.markdownguide.org/basic-syntax/', class: 'markdown-link', target: '_blank', title: 'Markdown Syntax' do %>
             <%= octicon 'markdown', height: 36 %>
           <% end %>

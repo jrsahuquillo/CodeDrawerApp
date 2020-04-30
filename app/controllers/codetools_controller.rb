@@ -63,7 +63,8 @@ class CodetoolsController < ApplicationController
       flash[:danger] = "You can only edit your own codetool."
       redirect_to drawer_codetools_path(@drawer)
     else
-      if @codetool.update(codetool_params)
+      if selected_drawer_belongs_to_current_user?(codetool_params[:drawer_id].to_i) &&
+         @codetool.update(codetool_params)
         flash[:success] = "Codetool has been updated"
         redirect_to drawer_codetools_path(@drawer, show: @codetool.to_param)
       else
@@ -97,7 +98,7 @@ class CodetoolsController < ApplicationController
   private
 
   def codetool_params
-    params.require(:codetool).permit(:title, :content, :public, :position)
+    params.require(:codetool).permit(:drawer_id, :title, :content, :public, :position)
   end
 
   def set_drawer
@@ -110,5 +111,9 @@ class CodetoolsController < ApplicationController
 
   def set_codetool
     @codetool = Codetool.find(params[:id])
+  end
+
+  def selected_drawer_belongs_to_current_user?(drawer_id)
+    current_user.drawers.map(&:id).include?(drawer_id)
   end
 end
