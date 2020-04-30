@@ -30,7 +30,9 @@ class FriendshipsController < ApplicationController
   end
 
   def search_friends
-    @searched_friends = params[:search_friends].blank? ? User.all : User.search(params[:search_friends])
+    friends = current_user.friends
+    rest_of_users = User.all - friends
+    @searched_friends = params[:search_friends].blank? ? (friends + rest_of_users) : User.search(params[:search_friends])
   end
 
 end
