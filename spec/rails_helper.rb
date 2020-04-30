@@ -7,7 +7,17 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 include Warden::Test::Helpers
 # Add additional requires below this line. Rails is not loaded until this point!
+OmniAuth.config.test_mode = true
+omniauth_hash = { 'provider' => 'github',
+                  'uid' => '12345',
+                  'info' => {
+                      'name' => 'codedrawer',
+                      'email' => 'codedrawerapp@mail.com',
+                      'nickname' => 'codedrawerapp'
+                  }
+}
 
+OmniAuth.config.add_mock(:github, omniauth_hash)
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end

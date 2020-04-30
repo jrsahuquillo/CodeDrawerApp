@@ -4,7 +4,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-        :recoverable, :rememberable, :validatable, authentication_keys: [:login]
+        :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
+        authentication_keys: [:login]
 
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
@@ -30,8 +31,25 @@ class User < ApplicationRecord
   end
 
   def validate_username
-    if User.where(email: username).exists?
+    if User.default_scoped.where(email: username).exists?
       errors.add(:username, :invalid)
+    end
+  end
+
+  def self.from_omniauth(auth)
+    if where(email: auth.info.email).exists?
+      user = where(email: auth.info.email).first
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user
+    else
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        user.provider = auth.provider
+        user.uid = auth.uid
+        user.email = auth.info.email
+        user.username = auth.info.nickname
+        user.password = Devise.friendly_token[0,20]
+      end
     end
   end
 
