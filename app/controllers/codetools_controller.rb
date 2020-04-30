@@ -59,18 +59,19 @@ class CodetoolsController < ApplicationController
   end
 
   def update
-    unless @codetool.user == current_user || @codetool.drawer.friends.include?(current_user)
-      flash[:danger] = "You can only edit your own codetool."
-      redirect_to drawer_codetools_path(@drawer)
-    else
-      if user_can_select_drawer?(params[:codetool][:drawer_id].to_i) &&
-         @codetool.update(codetool_params)
+    if @codetool.user != current_user || !@codetool.drawer.friends.include?(current_user)
+      drawer_id = params[:codetool][:drawer_id] || @drawer.id
+      if user_can_select_drawer?(drawer_id.to_i) &&
+        @codetool.update(codetool_params)
         flash[:success] = "Codetool has been updated"
         redirect_to drawer_codetools_path(@drawer, show: @codetool.to_param)
       else
         flash.now[:danger] = "Codetool has not been updated"
         render :edit
       end
+    else
+      flash[:danger] = "You can only edit your own codetool."
+      redirect_to drawer_codetools_path(@drawer)
     end
   end
 
