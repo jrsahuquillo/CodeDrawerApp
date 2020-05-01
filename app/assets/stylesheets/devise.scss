@@ -1,5 +1,10 @@
 // Devise CSS
 
+.devise-container {
+    max-width: 50%;
+    margin-left: 25%;
+    // text-align: center;
+}
 .sign-link a {
     color: #51565B;
 }
@@ -37,4 +42,8 @@
 
 .oauth-btn {
     padding-top: 1rem;
+}
+
+a.github-oauth {
+    color: white;
 }

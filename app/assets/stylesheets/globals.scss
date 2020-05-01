@@ -18,6 +18,25 @@ a.nav-link:hover {
   margin: 2rem;
 }
 
+.toast {
+  z-index: 100;
+  position: fixed;
+  top: 45%;
+  right: 30%;
+}
+
+.alert- {
+  &success {
+    background-color: $success-background !important;
+  }
+  &alert {
+    background-color: $alert-background !important;
+  }
+  &danger {
+    background-color: $danger-background !important;
+  }
+}
+
 .octicon {
   fill: currentColor;
 }

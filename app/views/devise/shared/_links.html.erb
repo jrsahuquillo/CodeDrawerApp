@@ -2,6 +2,7 @@
   <%= link_to "Log in", new_session_path(resource_name) %><br />
 <% end %>
 
+
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <%= link_to "Sign up", new_registration_path(resource_name) %><br />
 <% end %>
@@ -20,8 +21,6 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <div class="oauth-btn">
-      <%= link_to (octicon 'mark-github') + " Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: 'btn btn-lg btn-warning btn-github' %><br />
-    </div>
+    <%= link_to (octicon 'mark-github', height: 24) + " | Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: 'btn btn-lg btn-secondary github-oauth' %><br />
   <% end %>
 <% end %>
