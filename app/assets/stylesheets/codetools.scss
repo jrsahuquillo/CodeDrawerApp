@@ -1,18 +1,17 @@
-// Place all the styles related to the codetools controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+//Codetools
+@import 'settings';
 
 .codetool-form {
   margin: 20px;
 }
 
 .markdown-link {
-  color: #586068;
+  color: $grey3;
   .octicon {
     fill: currentColor;
   }
   &:hover {
-    color: #3D4246;
+    color: $grey2;
   }
 }
 
@@ -26,7 +25,7 @@
 }
 
 .card.mt-2.new-codetool {
-  border: #dfdfdf 4px dashed;
+  border: $shadow2 4px dashed;
   border-radius: 0.25rem;
   margin: 0 1rem;
   a:hover {
@@ -34,7 +33,7 @@
   }
 }
 .card-body:hover {
-  background: #F6F8FA !important;
+  background: $shadow1 !important;
 }
 
 .codetools-header {
@@ -43,12 +42,12 @@
   }
 
   .new-codetool-icon {
-    color: #586069;
+    color: $grey3;
     .octicon {
       fill: currentColor;
     }
     &:hover{
-      color: #24292e;
+      color: $grey1;
     }
     h6 {
       padding-top: 16px;
@@ -98,11 +97,11 @@
   cursor: move;
 }
 .codetool-content {
-  border-top: 0.5px solid #dee2e6;
+  border-top: 0.5px solid $border-light;
   padding: 8px;
   .highlight.plaintext {
     padding: 0.5rem;
-    background-color: #dfdfdf;
+    background-color: $shadow2;
   }
 }
 
@@ -118,10 +117,10 @@
 .codetool-unpinned,
 .codetool-pinned {
   padding-left: 1.5rem;
-  color: #586069;
+  color: $grey3;
   transition: transform .2s;
   &:hover{
-      color: #24292e;
+      color: $grey1;
       transform: scale(1.2);
   }
 }
@@ -135,11 +134,11 @@
 }
 
 .friend-codetool-title {
-  color: #586069;
+  color: $grey3;
   a {
-    color: #24292e;
+    color: $grey1;
     &:hover {
-      color: #24292e;
+      color: $grey1;
       font-weight: bold;
       text-decoration: none;
     }
@@ -156,12 +155,12 @@
 }
 
 .codetool-unpinned {
-  color: #586068;
+  color: $grey3;
   opacity: 0.3;
 }
 
 .codetool-pinned {
-  color: #24292e;
+  color: $grey1;
 }
 
 img[src*="#wide"] {

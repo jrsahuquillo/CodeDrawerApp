@@ -1,3 +1,4 @@
+// Globals
 @import "settings";
 
 body {
@@ -68,15 +69,15 @@ h6, .h6 {
 
 mark {
   font-weight: bold;
-  background: #FFC104 !important;
+  background: $accent-color !important;
 }
 .github-link a{
   position: fixed;
   bottom: 5px;
   right:5px;
-  color: #586068;
+  color: $grey3;
   &:hover {
-    color: #3D4246;
+    color: $grey2;
   }
 }
 
