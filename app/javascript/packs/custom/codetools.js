@@ -2,7 +2,7 @@ $(document).on('turbolinks:load', function () {
 
   // Rotate arrow icon when collapse codetools
   collapseShowAfterEdit();
-  $('.toast').toast({ delay: 2000 });
+  $('.toast').toast({ delay: 3000 });
   $('.toast').toast('show')
 
   $('.show-codetool').click(function () {

@@ -32,6 +32,7 @@ a.nav-link:hover {
   }
   &alert {
     background-color: $alert-background !important;
+    color: $accent-color;
   }
   &danger {
     background-color: $danger-background !important;

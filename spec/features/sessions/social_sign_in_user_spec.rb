@@ -3,11 +3,11 @@ require "rails_helper"
 RSpec.feature "Sign in users" do
   scenario "with Github social login who singned up with social login previously" do
     visit "/"
-    find('.oauth-btn .btn-github').click
+    find('a.github-oauth').click
     click_link "Sign out"
 
     visit "/"
-    find('.oauth-btn .btn-github').click
+    find('a.github-oauth').click
     expect(page).to have_content("Welcome! You have signed up successfully.")
   end
 
@@ -15,13 +15,13 @@ RSpec.feature "Sign in users" do
     User.create!(email: "codedrawerapp@mail.com", username: "codedrawerapp", password: "password")
 
     visit "/"
-    find('.oauth-btn .btn-github').click
+    find('a.github-oauth').click
     expect(page).to have_content("Welcome! You have signed up successfully.")
   end
 
   scenario "with password login who singned up with Github social login previously can´t login" do
     visit "/"
-    find('.oauth-btn .btn-github').click
+    find('a.github-oauth').click
     click_link "Sign out"
 
     visit "/"
