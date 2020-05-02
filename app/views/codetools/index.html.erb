@@ -5,7 +5,7 @@
       <small class="glyphicon glyphicon-calendar" id="drawer-date">
         <%= octicon "calendar" %> <%= @drawer.created_at.strftime("%d-%b-%Y") %>
       <span class="drawer-author">
-        Created by: <strong> <%= link_to (content_tag :span, @drawer.user.username, class: 'creator-badge'), user_public_codetools_path(@drawer.user.id) %></strong>
+        | Created by: <strong> <%= link_to (content_tag :span, @drawer.user.username, class: 'creator-badge'), user_public_codetools_path(@drawer.user.id) %></strong>
       </span>
       <span class="drawer-collaborators">
         <%= drawer_collaborators %>

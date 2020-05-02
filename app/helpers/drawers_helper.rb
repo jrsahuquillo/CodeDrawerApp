@@ -18,10 +18,11 @@ module DrawersHelper
   def drawer_collaborators
     if @drawer.friends.present?
       drawer_friends = ""
-      @drawer.friends.each do |friend|
-        drawer_friends << "#{ link_to (content_tag :span, friend.username, class: 'collaborator-badge'), user_public_codetools_path(friend.id)} &nbsp;"
+      @drawer.friends.each_with_index do |friend, index|
+        drawer_friends << "#{ link_to (content_tag :span, friend.username, class: 'collaborator-badge'), user_public_codetools_path(friend.id)}"
+        drawer_friends << ", &nbsp;" if @drawer.friends[index + 1].present?
       end
-      "<span>Collaborators: #{drawer_friends}</span>".html_safe
+      "<span> | Collaborators: <strong>#{drawer_friends}</strong></span>".html_safe
     end
   end
 
