@@ -21,8 +21,9 @@ a.nav-link:hover {
 .toast {
   z-index: 100;
   position: fixed;
-  top: 45%;
-  right: 30%;
+  top: 10%;
+  right: 5%;
+  font-size: $font-h4;
 }
 
 .alert- {
