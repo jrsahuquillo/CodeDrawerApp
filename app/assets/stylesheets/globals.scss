@@ -91,15 +91,6 @@ mark {
   font-weight: bold;
   background: $accent-color !important;
 }
-.github-link a{
-  position: fixed;
-  bottom: 5px;
-  right:5px;
-  color: $grey3;
-  &:hover {
-    color: $grey2;
-  }
-}
 
 @media only screen and (max-width: 768px) {
   html {

@@ -1,0 +1,55 @@
+@import 'settings';
+// Ribbon
+/* 
+    About: CSS (SCSS) Ribbons
+    Author: https://twitter.com/_uloga
+*/
+
+$github:   #444 !default;
+
+/* -- Mixin: Arrow -- */
+
+@mixin arrow($width, $color){
+    border-style: solid;
+    width: 0; height: 0;
+    border-width: $width / 2;
+    border-color: $color $color transparent $color;
+}
+
+/* -- Mixin: Ribbon -- */
+
+@mixin ribbon($bg: $default, $width: 40px){
+    
+    background: $bg;
+    position: relative;
+    margin-top: -65px;
+    width: $width;
+    padding: 15px 0;
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+    &:after{
+        content: " ";
+        position: absolute;
+        top: 70%;
+        left: 0;
+        z-index: -1;
+        @include arrow(40px, $bg);
+    }
+    *{
+        box-sizing: border-box;
+    }
+
+}
+
+.ribbon{
+    margin-left: 90%;
+    @include ribbon($github);
+    a {
+        color: white;
+        &:hover {
+            color: $shadow2;
+        }
+    }
+}
