@@ -28,8 +28,14 @@
   border: $shadow2 4px dashed;
   border-radius: 0.25rem;
   margin: 0 1rem;
+  a {
+    color: $accent-color;
+  }
   a:hover {
       text-decoration: inherit;
+  }
+  .h4 {
+    margin-bottom: 0;
   }
 }
 .card-body:hover {
