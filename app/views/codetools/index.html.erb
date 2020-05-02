@@ -1,19 +1,19 @@
  <div class="detail-drawer">
   <div class="row">
-    <div class="col-8">
+    <div class="col-12 col-sm-10">
       <div class="h1 drawer-detail-title"><%= @drawer.title %></div>
-      <div class="drawer-description">
-        <%= @drawer.description %>
-      </div>
       <small class="glyphicon glyphicon-calendar" id="drawer-date">
         <%= octicon "calendar" %> <%= @drawer.created_at.strftime("%d-%b-%Y") %>
-      </small>&nbsp;
       <span class="drawer-author">
-        <span>Created by: <strong> <%= link_to (content_tag :span, @drawer.user.username, class: 'badge badge-warning'), user_public_codetools_path(@drawer.user.id) %></strong></span>
-      </span>&nbsp;
+        Created by: <strong> <%= link_to (content_tag :span, @drawer.user.username, class: 'creator-badge'), user_public_codetools_path(@drawer.user.id) %></strong>
+      </span>
       <span class="drawer-collaborators">
         <%= drawer_collaborators %>
       </span>
+      </small>
+      <div class="drawer-description">
+        <%= @drawer.description %>
+      </div>
     </div>
 
     <% unless @drawer.friends.include?(current_user) %>
@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<div class="container-fluid mt-4">
+<div class="container-fluid mt-3">
   <div class="row">
     <div class="col-md-12">
       <div class="card mt-2 new-codetool">

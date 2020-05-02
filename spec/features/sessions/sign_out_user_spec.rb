@@ -5,7 +5,6 @@ RSpec.feature "Signin out users" do
   before do
     @user = User.create!(email: "example_user@example.com", username: "example_user", password: "password")
     visit "/"
-    click_link "Sign in"
     fill_in "Username or email", with: @user.email
     fill_in "Password", with: @user.password
     click_button "Log in"

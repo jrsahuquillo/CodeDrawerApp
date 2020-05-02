@@ -1,3 +1,4 @@
+// Globals
 @import "settings";
 
 body {
@@ -15,6 +16,27 @@ a.nav-link:hover {
 
 .alert {
   margin: 2rem;
+}
+
+.toast {
+  z-index: 100;
+  position: fixed;
+  top: 10%;
+  right: 5%;
+  font-size: $font-h4;
+}
+
+.alert- {
+  &success {
+    background-color: $success-background !important;
+  }
+  &alert {
+    background-color: $alert-background !important;
+    color: $accent-color;
+  }
+  &danger {
+    background-color: $danger-background !important;
+  }
 }
 
 .octicon {
@@ -68,16 +90,7 @@ h6, .h6 {
 
 mark {
   font-weight: bold;
-  background: #FFC104 !important;
-}
-.github-link a{
-  position: fixed;
-  bottom: 5px;
-  right:5px;
-  color: #586068;
-  &:hover {
-    color: #3D4246;
-  }
+  background: $accent-color !important;
 }
 
 @media only screen and (max-width: 768px) {

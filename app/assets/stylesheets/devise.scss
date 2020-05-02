@@ -1,7 +1,17 @@
 // Devise CSS
+@import 'settings';
+
+.devise-container {
+    max-width: 50%;
+    margin-left: 25%;
+}
 
 .sign-link a {
-    color: #51565B;
+    color: $accent-color;
+    &:hover {
+        color: $accent-color;
+    }
+
 }
 
 #error_explanation,
@@ -32,9 +42,61 @@
 .log-in, .sign-up,
 .forgot-password,
 .change-password {
-    padding-top: 2rem;
+    padding-bottom: 1rem;
 }
 
 .oauth-btn {
     padding-top: 1rem;
+}
+.sign-link {
+    text-align: center;
+}
+.or-oauth-line {
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    &:before, &:after {
+        position: absolute;
+        top: 51%;
+        width: 50%;
+        height: 1px;
+        content: '\a0';
+        background-color: #51565B;
+    }
+    &:before {
+        margin-left: -50%;
+    }
+}
+
+a.github-oauth {
+    color: white;
+    font-size: 1rem;
+    border-radius: 2rem !important;
+    background-color: #444 !important;
+    &:hover {
+        background-color: #51565B !important;
+        color: white;
+    }
+    
+    .octicon {
+        margin-right: 1rem;
+    }
+}
+
+.sign-up-here,
+.log-in-here {
+    padding-top: 1rem;
+    .sign-up-link,
+    .log-in-link {
+        color: $accent-color;
+        text-decoration: underline;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .devise-container {
+        max-width: 100%;
+        margin-left: 0;
+    }
 }

@@ -24,7 +24,11 @@ module ApplicationHelper
   end
 
   def type_of_container
-    ["devise/registrations", "devise/sessions", "devise/passwords"].include?(params[:controller]) ? "container" : "container-fluid"
+    devise_page? ? "container" : "container-fluid"
+  end
+
+  def devise_page?
+    controller_name == "sessions" || controller_name == "registrations" || controller_name == "passwords"
   end
 
 end

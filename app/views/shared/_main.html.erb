@@ -1,17 +1,22 @@
 <div class="<%= type_of_container %>">
+
+  <% flash.each do |key, message| %>
+    <div aria-live="polite" aria-atomic="true" style="position: absolute; min-height: 200px;">
+      <div class="toast alert-<%= key %> shadow" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">
+          <%= message %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  
   <div class="row">
     <div class="col-12">
-      <% flash.each do |key, message| %>
-        <div class="text-center alert alert-<%= key %>">
-          <%= message %>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      <% end %>
       <div class="<%= type_of_container %>">
         <%= yield %>
       </div>
     </div>
   </div>
 </div>
+
+

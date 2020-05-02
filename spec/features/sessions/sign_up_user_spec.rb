@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "Signup users" do
   scenario "with valid credentials" do
     visit "/"
-    find('#sign-up-menu').click
+    find('.sign-up-link').click
     fill_in "Email", with: "user-example@example.com"
     fill_in "Username", with: "userexample"
     fill_in "Password", with: "password"
@@ -16,7 +16,7 @@ RSpec.feature "Signup users" do
 
   scenario "with invalid credentials" do
     visit "/"
-    find('#sign-up-menu').click
+    find('.sign-up-link').click
     fill_in "Email", with: ""
     fill_in "Username", with: ""
     fill_in "Password", with: ""

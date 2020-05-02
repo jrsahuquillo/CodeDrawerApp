@@ -1,6 +1,5 @@
-// Place all the styles related to the drawers controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// Drawers
+@import 'settings';
 
 #sidebar {
   float: left;
@@ -8,13 +7,13 @@
 }
 .new-drawer-button {
   float: left;
-  background-color: #FFC104;
+  background-color: $accent-color;
   font-size: 0.8rem;
   margin-top: 2rem;
   margin-left: 2rem;
   border-radius: 0.25rem;
   .drawer-item-menu {
-    color: #393D41;
+    color: $grey2;
   }
   &:hover{
     .drawer-item-menu {
@@ -30,7 +29,7 @@
 
 .drawers-sidebar {
   float: left;
-  background-color: #3F4448;
+  background-color: $grey2;
   font-size: 0.8rem;
   margin-top: 2rem;
   margin-left: 2rem;
@@ -40,7 +39,7 @@
 .drawer-item-sidebar {
   padding: 0.2rem 0;
   .card {
-    background-color: #3F4448 !important;
+    background-color: $grey2 !important;
     .card-header {
       padding: 0.75rem 0;
     }
@@ -48,7 +47,7 @@
       padding: 0 !important;
     }
     .card-body:hover {
-      background-color: #3F4448 !important;
+      background-color: $grey2 !important;
     }
     .btn-link {
       color: white;
@@ -71,7 +70,7 @@ a.drawer-link-sidebar {
 
 .drawer-item-sidebar.active,
 .drawer-item-sidebar:hover {
-  background-color: #586069;
+  background-color: $grey3;
   &:first-child {
     border-radius: 0.25rem 0.25rem 0 0;
   }
@@ -90,13 +89,15 @@ a.drawer-link-sidebar {
 
 .card.drawer-list.new-drawer {
   border: none;
-  background-color: #FFC104;
+  background-color: $accent-color;
   border-radius: 0.25rem;
 }
 
 .card.drawer-index,
 .detail-drawer  {
-  padding-top: 2rem;
+  padding: 2rem 0 1rem 0;
+  margin: 0 1.5rem;
+  border-bottom: 0.5px solid $border-light;
 }
 
 .drawer-list  {
@@ -109,18 +110,18 @@ a.drawer-link-sidebar {
 
 .drawer-link {
   padding: 0 12px ;
-  color: #586069;
+  color: $grey3;
 }
 
 .edit-drawer-icon,
 .delete-drawer-icon {
   padding-right: 8px;
-  color: #586069;
+  color: $grey3;
   .octicon {
       fill: currentColor;
   }
   &:hover{
-      color: #24292e;
+      color: $grey1;
   }
 }
 
@@ -134,4 +135,19 @@ a.drawer-link-sidebar {
 
 .collaborated-drawer-icon {
   padding-right: 1rem;
+}
+
+.drawer-description {
+  padding-top: 1rem;
+}
+
+.drawer-author,
+.drawer-collaborators {
+  a:hover {
+    text-decoration: none;
+  }
+}
+.creator-badge,
+.collaborator-badge {
+  color: $accent-color;
 }
