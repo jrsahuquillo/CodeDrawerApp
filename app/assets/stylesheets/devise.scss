@@ -82,9 +82,11 @@ a.github-oauth {
     }
 }
 
-.sign-up-here {
+.sign-up-here,
+.log-in-here {
     padding-top: 1rem;
-    .sign-up-link {
+    .sign-up-link,
+    .log-in-link {
         color: $accent-color;
         text-decoration: underline;
     }
