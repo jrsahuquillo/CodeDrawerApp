@@ -27,13 +27,14 @@
 
                 <div class="h5 friend-codetool-title card-title">
                   <% if friend.codetools.is_public.any? %>
-                  <div class="friend-codetool-name">
-                    <% if current_user.friend?(friend) %>
-                        <%= link_to friend.username, user_public_codetools_path(friend.id) %>
-                    <% else %>
-                        <%= friend.username %>
-                    <% end %>
-                  </div>
+                    <div class="friend-codetool-name">
+                      <%= avatar(friend) %>
+                      <% if current_user.friend?(friend) %>
+                          <%= link_to friend.username, user_public_codetools_path(friend.id) %>
+                      <% else %>
+                          <%= friend.username %>
+                      <% end %>
+                    </div>
                     <span class="total-public-codetools badge badge-pill badge-info">
                       <%= friend.codetools.is_public.count %> <%= octicon "organization", height: 16 %>
                     </span>
@@ -43,6 +44,7 @@
                       </span>
                     <% end %>
                   <% else %>
+                    <%= avatar(friend) %>
                     <%= friend.username %>
                   <% end %>
                 </div>

@@ -31,4 +31,12 @@ module ApplicationHelper
     controller_name == "sessions" || controller_name == "registrations" || controller_name == "passwords"
   end
 
+  def avatar(user)
+    if user.image.present?
+      image_tag "#{user.image}", class: 'avatar'
+    else
+      octicon 'person', height: 24, class: 'avatar'
+    end
+  end
+
 end
