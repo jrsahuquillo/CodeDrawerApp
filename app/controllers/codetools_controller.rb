@@ -67,8 +67,8 @@ class CodetoolsController < ApplicationController
       if user_can_select_drawer?(drawer_id.to_i) &&
         @codetool.update(codetool_params)
         flash[:success] = "Codetool has been updated"
-        if params[:commit] == "Quick save"
-          render 'edit'
+        if params[:commit] == "Quick Save"
+          redirect_to edit_drawer_codetool_path(@drawer, @codetool)
         else
           redirect_to drawer_codetools_path(@drawer, show: @codetool.to_param)
         end
