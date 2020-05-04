@@ -79,6 +79,7 @@ $(document).on('turbolinks:load', function () {
         var len = input.val().length;
         input[0].focus();
         input[0].setSelectionRange(len, len);
+        input.animate({ scrollTop: input.prop("scrollHeight") }, 1000);
     }
   }
 
