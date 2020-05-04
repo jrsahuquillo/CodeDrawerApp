@@ -14,12 +14,12 @@ module CodetoolsHelper
 
   def codetool_breadcrumb_title
     badge_style = @drawer.user == current_user ? 'warning' : 'secondary'
-    "<div class='h3 text codetool-breadcrumb'> #{'Edition:' if action_name == "edit"}
-      <span class='h6'> #{@drawer.title}
-        <small class='badge badge-#{badge_style}'> #{@drawer.user.username} </small>
-      / #{@codetool.title}
-        <small class='badge badge-#{badge_style}'> #{@codetool.user.username} </small>
-      </span>
+    "<div class='h4 text codetool-breadcrumb'> #{'Edition:' if action_name == "edit"}
+      <span class='h6'> #{@drawer.title}: </span>
+        <strong><small class='creator-badge'> #{@drawer.user.username} </small></strong>
+      #{octicon "chevron-right", height: 18}
+      <span class='h6'>#{@codetool.title}: </span>
+        <strong><small class='creator-badge'> #{@codetool.user.username} </small></strong>
     </div>".html_safe
   end
 
