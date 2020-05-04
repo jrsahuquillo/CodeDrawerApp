@@ -2,6 +2,7 @@ $(document).on('turbolinks:load', function () {
 
   // Rotate arrow icon when collapse codetools
   collapseShowAfterEdit();
+  cursorAtEnd();
   $('.toast').toast({ delay: 3000 });
   $('.toast').toast('show')
 
@@ -70,5 +71,15 @@ $(document).on('turbolinks:load', function () {
     })
     $temp.remove();
   });
+
+  // Put cursor at the end of textarea content when quick update.
+  function cursorAtEnd() {
+    var input = $('.edit_codetool textarea');
+    if (input.length > 0) {
+        var len = input.val().length;
+        input[0].focus();
+        input[0].setSelectionRange(len, len);
+    }
+  }
 
 });

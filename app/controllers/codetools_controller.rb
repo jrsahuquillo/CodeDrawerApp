@@ -38,10 +38,13 @@ class CodetoolsController < ApplicationController
     @codetool = @drawer.codetools.build(codetool_params)
     @codetool.position = 0
     @codetool.user = current_user
-
     if @codetool.save
-      flash[:notice] = "Codetool has been created"
-      redirect_to drawer_codetools_path(@drawer, show: @codetool.to_param)
+      flash[:success] = "Codetool has been created"
+      if params[:commit] == "Quick save"
+        render 'edit'
+      else
+        redirect_to drawer_codetools_path(@drawer, show: @codetool.to_param)
+      end
     else
       flash[:alert] = "Codetool has not been created"
       render :new
@@ -63,8 +66,13 @@ class CodetoolsController < ApplicationController
       drawer_id = params[:codetool][:drawer_id] || @drawer.id
       if user_can_select_drawer?(drawer_id.to_i) &&
         @codetool.update(codetool_params)
-        flash[:success] = "Codetool has been updated"
-        redirect_to drawer_codetools_path(@drawer, show: @codetool.to_param)
+        if params[:commit] == "Quick Save"
+          flash[:success] = "Saved!"
+          redirect_to edit_drawer_codetool_path(@drawer, @codetool)
+        else
+          flash[:success] = "Codetool has been updated"
+          redirect_to drawer_codetools_path(@drawer, show: @codetool.to_param)
+        end
       else
         flash.now[:danger] = "Codetool has not been updated"
         render :edit

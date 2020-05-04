@@ -38,4 +38,22 @@ RSpec.feature "Editing Codetools" do
     visit "/public_codetools"
     expect(page).to have_content(@drawer.title)
   end
+
+  scenario "A user updates a codetool with Quick Save" do
+    visit "/"
+    click_link @drawer.title
+    find('.show-codetool').click
+    click_link "Edit Codetool"
+
+    fill_in "Title", with: "Updated Title"
+    fill_in "Content", with: "Updated Content of Codetool"
+    click_button "Quick Save"
+
+    expect(page).to have_content("Codetool has been updated")
+    expect(page).to have_content("Updated Title")
+    expect(page).to have_content("Updated Content of Codetool")
+    @drawer.reload
+    @codetool.reload
+    expect(page.current_path).to eq(edit_drawer_codetool_path(@drawer, @codetool))
+  end
 end

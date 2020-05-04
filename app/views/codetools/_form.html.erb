@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class='row'>
     <div class='col-sm'>
-      <%= form_for([@drawer, @codetool], html: {class: "form-horizontal", role: "form"}) do |f| %>
+      <%= form_for([@drawer, @codetool], html: {class: "form-horizontal #{action_name}_codetool", role: "form"}) do |f| %>
 
         <% if @codetool.errors.any? %>
           <div class="alert alert-danger">
@@ -32,7 +32,7 @@
             <%= f.label :title %>
           </div>
           <div class='col-sm'>
-            <%= f.text_field :title, class: 'form-control', placeholder: 'Title of codetool', autofocus: true %>
+            <%= f.text_field :title, class: 'form-control', placeholder: 'Title of codetool', autofocus: action_name == "new" %>
           </div>
         </div>
 
@@ -41,7 +41,7 @@
             <%= f.label :content %>
           </div>
           <div class='col-sm'>
-            <%= f.text_area :content, rows: 15, class: 'form-control', placeholder: 'Content of codetool' %>
+            <%= f.text_area :content, rows: 15, class: 'form-control', placeholder: 'Content of codetool', autofocus: action_name == "update"  %>
           </div>
         </div>
 
@@ -78,6 +78,8 @@
         <div class='form-group'>
           <div class='col-md-offset-1 col-sm submit-button'>
             <%= f.submit class: 'btn btn-primary pull-right' %>
+            <%= f.submit 'Quick Save', class: 'btn btn-outline-primary pull-right', title: '⌘ + ⏎ or ⌃ + ⏎' %>
+            <%= link_to 'Cancel', drawer_codetools_path(@drawer), class: 'btn btn-outline-danger pull-right' %>
           </div>
         </div>
       <% end %>
