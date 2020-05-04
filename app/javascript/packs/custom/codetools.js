@@ -74,7 +74,7 @@ $(document).on('turbolinks:load', function () {
 
   // Put cursor at the end of textarea content when quick update.
   function cursorAtEnd() {
-    var input = $('.update_codetool textarea');
+    var input = $('.edit_codetool textarea');
     if (input.length > 0) {
         var len = input.val().length;
         input[0].focus();
