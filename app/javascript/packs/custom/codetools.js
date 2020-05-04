@@ -83,4 +83,10 @@ $(document).on('turbolinks:load', function () {
     }
   }
 
+  $('.codetool-content').hover(function() {
+    $(this).children('.extra-buttons').attr('hidden', false);
+  }, function () {
+    $(this).children('.extra-buttons').attr('hidden', true);
+  })
+
 });

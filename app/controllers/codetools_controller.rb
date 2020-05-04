@@ -63,7 +63,7 @@ class CodetoolsController < ApplicationController
   end
 
   def update
-    if @codetool.user != current_user || !@codetool.drawer.friends.include?(current_user)
+    if @codetool.user == current_user || @codetool.drawer.friends.include?(current_user)
       drawer_id = params[:codetool][:drawer_id] || @drawer.id
       if user_can_select_drawer?(drawer_id.to_i) &&
         @codetool.update(codetool_params)
