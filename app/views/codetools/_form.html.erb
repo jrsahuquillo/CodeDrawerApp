@@ -51,7 +51,7 @@
           </div>
           <div class='col-sm'>
             <% selection_drawers = current_user.drawers + current_user.collaborated_drawers %>
-            <%= f.select(:drawer_id, selection_drawers.collect {|drawer| [drawer.title, drawer.id]}, {}, id: "event_drawer_ids", class: "form-control dropdown", selected: f.object.drawer, disabled: disabled? ) %>
+            <%= f.select(:drawer_id, selection_drawers.collect {|drawer| [drawer.title, drawer.id]}, { selected: @drawer.id }, id: "event_drawer_ids", class: "form-control dropdown", selected: f.object.drawer, disabled: disabled? ) %>
           </div>
         </div>
 
