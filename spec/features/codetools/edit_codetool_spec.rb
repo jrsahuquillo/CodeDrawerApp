@@ -49,7 +49,7 @@ RSpec.feature "Editing Codetools" do
     fill_in "Content", with: "Updated Content of Codetool"
     click_button "Quick Save"
 
-    expect(page).to have_content("Codetool has been updated")
+    expect(page).to have_content("Saved!")
     expect(page).to have_content("Updated Title")
     expect(page).to have_content("Updated Content of Codetool")
     @drawer.reload
