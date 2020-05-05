@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: 'drawers#index'
 
   get '/users/:id/public_codetools' => 'users#public_codetools', as: :user_public_codetools
+  get '/users/:id/last_notifications' => 'users#last_notifications', as: :user_last_notifications
+
 
   resources :drawers do
     collection do

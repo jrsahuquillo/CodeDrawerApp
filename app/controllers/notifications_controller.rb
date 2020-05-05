@@ -3,6 +3,7 @@ class NotificationsController < ApplicationController
   before_action :set_notifications
 
   def index
+    @last_notifications = current_user.notifications
   end
 
   def mark_as_read

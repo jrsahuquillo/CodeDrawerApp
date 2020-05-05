@@ -93,6 +93,13 @@ h6, .h6 {
   top: 1.2rem;
 }
 
+.notification-badge {
+  color: $accent-color;
+  &:hover {
+    color: $accent-color;
+  }
+}
+
 .nav-item {
   padding: 0 0.2rem;
 }

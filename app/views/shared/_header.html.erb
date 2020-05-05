@@ -42,6 +42,9 @@
                 <% if current_user.notifications.unread.blank? %>
                   <div class="dropdown-item">No notifications</div>
                 <% end %>
+                <div class="dropdown-item">
+                  <%= link_to 'Last notifications', notifications_path, class: 'notification-badge' %>
+                </div>
               </div>
             </li>
           <% end %>

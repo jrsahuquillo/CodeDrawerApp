@@ -1,0 +1,24 @@
+<div class="detail-friends">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="h1 drawer-detail-title"><%= octicon "bell", height: 36 %>  <%= "#{current_user.username} Last Notifications" %> </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="list-group list-group-flush">
+        <% if @last_notifications.any? %>
+          <% @last_notifications.reverse.each do |notification| %>
+            <li class="list-group-item list-group-item-light"><%= parse_notification(notification) %></li>
+          <% end %>
+        <% else %>
+          There are no notifications
+        <% end %>
+      </ul>
+
+    </div>
+  </div>
+</div>
