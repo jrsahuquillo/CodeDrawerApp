@@ -60,7 +60,7 @@ RSpec.feature "Creating collaborated drawer" do
     expect(page).to have_css('.edit-codetool-icon')
 
     click_link "Edit Codetool"
-    expect(page).to have_content("Edition: #{@drawer.title}: #{@drawer.user.username} #{@codetool.title}: #{@codetool.user.username}")
+    expect(page).to have_content("Edition: #{@drawer.title} (#{@drawer.user.username}) #{@codetool.title} (#{@codetool.user.username})")
 
     fill_in "Title", with: "Changing a Codetool"
     fill_in "Content", with: "Lorem Ipsum changed"
