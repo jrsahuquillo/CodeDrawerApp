@@ -6,7 +6,7 @@ module NotificationsHelper
     action = notification&.action
     item_id =notification.notifiable_id
     if type == "Friendship"
-      "<div>#{octicon 'calendar'} #{notification.created_at.strftime('%d-%m-%Y')} - <strong><a href='#{search_friends_path}' class='notification-badge'>#{actor&.username}<a></strong> #{action}.</div>".html_safe
+      "<div>#{octicon 'calendar'} #{notification.created_at.strftime('%d-%m-%Y')} - <strong><a href='#{search_friends_path}' class='notification-badge'>#{actor&.username}<a></strong> #{action} you.</div>".html_safe
     elsif type == "Drawer"
       drawer = Drawer.find(item_id) rescue nil
       "<div>#{octicon 'calendar'} #{notification.created_at.strftime('%d-%m-%Y')} - <strong><a href='#{search_friends_path}' class='notification-badge'>#{actor&.username}<a></strong> #{action} <strong><a href='#{drawer_codetools_path(drawer)}' class='notification-badge'>#{drawer.title}<a></strong></div>".html_safe unless drawer.nil?

@@ -19,8 +19,11 @@
   margin: 20px;
   padding: 1rem 0;
   .creator-badge {
-  color: $accent-color;
-}
+    color: $accent-color;
+  }
+  .octicon {
+    color: $grey3;
+  }
 }
 
 .card-body {

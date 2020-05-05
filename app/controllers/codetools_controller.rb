@@ -130,11 +130,11 @@ class CodetoolsController < ApplicationController
   end
 
   def send_notifications
-    drawer_friends = @drawer.friends
+    drawer_friends = @drawer.friends + [@drawer.user] - [current_user]
     if drawer_friends.present?
       drawer_friends.each do |friend|
         Notification.where(notifiable: @codetool, recipient: friend).destroy_all if action_name == "update"
-        Notification.create(recipient: friend, actor: current_user, action: "#{action_name}d a collaborated codetool", notifiable: @codetool )
+        Notification.create(recipient: friend, actor: current_user, action: "#{action_name}d collaborated codetool", notifiable: @codetool )
       end
     end
   end
