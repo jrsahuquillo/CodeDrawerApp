@@ -40,6 +40,7 @@ class CodetoolsController < ApplicationController
     @codetool.position = 0
     @codetool.user = current_user
     if @codetool.save
+      send_notifications(action_name)
       flash[:success] = "Codetool has been created"
       if params[:commit] == "Quick save"
         render 'edit'
@@ -67,6 +68,7 @@ class CodetoolsController < ApplicationController
       drawer_id = params[:codetool][:drawer_id] || @drawer.id
       if user_can_select_drawer?(drawer_id.to_i) &&
         @codetool.update(codetool_params)
+        send_notifications(action_name)
         if params[:commit] == "Quick Save"
           flash[:success] = "Saved!"
           redirect_to edit_drawer_codetool_path(@drawer, @codetool)
@@ -126,4 +128,16 @@ class CodetoolsController < ApplicationController
   def user_can_select_drawer?(drawer_id)
     (current_user.drawers + current_user.collaborated_drawers).map(&:id).include?(drawer_id)
   end
+
+  def send_notifications
+    binding.pry
+    drawer_friends = @drawer.friends
+    if drawer_friends.present?
+      drawer_friends.each do |friend|
+        Notification.where(notifiable: @codetool, recipient: friend).destroy_all if action_name == "update"
+        Notification.create(recipient: friend, actor: current_user, action: "#{action_name}d a collaborated codetool", notifiable: @codetool )
+      end
+    end
+  end
+
 end

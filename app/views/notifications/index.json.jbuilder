@@ -16,10 +16,11 @@ def notifiable_path(item)
   type = item.class.to_s
   return drawer_codetool_path(item.codetool.drawer, item.codetool) if type == "FavoriteCodetool"
   return drawer_codetools_path(item) if type == "Drawer"
+  return drawer_codetool_path(item.drawer, item) if type == "Codetool"
 end
 
 def notifiable_title(item)
   type = item.class.to_s
   return item.codetool.title if type == "FavoriteCodetool"
-  return item.title if type == "Drawer"
+  return item.title if type == "Drawer" || type == "Codetool"
 end

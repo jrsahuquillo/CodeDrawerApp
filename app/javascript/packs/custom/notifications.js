@@ -30,8 +30,11 @@ $(document).on('turbolinks:load',function(){
           "<div class='dropdown-item' id='notification_" + notification.id + "'><small><strong><a href=" + notification.actor_path + "> " + notification.actor + "</a></strong> " + notification.action + " <strong>" + notification.notifiable['title'] + "</strong></small></div>"
         );
       }
-
     } else if (notification.notifiable["type"] == "FavoriteCodetool") {
+      $('#notifications .dropdown-menu').append(
+        "<div class='dropdown-item'id='notification_" + notification.id + "'><small><strong><a href=" + notification.actor_path + "> " + notification.actor + "</a></strong> " + notification.action + "<strong><a href=" + notification.notifiable['path'] + "> " + notification.notifiable['title'] + "</a></strong></small></div>"
+      );
+    } else if (notification.notifiable["type"] == "Codetool") {
       $('#notifications .dropdown-menu').append(
         "<div class='dropdown-item'id='notification_" + notification.id + "'><small><strong><a href=" + notification.actor_path + "> " + notification.actor + "</a></strong> " + notification.action + "<strong><a href=" + notification.notifiable['path'] + "> " + notification.notifiable['title'] + "</a></strong></small></div>"
       );
