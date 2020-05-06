@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       post :mark_as_read
     end
   end
+  match 'notifications', to: 'notifications#clear', via: :delete
 
   resources :favorite_codetools
   resources :pin_codetools

@@ -13,6 +13,11 @@ class NotificationsController < ApplicationController
     render json: { success: true }
   end
 
+  def clear
+    @all_notifications.destroy_all
+    redirect_to '/notifications'
+  end
+
   private
 
   def set_unread_notifications

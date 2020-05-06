@@ -73,4 +73,15 @@ RSpec.feature "Creates Notifications" do
     expect(page).to have_content("#{@user1.username} #{Notification.last.action} #{Codetool.last.title}")
   end
 
+  scenario "notifications are deleted when clicks Clear button" do
+    visit '/search-friends'
+    find('.follow-button').click
+    login_as(@user2)
+    visit '/'
+    click_link 'Last notifications'
+    click_link 'Clear'
+
+    expect(Notification.all).to eq([])
+  end
+
 end

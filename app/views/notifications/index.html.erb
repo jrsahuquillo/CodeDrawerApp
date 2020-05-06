@@ -1,7 +1,14 @@
 <div class="detail-friends">
   <div class="row">
-    <div class="col-sm-6">
-      <div class="h1 drawer-detail-title"><%= octicon "bell", height: 36 %> Last Notifications </div>
+    <div class="col-12 d-flex flex-row">
+      <div class="h1"><%= octicon "bell", height: 36 %> Last Notifications </div>
+      <div class="col text-right" style="float: right;">
+        <%= link_to notifications_path, method: :delete, remote: :true,
+                                        class: "clear-notifications btn btn-outline-dark #{ 'disabled' unless @last_notifications.present?}",
+                                        title: "Clear all", data: { confirm: "Are you sure you want to clear all Notifications?" } do %>
+          <%= octicon "browser", height: 22 %> Clear
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
