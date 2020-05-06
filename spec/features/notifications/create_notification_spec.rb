@@ -16,10 +16,10 @@ RSpec.feature "Creates Notifications" do
     visit '/'
     click_link 'Last notifications'
 
-    expect(page).to have_content("#{@user1.username} is following you")
+    expect(page).to have_content("#{@user1.username} #{Notification.last.action}")
   end
 
-  scenario "a user adds a user as collaborator of a drawer" do
+  scenario "a user creates a codetool in a collaborated drawer" do
     Friendship.create(user_id: @user2.id, friend_id: @user1.id)
     DrawerCollaborator.create(drawer_id: @drawer.id, friend_id: @user2.id)
     visit "/"
@@ -33,10 +33,10 @@ RSpec.feature "Creates Notifications" do
     visit '/'
     click_link 'Last notifications'
 
-    expect(page).to have_content("#{@user1.username} created collaborated codetool Creating a Codetool")
+    expect(page).to have_content("#{@user1.username} #{Notification.last.action} #{Codetool.last.title}")
   end
 
-  scenario "a user favorites a codetool" do
+  scenario "a user favorites other user codetool" do
     Friendship.create(user_id: @user2.id, friend_id: @user1.id)
     Friendship.create(user_id: @user1.id, friend_id: @user2.id)
     codetool = Codetool.create(title: "The first codetool", content: "Content of first codetool", drawer: @drawer, user: @user2, public: true)
@@ -49,7 +49,7 @@ RSpec.feature "Creates Notifications" do
     visit '/'
     click_link 'Last notifications'
 
-    expect(page).to have_content("#{@user1.username} favorited #{codetool.title}")
+    expect(page).to have_content("#{@user1.username} #{Notification.last.action} #{codetool.title}")
   end
 
   scenario "a user updates a collaborated drawer codetool" do
@@ -70,7 +70,7 @@ RSpec.feature "Creates Notifications" do
     visit '/'
     click_link 'Last notifications'
 
-    expect(page).to have_content("#{@user1.username} updated collaborated codetool Updated Title")
+    expect(page).to have_content("#{@user1.username} #{Notification.last.action} #{Codetool.last.title}")
   end
 
 end
