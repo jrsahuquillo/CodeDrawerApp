@@ -1,8 +1,11 @@
 class NotificationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_notifications
+  before_action :set_unread_notifications
+  before_action :set_all_notifications
+  before_action :trim_notifications
 
   def index
+    @last_notifications = current_user.notifications.sort_by(&:created_at).reverse
   end
 
   def mark_as_read
@@ -10,10 +13,24 @@ class NotificationsController < ApplicationController
     render json: { success: true }
   end
 
+  def clear
+    @all_notifications.destroy_all
+    redirect_to '/notifications'
+  end
+
   private
 
-  def set_notifications
+  def set_unread_notifications
     @notifications = current_user.notifications.unread
   end
+
+  def set_all_notifications
+    @all_notifications = current_user.notifications
+  end
+
+  def trim_notifications
+    @all_notifications.sort_by(&:created_at).first.destroy if @all_notifications.count > 25
+  end
+
 
 end

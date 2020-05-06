@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: 'drawers#index'
 
   get '/users/:id/public_codetools' => 'users#public_codetools', as: :user_public_codetools
+  get '/users/:id/last_notifications' => 'users#last_notifications', as: :user_last_notifications
+
 
   resources :drawers do
     collection do
@@ -28,6 +30,7 @@ Rails.application.routes.draw do
       post :mark_as_read
     end
   end
+  match 'notifications', to: 'notifications#clear', via: :delete
 
   resources :favorite_codetools
   resources :pin_codetools

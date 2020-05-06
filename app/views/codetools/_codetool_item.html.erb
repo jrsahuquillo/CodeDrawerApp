@@ -72,7 +72,7 @@
                 <div class='create-favorite <%= "d-none" if codetool.favorited?(current_user.id) %>' >
                   <%= button_to favorite_codetools_path(current_user, codetool_id: codetool.id),
                                                                           method: :post, remote: true,
-                                                                          class: "btn btn-outline-secondary btn-sm" do %>
+                                                                          class: "btn btn-outline-secondary btn-sm favorite-button" do %>
                     <%= octicon "star" %> <span class="total-favorites badge badge-light"><%= codetool.total_favorites %></span>
                   <% end %>
                 </div>

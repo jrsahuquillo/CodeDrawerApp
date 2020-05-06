@@ -58,7 +58,7 @@
                   <% if current_user.friend?(friend) %>
                     <%= link_to "Unfollow", friends_path(friend_id: friend), method: :delete, class:"btn btn-outline-danger" %>
                   <% else %>
-                    <%= link_to follow_button(friend), friends_path(friend_id: friend), method: :post, class:"btn btn-outline-success" %>
+                    <%= link_to follow_button(friend), friends_path(friend_id: friend), method: :post, class:"btn btn-outline-success follow-button" %>
                   <% end %>
                 </div>
               </div>
