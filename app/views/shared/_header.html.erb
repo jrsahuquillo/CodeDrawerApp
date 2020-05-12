@@ -13,9 +13,16 @@
             <li class="nav-item active search-form-wrapper">
               <%= form_tag(search_path(@drawer), method: "get", class: "form-inline my-2 my-lg-1", id: "search-form") do %>
                   <%= text_field_tag :search, params[:search], class: "search-field form-control mr-sm-2", placeholder: "Search (CRTL + F)", 'aria-label': 'Search' %>
-                  <%= button_tag(type: "submit", class: "btn btn-light my-2 my-sm-0 search") do %>
-                    <%= octicon 'search'%>
-                  <% end %>
+                  <div class="btn-group" role="group">
+                    <%= button_tag(type: "submit", name: 'global', value: 'global', class: "btn btn-light my-2 my-sm-0 search") do %>
+                      <%= octicon 'search'%>
+                    <% end %>
+                    <% if @drawer %>
+                    <%= button_tag(type: "submit", name: 'drawer', value: @drawer.id, class: "btn btn-light my-2 my-sm-0 search") do %>
+                      <%= octicon 'archive'%>
+                    <% end %>
+                    <% end %>
+                  </div>
               <% end %>
             </li>
             <li class="nav-item active">
