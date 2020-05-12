@@ -15,7 +15,9 @@ class FriendshipsController < ApplicationController
     else
       flash[:alert] = "#{@friend.username} " + "#{@friend.errors.messages[:friend_id].first}"
     end
-    redirect_to search_friends_path
+
+    new_friend_path = params[:public_codetools] ? user_public_codetools_path(@friend) : search_friends_path
+    redirect_to new_friend_path
   end
 
   def destroy

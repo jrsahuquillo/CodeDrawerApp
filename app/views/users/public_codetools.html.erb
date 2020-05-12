@@ -1,7 +1,20 @@
 <div class="detail-friends">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-12 d-flex flex-row">
       <div class="h1 drawer-detail-title"><%= octicon "radio-tower", height: 42 %> <%= "#{@user.username} Public Codetools" %> </div>
+      <div class="col text-right" style="float: right;">
+        <div class="friend-info">
+          <% if current_user.followed_back_by?(@user) %>
+            <span class="friend-followback-info">
+              <%= octicon "organization", height: 24  %>
+            </span>
+          <% end %>
+          <% unless current_user.friend?(@user) %>
+            <%= link_to follow_button(@user), friends_path(friend_id: @user, public_codetools: true), method: :post, class:"btn btn-outline-success follow-button" %>
+          <% end %>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
