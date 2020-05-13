@@ -83,6 +83,7 @@ h6, .h6 {
 .search-form-wrapper {
   padding-right: 1rem;
   .search-field {
+    margin-right: 0 !important;
     width: 350px !important;
   }
 }
@@ -140,7 +141,7 @@ mark {
 }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 600px) {
   html {
     overflow-x: hidden;
   }
@@ -152,8 +153,9 @@ mark {
   .search-form-wrapper {
     padding-right: 1rem;
     .search-field {
+      top: 0.5rem;
       margin-right: 0.5rem;
-      width: 81% !important;
+      width: 75% !important;
     }
   }
 }

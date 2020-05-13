@@ -35,4 +35,8 @@ module CodetoolsHelper
     @codetool.persisted? && @codetool.user != current_user
   end
 
+  def favorite_codetools_page?
+    controller_name == "favorite_codetools"
+  end
+
 end
