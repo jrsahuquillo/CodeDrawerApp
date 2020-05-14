@@ -44,18 +44,20 @@
       <% drawer = codetool&.drawer %>
       <% if drawer %>
         <div class="codetool-footer d-flex flex-row justify-content-between">
-          <div class="p-2">
-            <small class="codetool-time">
-              <%= set_item_time(codetool) %>
-            </small>
-            <% if action_name == 'search' %>
-              <small >
-                <%= link_to drawer_codetools_path(drawer), class: 'drawer-link mt-2' do %>
-                  <%= octicon "archive" %> <%= drawer.title %>
-                <% end %>
+          <% unless current_device_is_mobile? %>
+            <div class="p-2">
+              <small class="codetool-time">
+                <%= set_item_time(codetool) %>
               </small>
-            <% end %>
-          </div>
+              <% if action_name == 'search' %>
+                <small >
+                  <%= link_to drawer_codetools_path(drawer), class: 'drawer-link mt-2' do %>
+                    <%= octicon "archive" %> <%= drawer.title %>
+                  <% end %>
+                </small>
+              <% end %>
+            </div>
+          <% end %>
 
           <div class="p-2 d-flex flex-row justify-content-between">
             <% unless show_codetool_page? %>

@@ -1,6 +1,4 @@
 <div class='h3 text-center codetool-form'><%= title %> Search</div>
-<ul>
-  <% searched_codetools.each do |codetool| %>
-    <%= render 'codetool_item', codetool: codetool, drawer: codetool.drawer %>
-  <% end %>
-</ul>
+<% searched_codetools.each do |codetool| %>
+  <%= render 'codetool_item', codetool: codetool, drawer: codetool.drawer %>
+<% end %>

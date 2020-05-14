@@ -140,7 +140,6 @@ mark {
   height: 45px;
 }
 
-
 @media only screen and (max-width: 600px) {
   html {
     overflow-x: hidden;
@@ -148,6 +147,7 @@ mark {
   body {
     overflow-x: hidden;
     position: relative;
+    font-size: 0.9rem !important;
   }
 
   .search-form-wrapper {
@@ -155,7 +155,7 @@ mark {
     .search-field {
       top: 0.5rem;
       margin-right: 0.5rem;
-      width: 75% !important;
+      width: 65% !important;
     }
   }
 }
