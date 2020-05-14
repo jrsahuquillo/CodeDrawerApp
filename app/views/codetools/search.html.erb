@@ -1,5 +1,6 @@
+<% title = @searched_drawer ? "#{@searched_drawer.title}" : "My Codetools"%>
 <% if @searched_user_codetools.present? %>
-  <%= render 'searched_codetools', searched_codetools: @searched_user_codetools, title: "My Codetools" %>
+  <%= render 'searched_codetools', searched_codetools: @searched_user_codetools, title: title %>
 <% end %>
 
 <% if @searched_friends_public_codetools.present? %>

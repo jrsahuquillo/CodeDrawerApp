@@ -9,6 +9,7 @@ module ApplicationHelper
 
   def current_device_is_mobile?
     agent = request.user_agent
+    return false if agent =~ /iPad/
     agent =~ /Mobile/
   end
 

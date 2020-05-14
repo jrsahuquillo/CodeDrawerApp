@@ -83,10 +83,14 @@ $(document).on('turbolinks:load', function () {
     }
   }
 
+
+  // Displays on hover edit and link buttons when codetools is higher than 600px of height
   $('.codetool-content').hover(function() {
-    $(this).children('.extra-buttons').attr('hidden', false);
-  }, function () {
-    $(this).children('.extra-buttons').attr('hidden', true);
+    if ($(this).height() > 600) {
+      var bool = $(this).children('.extra-buttons').is(":hidden")
+      $(this).children('.extra-buttons').toggleClass('hidden')
+      $(this).children('.extra-buttons').attr('hidden', !bool)
+    }
   })
 
 });

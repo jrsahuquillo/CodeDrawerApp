@@ -21,13 +21,18 @@
     <div class="row">
       <% @searched_friends.each do |friend| %>
         <% unless friend == current_user %>
-          <div class="col-sm-4 py-2">
+          <div class="col-sm-12 col-md-6 col-lg-4 py-2">
             <div class="card">
               <div class="card-body">
 
                 <div class="h5 friend-codetool-title card-title">
                   <% if friend.codetools.is_public.any? %>
                     <div class="friend-codetool-name">
+                      <% if current_user.followed_back_by?(friend) %>
+                        <span class="friend-followback-info">
+                          <%= octicon "organization", height: 24  %>
+                        </span>
+                      <% end %>
                       <%= avatar(friend) %>
                       <% if current_user.friend?(friend) %>
                           <%= link_to friend.username, user_public_codetools_path(friend.id) %>
@@ -50,15 +55,10 @@
                 </div>
 
                 <div class="friend-info">
-                  <% if current_user.followed_back_by?(friend) %>
-                    <span class="friend-followback-info">
-                      <%= octicon "organization", height: 24  %>
-                    </span>
-                  <% end %>
                   <% if current_user.friend?(friend) %>
-                    <%= link_to "Unfollow", friends_path(friend_id: friend), method: :delete, class:"btn btn-outline-danger" %>
+                    <%= link_to "Unfollow", friends_path(friend_id: friend), method: :delete, class:"btn btn-sm btn-outline-danger" %>
                   <% else %>
-                    <%= link_to follow_button(friend), friends_path(friend_id: friend), method: :post, class:"btn btn-outline-success follow-button" %>
+                    <%= link_to follow_button(friend), friends_path(friend_id: friend), method: :post, class:"btn  btn-outline-success follow-button" %>
                   <% end %>
                 </div>
               </div>

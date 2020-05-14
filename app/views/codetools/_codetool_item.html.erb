@@ -28,7 +28,6 @@
     <div class="collapse multi-collapse <%= 'show' if show_codetool_page? || recent_created_or_updated?(codetool) %>" id=<%= "codetool#{codetool.id}" %> >
       <div class="codetool-content">
         <div class="extra-buttons" hidden>
-          <% if codetool.content.lines.count >= 25 %>
             <% @drawer ||= codetool.drawer %>
             <% if @drawer.friends.include?(current_user) || codetool.user == current_user %>
               <%= link_to edit_drawer_codetool_path(@drawer, codetool), class: 'edit-codetool-icon', style: 'float: right;', 'data-toggle':'tooltip', title: "Edit Codetool", 'data-turbolinks': false do %>
@@ -39,25 +38,26 @@
               <div class="codetool-link"><%= octicon "link", height: 18 %></div>
               <div class="codetool-check" hidden><%= octicon "check", height: 18 %></div>
             <% end %>
-          <% end %>
         </div>
         <%= params[:search] ? highlight(markdown(codetool.content), params[:search]) : markdown(codetool.content) %>
       </div>
       <% drawer = codetool&.drawer %>
       <% if drawer %>
         <div class="codetool-footer d-flex flex-row justify-content-between">
-          <div class="p-2">
-            <small class="codetool-time">
-              <%= set_item_time(codetool) %>
-            </small>
-            <% if action_name == 'search' %>
-              <small >
-                <%= link_to drawer_codetools_path(drawer), class: 'drawer-link mt-2' do %>
-                  <%= octicon "archive" %> <%= drawer.title %>
-                <% end %>
+          <% unless current_device_is_mobile? %>
+            <div class="p-2">
+              <small class="codetool-time">
+                <%= set_item_time(codetool) %>
               </small>
-            <% end %>
-          </div>
+              <% if action_name == 'search' %>
+                <small >
+                  <%= link_to drawer_codetools_path(drawer), class: 'drawer-link mt-2' do %>
+                    <%= octicon "archive" %> <%= drawer.title %>
+                  <% end %>
+                </small>
+              <% end %>
+            </div>
+          <% end %>
 
           <div class="p-2 d-flex flex-row justify-content-between">
             <% unless show_codetool_page? %>

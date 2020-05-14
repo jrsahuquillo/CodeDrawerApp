@@ -1,10 +1,12 @@
 // Friendships
+@import 'settings';
 
 .detail-friends  {
     padding-top: 2rem;
     .card-body {
       display: flex;
       justify-content: space-between;
+      min-height: 8rem;
     }
 }
 
@@ -13,5 +15,8 @@
 }
 
 .friend-followback-info {
-    padding: 0 1rem;
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+  color: $accent-color;
 }

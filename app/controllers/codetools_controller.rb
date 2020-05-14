@@ -22,12 +22,17 @@ class CodetoolsController < ApplicationController
   end
 
   def search
-    @searched_user_codetools = params[:search].blank? ? [] : current_user.codetools.search(params[:search])
-    @searched_friends_public_codetools = []
-    current_user.friends.each do |friend|
-      @searched_friends_public_codetools << friend.codetools.is_public.search(params[:search])
+    @searched_drawer = Drawer.find(params[:drawer_id]) if params[:drawer_id]
+    search_scope = @searched_drawer ? @searched_drawer : current_user
+    @searched_user_codetools = params[:search].blank? ? [] : search_scope.codetools.search(params[:search])
+
+    unless params[:drawer_id]
+      @searched_friends_public_codetools = []
+      current_user.friends.each do |friend|
+        @searched_friends_public_codetools << friend.codetools.is_public.search(params[:search])
+      end
+      @searched_friends_public_codetools = @searched_friends_public_codetools.flatten
     end
-    @searched_friends_public_codetools = @searched_friends_public_codetools.flatten
   end
 
   def new
