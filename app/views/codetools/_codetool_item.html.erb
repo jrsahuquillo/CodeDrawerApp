@@ -28,7 +28,6 @@
     <div class="collapse multi-collapse <%= 'show' if show_codetool_page? || recent_created_or_updated?(codetool) %>" id=<%= "codetool#{codetool.id}" %> >
       <div class="codetool-content">
         <div class="extra-buttons" hidden>
-          <% if codetool.content.lines.count >= 25 %>
             <% @drawer ||= codetool.drawer %>
             <% if @drawer.friends.include?(current_user) || codetool.user == current_user %>
               <%= link_to edit_drawer_codetool_path(@drawer, codetool), class: 'edit-codetool-icon', style: 'float: right;', 'data-toggle':'tooltip', title: "Edit Codetool", 'data-turbolinks': false do %>
@@ -39,7 +38,6 @@
               <div class="codetool-link"><%= octicon "link", height: 18 %></div>
               <div class="codetool-check" hidden><%= octicon "check", height: 18 %></div>
             <% end %>
-          <% end %>
         </div>
         <%= params[:search] ? highlight(markdown(codetool.content), params[:search]) : markdown(codetool.content) %>
       </div>
