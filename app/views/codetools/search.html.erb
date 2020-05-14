@@ -1,4 +1,4 @@
-<% title = params[:drawer] ? "My Drawer" : "My Codetools"%>
+<% title = @searched_drawer ? "#{@searched_drawer.title}" : "My Codetools"%>
 <% if @searched_user_codetools.present? %>
   <%= render 'searched_codetools', searched_codetools: @searched_user_codetools, title: title %>
 <% end %>

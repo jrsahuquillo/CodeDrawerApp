@@ -22,9 +22,11 @@ class CodetoolsController < ApplicationController
   end
 
   def search
-    search_scope = params[:drawer] ? Drawer.find(params[:drawer]) : current_user
+    @searched_drawer = Drawer.find(params[:drawer_id]) if params[:drawer_id]
+    search_scope = @searched_drawer ? @searched_drawer : current_user
     @searched_user_codetools = params[:search].blank? ? [] : search_scope.codetools.search(params[:search])
-    unless params[:drawer]
+
+    unless params[:drawer_id]
       @searched_friends_public_codetools = []
       current_user.friends.each do |friend|
         @searched_friends_public_codetools << friend.codetools.is_public.search(params[:search])
