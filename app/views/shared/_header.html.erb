@@ -19,7 +19,7 @@
                       <%= octicon 'search'%>
                     <% end %>
                     <% if (@drawer || params[:drawer_id]) && (!favorite_codetools_page? && !params[:global]) %>
-                      <%= button_tag(type: "submit", name: 'drawer_id', value: (@drawer&.id || params[:drawer_id]), 'data-toggle':'tooltip', title: "Current drawer search:<br> ⌘ + ↵ or ^ + ↵", class: "btn btn-light my-2 my-sm-0 search drawer-search tooltiptext") do %>
+                      <%= button_tag(type: "submit", name: 'drawer_id', value: (@drawer&.id || params[:drawer_id]), 'data-toggle':'tooltip', title: "Current drawer search: ⌘ + ↵ or ^ + ↵", class: "btn btn-light my-2 my-sm-0 search drawer-search tooltiptext") do %>
                         <%= octicon 'archive'%>
                       <% end %>
                     <% end %>
