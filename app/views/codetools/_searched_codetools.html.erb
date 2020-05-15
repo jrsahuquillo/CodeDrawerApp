@@ -1,6 +1,18 @@
-<div class="container-fluid">
-<div class='h2 search-list'><%= title %> Search</div>
-<% searched_codetools.each do |codetool| %>
-  <%= render 'codetool_item', codetool: codetool, drawer: codetool.drawer %>
-<% end %>
+
+<div class="detail-favorites">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class='h1 search-list'><%= octicon "search", height: 36 %> <%= title %> Search</div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <% searched_codetools.each do |codetool| %>
+        <%= render 'codetool_item', codetool: codetool, drawer: codetool.drawer %>
+      <% end %>
+    </div>
+  </div>
 </div>

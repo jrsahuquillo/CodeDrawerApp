@@ -21,7 +21,7 @@ module ApplicationHelper
       state = "Updated"
       time_ago = item.updated_at
     end
-    render inline: "#{state} #{time_ago_in_words(time_ago)} ago by #{item.user.username}"
+    render inline: "#{state} #{time_ago_in_words(time_ago)} ago"
   end
 
   def type_of_container
