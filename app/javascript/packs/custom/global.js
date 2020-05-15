@@ -1,4 +1,10 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load', function () {
+  $(document).tooltip({
+    show: {
+      delay: 600,
+      duration: 200
+    }
+  });
 
   // CMD + Intro -> Quick save shortcut OR drawer-search scope
   $(document).keydown(function(e) {

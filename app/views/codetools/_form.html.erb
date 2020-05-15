@@ -59,13 +59,14 @@
           <div class="public-check">
             <div class='form-check'>
               <div class='control-label col-sm'>
-                <%= f.check_box :public, id: 'public_checkbox', 'data-toggle': 'toggle',
-                                                                'data-size': 'sm',
-                                                                'data-on': "#{octicon 'organization'}",
-                                                                'data-off': "#{octicon 'lock'}",
-                                                                'data-onstyle': 'outline-primary',
-                                                                'data-offstyle': 'light',
-                                                                disabled: disabled? %>
+                <%= f.check_box :public, id: 'public_checkbox',
+                                        'data-toggle': 'toggle',
+                                        'data-size': 'sm',
+                                        'data-on': "#{octicon 'organization'}",
+                                        'data-off': "#{octicon 'lock'}",
+                                        'data-onstyle': 'outline-primary',
+                                        'data-offstyle': 'light',
+                                        disabled: disabled? %>
               </div>
             </div>
           </div>
@@ -78,7 +79,7 @@
         <div class='form-group'>
           <div class='col-md-offset-1 col-sm submit-button'>
             <%= f.submit class: 'btn btn-primary pull-right' %>
-            <%= f.submit 'Quick Save', class: 'btn btn-outline-primary pull-right', title: '⌘ + ⏎ or ⌃ + ⏎' %>
+            <%= f.submit 'Quick Save', class: 'btn btn-outline-primary pull-right', 'data-toggle':'tooltip', title: '⌘ + ⏎ or ⌃ + ⏎' %>
             <%= link_to 'Cancel', drawer_codetools_path(@drawer), class: 'btn btn-outline-danger pull-right' %>
           </div>
         </div>
