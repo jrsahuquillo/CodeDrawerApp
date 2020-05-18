@@ -26,13 +26,13 @@
               <div class="card-body">
 
                 <div class="h5 friend-codetool-title card-title">
+                  <% if current_user.followed_back_by?(friend) %>
+                    <span class="friend-followback-info">
+                      <%= octicon "organization", height: 24  %>
+                    </span>
+                  <% end %>
                   <% if friend.codetools.is_public.any? %>
                     <div class="friend-codetool-name">
-                      <% if current_user.followed_back_by?(friend) %>
-                        <span class="friend-followback-info">
-                          <%= octicon "organization", height: 24  %>
-                        </span>
-                      <% end %>
                       <%= avatar(friend) %>
                       <% if current_user.friend?(friend) %>
                           <%= link_to friend.username, user_public_codetools_path(friend.id) %>
