@@ -63,8 +63,8 @@
                                                                 'data-size': 'sm',
                                                                 'data-on': "#{octicon 'organization'}",
                                                                 'data-off': "#{octicon 'lock'}",
-                                                                'data-onstyle': 'outline-primary',
-                                                                'data-offstyle': 'light',
+                                                                'data-onstyle': 'outline-primary' + "#{' disabled' if disabled?}",
+                                                                'data-offstyle': 'light' + "#{' disabled' if disabled?}",
                                                                 disabled: disabled? %>
               </div>
             </div>
@@ -80,6 +80,12 @@
             <%= f.submit class: 'btn btn-primary pull-right' %>
             <%= f.submit 'Quick Save', class: 'btn btn-outline-primary pull-right', title: '⌘ + ⏎ or ⌃ + ⏎' %>
             <%= link_to 'Cancel', drawer_codetools_path(@drawer), class: 'btn btn-outline-danger pull-right' %>
+            <% if @codetool.user == current_user %>
+              <%= link_to drawer_codetool_path(@drawer, @codetool), method: :delete, class: 'delete-codetool-icon btn btn-danger float-right','data-toggle':'tooltip',
+                                                                  title: "Delete Codetool", data: { confirm: "Are you sure you want to delete codetool?" } do %>
+                <%= octicon "trashcan", height: 18 %>
+              <% end %>
+            <% end %>
           </div>
         </div>
       <% end %>

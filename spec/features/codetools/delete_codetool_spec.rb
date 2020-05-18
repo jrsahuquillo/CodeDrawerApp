@@ -13,6 +13,7 @@ RSpec.feature "Delete a Codetool" do
     visit "/"
     click_link @drawer.title
     find('.show-codetool').click
+    click_link "Edit Codetool"
     click_link "Delete Codetool"
 
     expect(page).to have_content("Codetool has been deleted")

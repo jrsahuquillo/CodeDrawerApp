@@ -140,6 +140,10 @@ mark {
   height: 45px;
 }
 
+.disabled, [disabled='disabled'] {
+  cursor: not-allowed !important;
+}
+
 @media only screen and (max-width: 600px) {
   html {
     overflow-x: hidden;
