@@ -93,4 +93,12 @@ $(document).on('turbolinks:load', function () {
     }
   })
 
+
+  $('.increase-area-icon').click(function(){
+    $('textarea').animate({rows: '+=30'}, 500);
+  });
+  $('.decrease-area-icon').click(function(){
+    $('textarea').animate({rows: '-=30'}, 500);
+  });
+
 });
