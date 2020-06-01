@@ -42,6 +42,14 @@
           </div>
           <div class='col-sm'>
             <%= f.text_area :content, rows: 15, class: 'form-control', placeholder: 'Content of codetool', autofocus: action_name == "update"  %>
+              <div class="btn-group textarea-height-buttons">
+              <div class="decrease-area-icon text-right">
+                <%= octicon "fold-up", height: 18 %>
+              </div>
+              <div class="increase-area-icon text-right">
+                <%= octicon "fold-down", height: 18 %>
+              </div>
+            </div>
           </div>
         </div>
 

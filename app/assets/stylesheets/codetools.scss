@@ -187,3 +187,20 @@ img[src*="#wide"] {
    width:100%;
    height:100%;
 }
+
+.textarea-height-buttons {
+  float: right;
+  margin: -2rem 1rem 0 0;
+  cursor: pointer;
+  .increase-area-icon,
+  .decrease-area-icon {
+    top: 0px;
+    display: block;
+    color: $grey3;
+    float: right;
+    padding: 0.5rem 0 0 0.5rem;
+    &:hover{
+      color: $grey1;
+    }
+  }
+}
