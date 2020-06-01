@@ -28,7 +28,7 @@ require("packs/custom/notifications")
 require("packs/custom/favorites")
 
 import 'bootstrap'
-import './src/application.scss'
+import './stylesheets/application.scss'
 
 import 'select2';                       // globally assign select2 fn to $ element
 import 'select2/dist/css/select2.css';
