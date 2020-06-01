@@ -190,7 +190,8 @@ img[src*="#wide"] {
 
 .textarea-height-buttons {
   float: right;
-  margin-top: -0.5rem;
+  margin: -2rem 1rem 0 0;
+  cursor: pointer;
   .increase-area-icon,
   .decrease-area-icon {
     top: 0px;

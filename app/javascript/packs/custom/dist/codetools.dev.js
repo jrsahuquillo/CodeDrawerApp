@@ -94,7 +94,8 @@ $(document).on('turbolinks:load', function () {
       $(this).children('.extra-buttons').toggleClass('hidden');
       $(this).children('.extra-buttons').attr('hidden', !bool);
     }
-  });
+  }); // Increases or decreases height of textarea when creates or edits a codetool.
+
   $('.increase-area-icon').click(function () {
     $('textarea').animate({
       rows: '+=30'

@@ -93,7 +93,7 @@ $(document).on('turbolinks:load', function () {
     }
   })
 
-
+  // Increases or decreases height of textarea when creates or edits a codetool.
   $('.increase-area-icon').click(function(){
     $('textarea').animate({rows: '+=30'}, 500);
   });
