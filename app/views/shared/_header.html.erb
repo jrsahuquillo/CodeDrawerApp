@@ -15,11 +15,11 @@
                 <div class="input-group">
                   <%= text_field_tag :search, params[:search], class: "search-field form-control mr-sm-2", placeholder: "Search (CRTL + F)", 'aria-label': 'Search' %>
                   <div class="input-group-append">
-                    <%= button_tag(type: "submit", name: 'global', value: 'global', class: "btn btn-light my-2 my-sm-0 search global-search") do %>
+                    <%= button_tag(type: "submit", name: 'global', value: 'global', 'data-toggle':'tooltip', title: 'Global search:  ↵', class: "btn btn-light my-2 my-sm-0 search global-search") do %>
                       <%= octicon 'search'%>
                     <% end %>
                     <% if (@drawer || params[:drawer_id]) && (!favorite_codetools_page? && !params[:global]) %>
-                      <%= button_tag(type: "submit", name: 'drawer_id', value: (@drawer&.id || params[:drawer_id]), class: "btn btn-light my-2 my-sm-0 search drawer-search") do %>
+                      <%= button_tag(type: "submit", name: 'drawer_id', value: (@drawer&.id || params[:drawer_id]), 'data-toggle':'tooltip', title: "Current drawer search: ⌘ + ↵ or ^ + ↵", class: "btn btn-light my-2 my-sm-0 search drawer-search tooltiptext") do %>
                         <%= octicon 'archive'%>
                       <% end %>
                     <% end %>
@@ -28,7 +28,7 @@
               <% end %>
             </li>
             <li class="nav-item active">
-              <%= link_to search_friends_path, class: 'nav-link', title: 'Search Friends' do %>
+              <%= link_to search_friends_path, class: 'nav-link', 'data-toggle':'tooltip', title: 'Search Friends' do %>
                 <%= octicon 'organization', height: 24 %> Friends
               <% end %>
             </li>

@@ -65,6 +65,8 @@
                 <div class='destroy-favorite <%= "d-none" unless codetool.favorited?(current_user.id) %>' >
                   <%= button_to favorite_codetool_path(current_user, codetool_id: codetool.id),
                                                                           method: :delete, remote: true,
+                                                                          'data-toggle':'tooltip',
+                                                                          title: "Undo favorite",
                                                                           class: "btn btn-outline-warning btn-sm" do %>
                     <%= octicon "star" %> <span class="total-favorites badge badge-light"><%= codetool.total_favorites %></span>
                   <% end %>
@@ -72,6 +74,8 @@
                 <div class='create-favorite <%= "d-none" if codetool.favorited?(current_user.id) %>' >
                   <%= button_to favorite_codetools_path(current_user, codetool_id: codetool.id),
                                                                           method: :post, remote: true,
+                                                                          'data-toggle':'tooltip',
+                                                                          title: "Do favorite",
                                                                           class: "btn btn-outline-secondary btn-sm favorite-button" do %>
                     <%= octicon "star" %> <span class="total-favorites badge badge-light"><%= codetool.total_favorites %></span>
                   <% end %>
@@ -85,6 +89,7 @@
                   <%= link_to pin_codetool_path(current_user, codetool_id: codetool.id),
                                                               method: :delete, remote: true,
                                                               class: "pinned-codetool-icon",
+                                                              'data-toggle':'tooltip',
                                                               title: "Unpin from workboard" do %>
                     <div class="codetool-pinned"><%= octicon "pin", height: 18 %></div>
                   <% end %>
@@ -92,6 +97,7 @@
                   <%= link_to pin_codetools_path(codetool_id: codetool.id),
                                                               method: :post, remote: true,
                                                               class: "unpinned-codetool-icon",
+                                                              'data-toggle':'tooltip',
                                                               title: "Pin to workboard" do %>
                     <div class="codetool-unpinned"><%= octicon "pin", height: 18 %></div>
                   <% end %>

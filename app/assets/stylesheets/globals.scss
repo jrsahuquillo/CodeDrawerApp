@@ -139,9 +139,10 @@ mark {
   width: 45px;
   height: 45px;
 }
-
-.disabled, [disabled='disabled'] {
-  cursor: not-allowed !important;
+.ui-tooltip {
+  color: $grey3;
+  font-size: 0.8rem;
+  box-shadow: 1px $grey3 inset, 0 0 8px $accent-color;
 }
 
 @media only screen and (max-width: 600px) {

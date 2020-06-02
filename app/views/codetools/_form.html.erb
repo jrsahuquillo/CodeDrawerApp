@@ -44,10 +44,10 @@
             <%= f.text_area :content, rows: 15, class: 'form-control', placeholder: 'Content of codetool', autofocus: action_name == "update"  %>
               <div class="btn-group textarea-height-buttons">
               <div class="decrease-area-icon text-right">
-                <%= octicon "fold-up", height: 18 %>
+                <%= octicon "fold-up", height: 18,  title: "Decrease height of textarea" %>
               </div>
               <div class="increase-area-icon text-right">
-                <%= octicon "fold-down", height: 18 %>
+                <%= octicon "fold-down", height: 18, title: "Increase height of textarea" %>
               </div>
             </div>
           </div>
@@ -67,13 +67,14 @@
           <div class="public-check">
             <div class='form-check'>
               <div class='control-label col-sm'>
-                <%= f.check_box :public, id: 'public_checkbox', 'data-toggle': 'toggle',
-                                                                'data-size': 'sm',
-                                                                'data-on': "#{octicon 'organization'}",
-                                                                'data-off': "#{octicon 'lock'}",
-                                                                'data-onstyle': 'outline-primary' + "#{' disabled' if disabled?}",
-                                                                'data-offstyle': 'light' + "#{' disabled' if disabled?}",
-                                                                disabled: disabled? %>
+                <%= f.check_box :public, id: 'public_checkbox',
+                                        'data-toggle': 'toggle',
+                                        'data-size': 'sm',
+                                        'data-on': "#{octicon 'organization'}",
+                                        'data-off': "#{octicon 'lock'}",
+                                        'data-onstyle': 'outline-primary',
+                                        'data-offstyle': 'light',
+                                        disabled: disabled? %>
               </div>
             </div>
           </div>
@@ -86,7 +87,7 @@
         <div class='form-group'>
           <div class='col-md-offset-1 col-sm submit-button'>
             <%= f.submit class: 'btn btn-primary pull-right' %>
-            <%= f.submit 'Quick Save', class: 'btn btn-outline-primary pull-right', title: '⌘ + ⏎ or ⌃ + ⏎' %>
+            <%= f.submit 'Quick Save', class: 'btn btn-outline-primary pull-right', 'data-toggle':'tooltip', title: '⌘ + ⏎ or ⌃ + ⏎' %>
             <%= link_to 'Cancel', drawer_codetools_path(@drawer), class: 'btn btn-outline-danger pull-right' %>
             <% if @codetool.user == current_user %>
               <%= link_to drawer_codetool_path(@drawer, @codetool), method: :delete, class: 'delete-codetool-icon btn btn-danger float-right','data-toggle':'tooltip',
