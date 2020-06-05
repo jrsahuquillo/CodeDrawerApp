@@ -13,7 +13,13 @@ $(document).on('turbolinks:load',function(){
         data: $(this).sortable('serialize'),
       });
     }
-  }).draggable();
+  })
+  .draggable({
+    axis: "y",
+    opacity: 0.5,
+    scroll: true,
+    delay: 500
+  });
 
   // Rotate arrow icon when collapse collaborated drawer
   $('#collaborated-drawers-list').click(function () {
