@@ -4,7 +4,7 @@
       <div class="codetool-header">
         <div class="h4 codetool-title">
           <span class="dnd-codetool-icon">
-            <%= octicon "kebab-vertical", height: 24 if codetool.belongs_to_user?(current_user) %>
+            <%= octicon "kebab-vertical", height: 24 if codetool.belongs_to_user?(current_user) && index_codetools_page? %>
           </span>
             &nbsp;
           <%= params[:search] ? highlight(codetool.title, params[:search]) : codetool.title %>

@@ -11,7 +11,6 @@ module CodetoolsHelper
     parser.render(content).html_safe
   end
 
-
   def codetool_breadcrumb_title
     badge_style = @drawer.user == current_user ? 'warning' : 'secondary'
     "<div class='h4 text codetool-breadcrumb'>#{'Edition:' if action_name == "edit"}
@@ -37,6 +36,10 @@ module CodetoolsHelper
 
   def favorite_codetools_page?
     controller_name == "favorite_codetools"
+  end
+
+  def index_codetools_page?
+    controller_name == "codetools" && action_name == "index"
   end
 
 end
