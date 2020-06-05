@@ -1,16 +1,19 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
 
   //Codedrawer sorting
   $('#drawers-list').sortable({
+    axis: "y",
+    cursor: "move",
+    opacity: 0.7,
+    revert: true,
     update: function(e, ui) {
-      // console.log($(this).sortable('serialize'));
       $.ajax({
         url: $(this).data("url"),
         type: "PATCH",
         data: $(this).sortable('serialize'),
       });
     }
-  });
+  }).draggable();
 
   // Rotate arrow icon when collapse collaborated drawer
   $('#collaborated-drawers-list').click(function () {

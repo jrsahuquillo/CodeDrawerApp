@@ -4,23 +4,24 @@
   <% if @drawers.empty? %>
     <div class="h1" id="no-drawers">No drawers created</div>
   <% else %>
-    <% @drawers.each do |drawer| %>
-      <div class="card drawer-list">
-        <%= link_to drawer_codetools_path(drawer), class: 'drawer-detail' do %>
-          <div class="card-body">
-            <div class="h4 drawer-title">
-              <%= drawer&.title %>
-              <% if drawer.friends.present? %>
-                <span class='collaborated-drawer-icon float-right'><%= octicon 'organization'%></span>
-              <% end%>
+    <div id="drawers-list" data-url="<%= sort_drawer_drawers_path %>">
+      <% @drawers.each do |drawer| %>
+        <div class="card drawer-list" id="<%= dom_id(drawer) %>">
+          <%= link_to drawer_codetools_path(drawer), class: 'drawer-link-sidebar', 'data-turbolinks': false do %>
+            <div class="card-body">
+              <div class="h4 drawer-title">
+                <%= drawer&.title %>
+                <% if drawer.friends.present? %>
+                  <span class='collaborated-drawer-icon float-right'><%= octicon 'organization'%></span>
+                <% end%>
+              </div>
+              <small class="drawer-description">
+                <%= truncate(drawer.description, length: 140) %>
+              </small><br>
             </div>
-            <small class="drawer-description">
-              <%= truncate(drawer.description, length: 140) %>
-            </small><br>
-            
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
