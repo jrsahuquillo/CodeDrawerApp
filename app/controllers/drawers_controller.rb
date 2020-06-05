@@ -5,7 +5,7 @@ class DrawersController < ApplicationController
 
   def index
     if current_device_is_mobile?
-      @drawers = current_user.drawers.order(position: :asc)
+      @drawers = current_user.drawers.sort_by(&:position)
       render :index
     else
       if current_user.collaborated_drawers.present? || current_user.drawers.present?
