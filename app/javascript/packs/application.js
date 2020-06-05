@@ -26,6 +26,7 @@ require("packs/custom/drawers")
 require("packs/custom/codetools")
 require("packs/custom/notifications")
 require("packs/custom/favorites")
+require('jquery-ui-touch-punch')
 
 import 'bootstrap'
 import './stylesheets/application.scss'

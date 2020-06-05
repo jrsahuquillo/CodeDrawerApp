@@ -34,7 +34,7 @@ $(document).on('turbolinks:load', function () {
         data: $(this).sortable('serialize'),
       });
     }
-  });
+  }).draggable();
 
   // Warning when a codetools is made public
   $publicCheckbox = $('#public_checkbox')

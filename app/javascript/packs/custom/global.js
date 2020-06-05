@@ -41,4 +41,6 @@ $(document).on('turbolinks:load', function () {
       $( "#event_friend_ids" ).select2("close");
   });
 
+  // $('.codetool-item').draggable();
+
 });
