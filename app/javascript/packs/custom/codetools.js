@@ -26,6 +26,7 @@ $(document).on('turbolinks:load', function () {
     cursor: "move",
     opacity: 0.7,
     revert: true,
+    delay: 500,
     cancel: ".ui-sortable-handle .codetool-content",
     update: function(e, ui) {
       $.ajax({
@@ -34,7 +35,8 @@ $(document).on('turbolinks:load', function () {
         data: $(this).sortable('serialize'),
       });
     }
-  }).draggable();
+  });
+  // .draggable();
 
   // Warning when a codetools is made public
   $publicCheckbox = $('#public_checkbox')
