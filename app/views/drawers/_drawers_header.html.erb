@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-12">
     <div class="card drawer-list new-drawer">
       <%= link_to new_drawer_path, class: 'drawer-detail' do %>
         <div class="card-body">
@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <div class="col-sm-6">
+  <div class="col-sm-12">
     <div class="card drawer-list">
       <%= link_to pin_codetools_path, class: 'drawer-detail' do %>
       <div class="card-body">
@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <div class="col-sm-6">
+  <div class="col-sm-12">
     <div class="card drawer-list">
       <%= link_to favorite_codetools_path, class: 'drawer-detail' do %>
       <div class="card-body">
@@ -35,35 +35,28 @@
     </div>
   </div>
 
-  <div class="col-sm-6" id="collaborated-drawers-list">
-    <div class="card drawer-list  accordion">
-      <%= link_to '', class: 'drawer-detail', id:'heading', 'data-toggle': 'collapse', 'data-target': '#collapseOne', 'aria-expanded': 'true', 'aria-controls': 'collapseOne' do %>
-        <div class="card-body">
-          <div class="h4 drawer-title">
-            <%= octicon "organization", height: 24 %> Collaborated Drawers <%= octicon "chevron-down", height: 24 %>
-          </div>
-        </div>
-      <% end %>
 
-      <div id="collapseOne" class="collapse" aria-labelledby="heading" data-parent="#collaborated-drawers-list">
-        <div class="card-body">
-          <div id="collaborated-drawers-list">
-            <% collaborated_drawers.each do |drawer| %>
-              <div class="drawer-item-sidebar <%= check_active_link(drawer.id) %>" id="<%= dom_id(drawer) %>">
-                <%= link_to drawer_codetools_path(drawer), class: 'drawer-link-sidebar', 'data-turbolinks': false do %>
-                  <div class="h4 drawer-item-menu">
-                    <%= drawer.title.truncate(50) %>
-                    <% if drawer.friends.present? %>
-                      <span class='collaborated-drawer-icon float-right'><%= octicon 'organization'%></span>
-                    <% end%>
-                  </div>
-                <% end %>
+
+  <div class="col-sm-12" id="collaborated-drawers-list">
+    <% collaborated_drawers.each do |drawer| %>
+      <div class="card drawer-list">
+        <div class="drawer-item-sidebar <%= check_active_link(drawer.id) %>" id="<%= dom_id(drawer) %>">
+          <%= link_to drawer_codetools_path(drawer), class: 'drawer-link-sidebar', 'data-turbolinks': false do %>
+            <div class="card-body">
+              <div class="h4 drawer-item-menu">
+                <span class="drawer-list-icon">
+                  <%= octicon "primitive-square" %>
+                </span>
+                &nbsp;
+                <%= drawer.title.truncate(50) %>
+                <% if drawer.friends.present? %>
+                  <span class='collaborated-drawer-icon float-right'><%= octicon 'organization'%></span>
+                <% end%>
               </div>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
         </div>
       </div>
-
-    </div>
+    <% end %>
   </div>
 </div>
