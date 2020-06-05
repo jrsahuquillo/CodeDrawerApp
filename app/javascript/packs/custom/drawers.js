@@ -6,7 +6,9 @@ $(document).on('turbolinks:load',function(){
     cursor: "move",
     opacity: 0.7,
     revert: true,
-    delay: 500,
+    delay: 300,
+    scroll: true,
+    handle: '.drawer-list-icon',
     update: function(e, ui) {
       $.ajax({
         url: $(this).data("url"),
@@ -15,12 +17,6 @@ $(document).on('turbolinks:load',function(){
       });
     }
   });
-  // .draggable({
-  //   axis: "y",
-  //   opacity: 0.5,
-  //   scroll: true,
-  //   delay: 500
-  // });
 
   // Rotate arrow icon when collapse collaborated drawer
   $('#collaborated-drawers-list').click(function () {

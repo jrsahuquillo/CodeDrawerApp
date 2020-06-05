@@ -92,6 +92,7 @@
 
 .dnd-codetool-icon {
   opacity: 0.5;
+  cursor: move;
 }
 
 .show-codetool, .new-codetool {
@@ -112,10 +113,7 @@
     }
   }
 }
-#codetools-list .codetool-title {
-  // width: 90%;
-  cursor: move;
-}
+
 .codetool-content {
   border-top: 0.5px solid $border-light;
   padding: 8px;

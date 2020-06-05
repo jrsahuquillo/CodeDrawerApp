@@ -26,8 +26,8 @@ $(document).on('turbolinks:load', function () {
     cursor: "move",
     opacity: 0.7,
     revert: true,
-    delay: 500,
-    cancel: ".ui-sortable-handle .codetool-content",
+    delay: 300,
+    handle: '.dnd-codetool-icon',
     update: function(e, ui) {
       $.ajax({
         url: $(this).data("url"),
@@ -36,7 +36,6 @@ $(document).on('turbolinks:load', function () {
       });
     }
   });
-  // .draggable();
 
   // Warning when a codetools is made public
   $publicCheckbox = $('#public_checkbox')
