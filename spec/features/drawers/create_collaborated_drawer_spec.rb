@@ -41,9 +41,9 @@ RSpec.feature "Creating collaborated drawer" do
     click_button "Create Codetool"
     @drawer.reload
 
-    expect(Codetool.last.drawer).to eq(@drawer)
-    expect(Codetool.last.user).to eq(@user2)
-    expect(Codetool.last.public).to eq(false)
+    expect(Codetool.first.drawer).to eq(@drawer)
+    expect(Codetool.first.user).to eq(@user2)
+    expect(Codetool.first.public).to eq(false)
     expect(page).to have_content("Codetool has been created")
     expect(page).to have_content(@drawer.codetools.last.title)
     expect(page).to have_content(@drawer.codetools.last.content)

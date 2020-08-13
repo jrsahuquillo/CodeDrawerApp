@@ -5,6 +5,8 @@ class Codetool < ApplicationRecord
   validates :title, presence: true
   after_validation :set_slug, only: [:create, :update]
 
+  default_scope { order(position: :asc, updated_at: :desc) }
+
   scope :is_public, ->{ where(public: true) }
 
 

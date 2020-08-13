@@ -33,7 +33,7 @@ RSpec.feature "Creates Notifications" do
     visit '/'
     click_link 'Last notifications'
 
-    expect(page).to have_content("#{@user1.username} #{Notification.last.action} #{Codetool.last.title}")
+    expect(page).to have_content("#{@user1.username} #{Notification.last.action} #{Codetool.first.title}")
   end
 
   scenario "a user favorites other user codetool" do
@@ -70,7 +70,7 @@ RSpec.feature "Creates Notifications" do
     visit '/'
     click_link 'Last notifications'
 
-    expect(page).to have_content("#{@user1.username} #{Notification.last.action} #{Codetool.last.title}")
+    expect(page).to have_content("#{@user1.username} #{Notification.last.action} #{Codetool.first.title}")
   end
 
   scenario "notifications are deleted when clicks Clear button" do

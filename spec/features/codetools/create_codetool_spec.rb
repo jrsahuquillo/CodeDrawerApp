@@ -16,11 +16,11 @@ RSpec.feature "Creating Codetools" do
     click_button "Create Codetool"
     @drawer.reload
 
-    expect(Codetool.last.drawer).to eq(@drawer)
-    expect(Codetool.last.user).to eq(@user)
-    expect(Codetool.last.position).to eq(0)
-    expect(Codetool.last.public).to eq(false)
-    expect(Codetool.last.slug).to eq(Codetool.last.title.parameterize)
+    expect(Codetool.first.drawer).to eq(@drawer)
+    expect(Codetool.first.user).to eq(@user)
+    expect(Codetool.first.position).to eq(0)
+    expect(Codetool.first.public).to eq(false)
+    expect(Codetool.first.slug).to eq(Codetool.first.title.parameterize)
     expect(page).to have_content("Codetool has been created")
     expect(page).to have_content(@drawer.codetools.last.title)
     expect(page).to have_content(@drawer.codetools.last.content)
@@ -65,7 +65,7 @@ RSpec.feature "Creating Codetools" do
     fill_in "Content", with: "Lorem Ipsum"
     find('#public_checkbox').set(true)
     click_button "Create Codetool"
-    expect(Codetool.last.public).to eq(true)
+    expect(Codetool.first.public).to eq(true)
   end
 
 end
