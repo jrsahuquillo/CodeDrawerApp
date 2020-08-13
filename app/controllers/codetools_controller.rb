@@ -11,8 +11,9 @@ class CodetoolsController < ApplicationController
     if  @drawer.user != current_user && @drawer.friends.exclude?(current_user)
       return resource_not_found
     end
-    @codetools = @drawer.codetools.order(position: :asc, updated_at: :desc) if @drawer.user == current_user
-    @codetools = @drawer.codetools if @drawer.friends.include?(current_user)
+    if @drawer.user == current_user || @drawer.friends.include?(current_user)
+      @codetools = @drawer.codetools
+    end
   end
 
   def sort_codetool
