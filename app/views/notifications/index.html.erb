@@ -17,7 +17,7 @@
   <div class="row">
     <div class="col-md-12">
       <ul class="list-group list-group-flush">
-        <% if @last_notifications.any? %>
+        <% if @last_notifications.present? %>
           <% @last_notifications.each do |notification| %>
             <li class="list-group-item list-group-item-light"><%= parse_notification(notification) %></li>
           <% end %>

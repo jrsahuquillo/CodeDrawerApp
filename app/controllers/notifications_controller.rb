@@ -15,7 +15,7 @@ class NotificationsController < ApplicationController
 
   def clear
     @all_notifications.destroy_all
-    redirect_to '/notifications'
+    redirect_to notifications_path
   end
 
   private
