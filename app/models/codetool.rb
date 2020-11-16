@@ -11,7 +11,12 @@ class Codetool < ApplicationRecord
 
 
   def self.search(search)
-    self.where("title ILIKE ? OR content ILIKE ?", "%#{search}%", "%#{search}%").uniq
+    searching_words = search.split(',')
+    result = []
+    searching_words.each do |word|
+      result << self.where("title ILIKE ? OR content ILIKE ?", "%#{word}%", "%#{word}%").uniq
+    end
+    result.flatten.uniq
   end
 
   def belongs_to_user?(user)
