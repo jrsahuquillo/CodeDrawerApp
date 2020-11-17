@@ -9,12 +9,22 @@ class Codetool < ApplicationRecord
 
   scope :is_public, ->{ where(public: true) }
 
-
   def self.search(search)
-    searching_words = search.split(',')
+    split_character = search.include?('&') ? '&' : ','
+    searching_words =  search.split(split_character).collect(&:strip)
     result = []
     searching_words.each do |word|
-      result << self.where("title ILIKE ? OR content ILIKE ?", "%#{word}%", "%#{word}%").uniq
+      codetool_matching_search = self.where("title ILIKE ? OR content ILIKE ?", "%#{word}%", "%#{word}%").uniq
+      if split_character == '&'
+        codetool_matching_search.each do |codetool|
+          if (codetool.title.downcase.split(" ") & searching_words).sort == searching_words.sort ||
+            (codetool.content.downcase.split(" ") & searching_words).sort == searching_words.sort
+            result << codetool
+          end
+        end
+      else
+        result << codetool_matching_search
+      end
     end
     result.flatten.uniq
   end
