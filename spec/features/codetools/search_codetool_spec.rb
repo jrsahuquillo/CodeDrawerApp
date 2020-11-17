@@ -77,8 +77,28 @@ RSpec.feature "Searching Codetools" do
     expect(page).not_to have_css('.drawer-search')
   end
 
-    scenario "a user can't search in drawer scope in pin codetools page" do
+  scenario "a user can't search in drawer scope in pin codetools page" do
     visit '/pin_codetools'
     expect(page).not_to have_css('.drawer-search')
+  end
+
+  scenario "a user searches codetools that can contain one more words" do
+    visit '/search'
+    fill_in "Search (CRTL + F)", with: "the, codetool"
+    find(:css, 'button.global-search').click
+
+    expect(page).to have_content(@codetool1.title)
+    expect(page).to have_content(@codetool2.title)
+  end
+
+  scenario "a user searches codetools that contains more than one word mandatorily" do
+    @codetool3 = Codetool.create(title: "The third codetool", content: "Content of third codetool example", drawer: @drawer, user: @user)
+    visit '/search'
+    fill_in "Search (CRTL + F)", with: "example & third"
+    find(:css, 'button.global-search').click
+
+    expect(page).to have_content(@codetool3.title)
+    expect(page).not_to have_content(@codetool1.title)
+    expect(page).not_to have_content(@codetool2.title)
   end
 end

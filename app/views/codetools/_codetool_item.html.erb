@@ -6,8 +6,8 @@
           <span class="dnd-codetool-icon">
             <%= octicon "kebab-vertical", height: 24 if codetool.belongs_to_user?(current_user) && index_codetools_page? %>
           </span>
-            &nbsp;
-          <%= params[:search] ? highlight(codetool.title, params[:search]) : codetool.title %>
+            &nbsp;&nbsp;
+          <%= display_data(truncate(codetool.title, length: 60)) %>
         </div>
         <div class="d-flex">
           <div class="favorite-icon">
@@ -39,7 +39,7 @@
             <div class="codetool-check" hidden><%= octicon "check", height: 18 %></div>
           <% end %>
         </div>
-        <%= params[:search] ? highlight(markdown(codetool.content), params[:search]) : markdown(codetool.content) %>
+        <%= display_data(codetool.content) %>
       </div>
       <% drawer = codetool&.drawer %>
       <% if drawer %>

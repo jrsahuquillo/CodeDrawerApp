@@ -102,6 +102,11 @@
   .codetool-header {
     display: flex;
     justify-content: space-between;
+    max-height: 30px;
+
+  .codetool-title {
+    display: flex;
+  }
 
     .rotated{
       transform: rotate(-180deg);

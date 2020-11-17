@@ -42,4 +42,13 @@ module CodetoolsHelper
     controller_name == "codetools" && action_name == "index"
   end
 
+  def display_data(codetool_data)
+    if params[:search]
+      split_character = params[:search]&.include?('&') ? '&' : ','
+      markdown(highlight(codetool_data, params[:search]&.split(split_character).collect(&:strip)))
+    else
+      markdown(codetool_data)
+    end
+  end
+
 end
