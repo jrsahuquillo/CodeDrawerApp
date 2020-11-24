@@ -45,7 +45,7 @@ module CodetoolsHelper
   def display_data(codetool_data)
     if params[:search]
       split_character = params[:search]&.include?('&') ? '&' : ','
-      markdown(highlight(codetool_data, params[:search]&.split(split_character).collect(&:strip)))
+      highlight(markdown(codetool_data), params[:search]&.split(split_character).collect(&:strip))
     else
       markdown(codetool_data)
     end

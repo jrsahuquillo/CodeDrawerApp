@@ -17,8 +17,8 @@ class Codetool < ApplicationRecord
       codetool_matching_search = self.where("title ILIKE ? OR content ILIKE ?", "%#{word}%", "%#{word}%").uniq
       if split_character == '&'
         codetool_matching_search.each do |codetool|
-          if (codetool.title.downcase.split(" ") & searching_words).sort == searching_words.sort ||
-            (codetool.content.downcase.split(" ") & searching_words).sort == searching_words.sort
+          if (codetool.title.downcase.split(/\W+/) & searching_words).sort == searching_words.sort ||
+            (codetool.content.downcase.split(/\W+/) & searching_words).sort == searching_words.sort
             result << codetool
           end
         end
