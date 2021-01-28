@@ -19,7 +19,7 @@ class DrawersController < ApplicationController
 
   def sort_drawer
     params[:drawer].each_with_index do |id, index|
-      current_user.drawers.where(id: id).update_all( position: index + 1 )
+      current_user.drawers.find(id).update_column(:position, index + 1 )
     end
   end
 

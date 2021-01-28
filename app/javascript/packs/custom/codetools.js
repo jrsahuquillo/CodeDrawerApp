@@ -25,7 +25,6 @@ $(document).on('turbolinks:load', function () {
     axis: "y",
     cursor: "move",
     opacity: 0.7,
-    revert: true,
     delay: 300,
     handle: '.dnd-codetool-icon',
     update: function(e, ui) {

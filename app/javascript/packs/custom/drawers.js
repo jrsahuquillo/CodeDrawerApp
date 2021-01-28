@@ -5,7 +5,6 @@ $(document).on('turbolinks:load',function(){
     axis: "y",
     cursor: "move",
     opacity: 0.7,
-    revert: true,
     delay: 300,
     scroll: true,
     handle: '.drawer-list-icon',
